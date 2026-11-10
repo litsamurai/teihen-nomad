@@ -889,7 +889,8 @@ function strender(){var q=($("stq").value||"").trim().toLowerCase();$("stgrid").
 $("st1").innerHTML='<option value="">国を選ぶ</option>'+CL2.map(function(x){return '<option value="'+x.c+'">'+chesc(x.n)+'</option>'}).join("");
 $("stq").oninput=strender;
 fetch("data/stays.json").then(function(r){return r.json()}).then(function(a){STB=a;mergeAll()}).catch(function(){strender()});
-function stform(){return{c:$("st1").value,city:$("st2").value.trim(),n:$("st3").value.trim(),k:$("st4").value,p:$("st5").value.trim(),w:$("st6").value,d:$("st7").value.trim(),l:$("st8").value.trim()}}
+function stlink(v){v=String(v||"").trim();if(/^https?:\/\/?$/i.test(v))return "";return v.replace(/^http:\/\//i,"https://")}
+function stform(){return{c:$("st1").value,city:$("st2").value.trim(),n:$("st3").value.trim(),k:$("st4").value,p:$("st5").value.trim(),w:$("st6").value,d:$("st7").value.trim(),l:stlink($("st8").value)}}
 function stcheck(f,m){if(!f.c||!f.city||!f.n||!f.d){m.textContent="国・街・宿の名前・感想を入れてください。";return false}if(!stok(f.l)){m.textContent="リンクは https:// から始まるものだけです。";return false}return true}
 $("stb").onclick=function(){var f=stform(),m=$("stm");if(!stcheck(f,m))return;var t="🏠 穴場の宿\n国："+cname(f.c)+"\n街："+f.city+"\n名前："+f.n+"\nタイプ："+f.k+"\n1泊の目安："+f.p+"\n仕事のしやすさ："+f.w+"\n感想："+f.d+(f.l?"\nリンク："+f.l:"")+"\n（泊まった宿です／PRではありません）";try{navigator.clipboard.writeText(t).then(function(){m.textContent="コピーしました。Discordの「穴場の宿」に貼り付けてください。"},function(){m.textContent="コピーできませんでした。"})}catch(e){m.textContent="コピーできませんでした。"}};
 
