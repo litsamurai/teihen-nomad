@@ -420,6 +420,14 @@ select{border-color:#ff8a8a}
 .tab[data-k="consent"][aria-selected="true"]{color:#d6247a;border-bottom-color:#d6247a}
 .big button[data-go="consent"]{border-color:#e0559a!important;box-shadow:0 4px 0 #e0559a!important;background:#ffe3f0!important}
 .big button[data-go="consent"] b,.big button[data-go="consent"] span{color:#4a0d2a!important}
+
+/* ===== 見出し・カードは「平らな面」、ボタンだけ立体に（見分けやすさ） ===== */
+main h2,section h2,main section>h2:first-child,main section>h2.dh:first-child,h2[style*="linear-gradient"],.dsc h2,#adult h2,#consent h2,h2.dh[style],#home-more h2[style]{background:none!important;color:var(--ink)!important;box-shadow:none!important;transform:none!important;border-radius:0!important;display:block!important;padding:2px 0 2px 12px!important;border-left:6px solid var(--brand)!important;text-shadow:none!important}
+#adult h2,#consent h2{color:#8f1050!important;border-left-color:#d6247a!important}
+.dsc h2,h2.dh[style]{color:#3c45a5!important;border-left-color:#5865f2!important}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]) .dsc h2,:root:not([data-theme="light"]) h2.dh[style]{color:#c7d2fe!important}:root:not([data-theme="light"]) #adult h2,:root:not([data-theme="light"]) #consent h2{color:#ffb3d6!important}}
+:root[data-theme="dark"] .dsc h2,:root[data-theme="dark"] h2.dh[style]{color:#c7d2fe!important}:root[data-theme="dark"] #adult h2,:root[data-theme="dark"] #consent h2{color:#ffb3d6!important}
+section .card,section .step,section .box,section .simbox{box-shadow:none!important;transform:none!important}
 </style>
 </head>
 <body>
