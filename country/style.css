@@ -1,0 +1,26 @@
+:root{--red:#e5311a;--ink:#111;--sub:#555;--line:#e7d3d0;--soft:#fdeeec}
+*{box-sizing:border-box}body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Noto Sans JP",sans-serif;color:var(--ink);background:#fff;line-height:1.8;font-size:16px}
+header{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:10px 16px;border-bottom:4px solid var(--red)}
+.logo{font-weight:900;color:var(--red);text-decoration:none}
+.join{background:#5865f2;color:#fff;text-decoration:none;font-weight:800;font-size:13px;padding:8px 14px;border-radius:99px;white-space:nowrap}
+main{max-width:760px;margin:0 auto;padding:16px}
+.bc{font-size:13px;color:var(--sub)}.bc a{color:var(--sub)}
+h1{font-size:clamp(22px,6vw,30px);line-height:1.35;margin:10px 0}
+h2{font-size:20px;margin:28px 0 8px;padding-left:10px;border-left:6px solid var(--red)}
+.lead{font-size:17px;font-weight:600}
+.kv{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.kv div{background:var(--soft);border-radius:12px;padding:10px;text-align:center}
+.kv span{display:block;font-size:11px;color:var(--sub);line-height:1.4}.kv b{font-size:18px}
+table{width:100%;border-collapse:collapse;margin:12px 0;font-size:15px}
+th,td{border-bottom:1px solid var(--line);padding:8px 6px;text-align:left}caption{text-align:left;font-size:13px;color:var(--sub);padding-bottom:4px}
+.rank th,.rank td{text-align:center}.rank td:nth-child(2){text-align:left}
+.list{list-style:none;padding:0;margin:0}.list li{background:var(--soft);border-radius:12px;padding:10px 12px;margin:8px 0}
+.list span{color:var(--sub);font-size:14px}.list .do{color:#8a2a1a;font-weight:600}
+.src,.small{font-size:13px;color:var(--sub)}
+.cta{background:#eef0ff;border:2px solid #5865f2;border-radius:18px;padding:4px 16px 16px;margin-top:28px}
+.cta h2{border-left-color:#5865f2}
+.btn{display:block;text-align:center;background:#5865f2;color:#fff;text-decoration:none;font-weight:800;padding:14px;border-radius:14px;box-shadow:0 4px 0 #3c45a5}
+footer{max-width:760px;margin:20px auto 0;padding:16px;border-top:1px solid var(--line);font-size:13px;color:var(--sub)}
+a{color:#b32410}
+
+.logo{font-size:15px;white-space:nowrap}td{white-space:nowrap}.rank td:nth-child(2){white-space:normal}

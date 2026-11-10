@@ -1,2 +1,3 @@
 User-agent: *
 Allow: /
+Sitemap: https://litsamurai.github.io/teihen-nomad/sitemap.xml
