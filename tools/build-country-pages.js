@@ -8,6 +8,7 @@ const DATA=JSON.parse(fs.readFileSync(path.join(ROOT,'data/countries.json'),'utf
 const dn=new Intl.DisplayNames(['ja'],{type:'region'});
 const esc=s=>String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const flag=c=>String.fromCodePoint(...c.split('').map(x=>0x1f1a5+x.charCodeAt(0)));
+const CIX=JSON.parse(fs.readFileSync(path.join(ROOT,'data/cities.json'),'utf8'));
 const jp=DATA.JP&&DATA.JP.idx;
 const rel=i=>(typeof i==='number'&&jp)?Math.round(i/jp*100):null;
 const cost=r=>r.cost!=null?r.cost:(r.idx!=null?Math.round((15000+3000*r.idx)/1000)*1000:null);
@@ -43,6 +44,7 @@ function page(c){
   if(r.town&&r.town.length){h+=`<section><h2>🗺 主な街</h2><ul class="list">`+r.town.map(t=>{const a=sp(t);return `<li><b>${esc(a[0])}</b>${a[1]?'<br><span>'+esc(a[1])+'</span>':''}</li>`}).join('')+`</ul><p class="small">街の内容は下書き（未検証）です。</p></section>`}
   if(r.food&&r.food.length){h+=`<section><h2>🍜 グルメ</h2><ul class="list">`+r.food.map(t=>{const a=sp(t);return `<li><b>${esc(a[0])}</b>${a[1]?'<br><span>'+esc(a[1])+'</span>':''}</li>`}).join('')+`</ul></section>`}
   if(r.safety&&r.safety.length){h+=`<section><h2>🛡 治安・安全</h2><ul class="list">`+r.safety.map(t=>{const a=sp(t);return `<li><b>${esc(a[0])}</b>${a[1]?'<br><span>'+esc(a[1])+'</span>':''}${a[2]?'<br><span class="do">対策：'+esc(a[2])+'</span>':''}</li>`}).join('')+`</ul><p class="src">${r.ssrc?'出典：'+esc(r.ssrc):'出典：未確認の下書きです。必ず外務省 海外安全ホームページで確認してください。'}</p></section>`}
+  const cs=CIX.cities.filter(x=>x.c===c);if(cs.length){h+=`<section><h2>🏙 街の生活費の目安</h2><ul class="list">`+cs.map(x=>`<li><a href="../city/${x.id}.html"><b>${esc(x.name)}</b></a><br><span>${esc(x.month.label)}</span></li>`).join('')+`</ul></section>`}
   h+=`<section class="cta"><h2>${esc(name)}の最新情報は、旅人に聞こう</h2><p>行った人の声や、最新の様子は、Discordコミュニティで。無料で、見るだけでもOKです。</p><a class="btn" href="../#crew">💬 Discordで仲間と繋がる</a><p><a href="../#wiki">サイトで国の情報を編集・追加する</a></p></section>`;
   h+=`<p class="small">ビザ・入国条件は変わります。渡航前に、<a href="https://www.anzen.mofa.go.jp/" rel="noopener">外務省 海外安全ホームページ</a>と、現地大使館の情報を必ず確認してください。</p>`;
   h+=`<script type="application/ld+json">${JSON.stringify({"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"ホーム","item":BASE},{"@type":"ListItem","position":2,"name":"国別の生活費","item":BASE+'country/'},{"@type":"ListItem","position":3,"name":name,"item":url}]})}</script>`;

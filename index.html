@@ -495,7 +495,7 @@ section .card,section .step,section .box,section .simbox{box-shadow:none!importa
 <section id="home-more" data-t="home">
 <div class="feat">
 <button data-go="wiki" class="f1"><i>📒</i><span class="ft"><b>国別生活費・物価情報</b><span>どの国なら、だらけて暮らせる？世界中の国を検索</span></span></button>
-<button data-go="towns" class="f2"><i>🗺</i><span class="ft"><b>ノマド向け街ガイド</b><span>人気の街の生活費の目安・出典つき</span></span></button>
+<button data-go="wiki" class="f2"><i>🗺</i><span class="ft"><b>ノマド向け街ガイド</b><span>人気の街の生活費の目安・出典つき</span></span></button>
 <button data-join class="f3"><i>💬</i><span class="ft"><b>旅人コミュニティ（Discord）</b><span>無料。旅人と情報交換・仲間探し</span></span></button>
 </div>
 <div id="hrank" style="margin:0 0 18px"></div>
@@ -526,6 +526,7 @@ section .card,section .step,section .box,section .simbox{box-shadow:none!importa
 <p class="sub">どこの国なら、だらけて暮らせるか。生活費と、主な街をまとめて見られます。世界中の国を検索できます（国を開くと、街の情報が出ます）。数字は、確認できた国は出典付き、それ以外はClaudeの概算です。違ってたら、気づいた人が直してください。</p>
 <div class="simbox" style="max-width:none;margin-bottom:20px"><b>1か月いくらで暮らせる？</b><div class="row" style="margin-top:10px"><select id="kc" aria-label="国"></select><select id="kn" aria-label="日数"><option value="7">7泊</option><option value="14">14泊</option><option value="30" selected>30泊</option><option value="90">90泊</option></select></div><div class="row"><select id="kt" aria-label="宿のタイプ"><option value="0.8">ドミトリー</option><option value="1" selected>個室ホステル</option><option value="1.5">コリビング</option></select></div><div id="ko" role="status"></div></div>
 <div class="simbox" style="max-width:none;margin:0 0 14px"><b>✏️ 国の情報を編集する</b><p class="small" style="margin:6px 0 10px">国を選んで押すと、物価・ひとこと・街・グルメ・安全の情報を、直せます。<b>Discordでログインして編集しよう。</b></p><div class="row"><select id="wes" aria-label="編集する国"></select><button class="go" id="web" style="flex:0 0 auto;max-width:160px">編集する</button></div><p class="mm" id="wem" role="status"></p><button class="go" data-login id="wlg" hidden style="margin-top:10px;max-width:260px">Discordでログイン</button></div>
+<div id="wcities" style="margin:0 0 14px"></div>
 <input id="wq" type="search" placeholder="国名で探す（例：ベトナム）" aria-label="国名で探す" style="width:100%;max-width:420px;font:inherit;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 14px;margin-bottom:8px">
 <details id="wd" style="margin-top:6px"><summary style="cursor:pointer;font-weight:800;padding:12px 14px;background:var(--soft);border:1px solid var(--line);border-radius:12px;list-style:none">📂 国の一覧を開く（203か国・地域）</summary><div style="margin-top:12px">
 <select id="ws2" aria-label="並び替え" style="margin-bottom:6px;max-width:260px"><option value="n">名前順</option><option value="a">物価が安い順</option><option value="d">物価が高い順</option></select>
@@ -798,7 +799,7 @@ section .card,section .step,section .box,section .simbox{box-shadow:none!importa
 
 <script>
 function $(i){return document.getElementById(i)}
-var TABS=[["home","ホーム"],["wiki","国別コスト"],["towns","街ガイド"],["fx","両替"],["news","ニュース"],["food","グルメ"],["stays","宿"],["market","マーケット"],["consent","大人の同意書"],["adult","18禁"],["promo","なんでもPR"],["safety","安全"],["ch","チャンネル"],["crew","仲間"],["prep","準備"]];
+var TABS=[["home","ホーム"],["wiki","国別コスト"],["fx","両替"],["news","ニュース"],["food","グルメ"],["stays","宿"],["market","マーケット"],["consent","大人の同意書"],["adult","18禁"],["promo","なんでもPR"],["safety","安全"],["ch","チャンネル"],["crew","仲間"],["prep","準備"]];
 var DISCORD_URL="https://discord.gg/9uVK8Ykvp";
 /* メンバー編集を有効にするには、Supabaseの URL と anon key を入れます（手順は SETUP-supabase.md） */
 var SB_CONFIG={url:"https://puciqvaespjdjbhavznt.supabase.co",key:"sb_publishable_JB5RaPplzCEtrYs60uFdWw_z9DKM2ob"};
@@ -827,7 +828,7 @@ function rel(i){var j=ROWS.JP&&ROWS.JP.idx;return(typeof i==="number"&&j)?Math.r
 function wdet(c){var r=ROWS[c]||{};
 if(edC===c){return '<div class="wd"><label class="wl">物価指数（NYC=100）<input id="wi" type="number" step="0.1" value="'+(r.idx==null?"":r.idx)+'"></label><label class="wl">月の目安（円・1人）<input id="wc" type="number" value="'+(r.cost==null?"":r.cost)+'"></label><label class="wl">ひとこと（ビザ・治安・回線など）<textarea id="wn" rows="3">'+(r.note||"")+'</textarea></label><label class="wl">出典<input id="ws" value="'+(r.src||"")+'"></label><label class="wl">街（1行に1件。名前｜説明）<textarea id="wt" rows="3">'+(r.town||[]).join("\n")+'</textarea></label><label class="wl">グルメ（1行に1品。名前｜説明）<textarea id="wf" rows="3">'+(r.food||[]).join("\n")+'</textarea></label><label class="wl">安全（1行に1件。手口｜説明｜対策）<textarea id="wy" rows="3">'+(r.safety||[]).join("\n")+'</textarea></label><label class="wl">編集者名<input id="we" value=""></label><div class="acts"><button class="go" data-s="'+c+'">保存する</button><button class="cl" data-x="1">キャンセル</button></div></div>'}
 var p=rel(r.idx);
-return '<div class="wd"><div class="ln"><span>物価指数（NYC=100）</span><span>'+(r.idx==null?"未入力":r.idx)+'</span></div><div class="ln"><span>日本を100とすると</span><span>'+(p==null?"—":p)+'</span></div><div class="ln"><span>月の目安（円）</span><span>'+(r.cost!=null?yen(r.cost):(r.idx!=null?"約"+yen(Math.round((15000+3000*r.idx)/1000)*1000)+"（指数から計算）":"未入力"))+'</span></div>'+(r.note?'<p style="margin:8px 0">'+r.note+'</p>':'')+(r.town&&r.town.length?'<h4 style="margin:12px 0 4px">🗺 主な街</h4>'+r.town.map(function(s){var p=sp(s);return '<div class="ln" style="display:block"><b>'+esc(p[0])+'</b>'+(p[1]?'<br><span class="small">'+esc(p[1])+'</span>':'')+'</div>'}).join("")+'<p class="small">街の内容は下書き（未検証）です。気づいた点は、編集で直してください。</p>':'<p class="small" style="margin:8px 0">この国の街の情報は、まだありません。編集で追加できます。</p>')+'<p class="small">出典：'+(r.src||(r.est?"Claudeの概算（未検証）":"未入力"))+(r.date?"（確認日 "+r.date+"）":"")+'<br>最終編集：'+(r.editor||(r.est?"Claude（初期入力）":"—"))+(r.updated?"（"+r.updated+"）":"")+'</p><button class="more" data-e="'+c+'">この国を編集する</button> <a class="more" href="country/'+c.toLowerCase()+'.html">この国のページを開く（共有用）</a></div>'}
+return '<div class="wd"><div class="ln"><span>物価指数（NYC=100）</span><span>'+(r.idx==null?"未入力":r.idx)+'</span></div><div class="ln"><span>日本を100とすると</span><span>'+(p==null?"—":p)+'</span></div><div class="ln"><span>月の目安（円）</span><span>'+(r.cost!=null?yen(r.cost):(r.idx!=null?"約"+yen(Math.round((15000+3000*r.idx)/1000)*1000)+"（指数から計算）":"未入力"))+'</span></div>'+(r.note?'<p style="margin:8px 0">'+r.note+'</p>':'')+(r.town&&r.town.length?'<h4 style="margin:12px 0 4px">🗺 主な街</h4>'+r.town.map(function(s){var p=sp(s);return '<div class="ln" style="display:block"><b>'+esc(p[0])+'</b>'+(p[1]?'<br><span class="small">'+esc(p[1])+'</span>':'')+'</div>'}).join("")+'<p class="small">街の内容は下書き（未検証）です。気づいた点は、編集で直してください。</p>':'<p class="small" style="margin:8px 0">この国の街の情報は、まだありません。編集で追加できます。</p>')+'<p class="small">出典：'+(r.src||(r.est?"Claudeの概算（未検証）":"未入力"))+(r.date?"（確認日 "+r.date+"）":"")+'<br>最終編集：'+(r.editor||(r.est?"Claude（初期入力）":"—"))+(r.updated?"（"+r.updated+"）":"")+'</p><button class="more" data-e="'+c+'">この国を編集する</button> <a class="more" href="country/'+c.toLowerCase()+'.html">この国のページを開く（共有用）</a>'+citiesOf(c)+'</div>'}
 function wiki(){var q=$("wq").value.trim().toLowerCase(),n=0,h="";
 var gv="";WL().forEach(function(x){if(gv&&x.c!==gv)return;if(q&&x.n.toLowerCase().indexOf(q)<0&&x.c.toLowerCase()!==q)return;var r=ROWS[x.c],p=r?rel(r.idx):null;n++;
 h+='<div class="wr"><button class="wb" data-w="'+x.c+'" aria-expanded="'+(openC===x.c||(gv===x.c&&openC===null))+'"><span>'+flag(x.c)+" "+x.n+'</span><span class="wv">'+(p!=null?"日本の"+p+"%"+(r&&r.est?"（概算）":""):(r&&r.idx!=null?"指数 "+r.idx:"未入力"))+'</span></button>'+((openC===x.c||(gv===x.c&&openC===null))?wdet(x.c):"")+'</div>'});
@@ -880,6 +881,12 @@ var n=1;if(TS[CT]){n=document.querySelectorAll(TS[CT]).length-document.querySele
 $("gc").onchange=gfilter;
 var _t=tab;tab=function(t){CT=t;_t(t);if(t==="adult")ngate();gfilter()};
 function ln(i){return $(i).value.split("\n").map(function(s){return s.trim()}).filter(Boolean)}
+var CITYD=null,CITYRATE=158;
+function citycard(c){var u=c.month.usd,y=function(x){return"約"+(Math.round(x*CITYRATE/1000)*1000).toLocaleString("ja-JP")+"円"};return '<div class="card" style="margin-top:10px"><div class="cb"><h3>🏙 '+esc(c.name)+'</h3><p><b>月の目安：'+esc(c.month.label)+'</b><br><span class="small">'+(u[0]===u[1]?y(u[0]):y(u[0])+"〜"+y(u[1]))+'（1ドル＝'+Math.round(CITYRATE)+'円で換算）</span></p>'+c.items.map(function(i){return '<div class="ln" style="display:block"><span class="small">'+esc(i[0])+'：</span><b>'+esc(i[1])+'</b></div>'}).join("")+'<p class="small" style="margin-top:8px">信頼度：'+esc(c.grade)+'<br>出典：'+c.src.map(function(x){return '<a href="'+esc(x[1])+'" target="_blank" rel="noopener nofollow">'+esc(x[0])+'</a>'}).join("、")+'（取得日 '+esc(CITYD.retrieved)+'）</p></div></div>'}
+function citiesOf(code){if(!CITYD)return"";var L=CITYD.cities.filter(function(c){return c.c===code});return L.length?'<h4 style="margin:14px 0 0">🏙 街の生活費の目安</h4>'+L.map(citycard).join("")+'<p class="small"><a href="city/'+L[0].id+'.html">街ごとのページ（共有用）</a></p>':""}
+function openCountry(c){if(!c)return;tab("wiki");var q=$("wq");if(q)q.value="";$("wd").open=true;openC=c;edC=null;wiki();var el=document.querySelector('#wl [data-w="'+c+'"]');if(el&&el.scrollIntoView)el.scrollIntoView({block:"start"})}
+fetch("data/fx.json").then(function(r){return r.json()}).then(function(d){if(d&&d.rates&&d.rates.JPY)CITYRATE=d.rates.JPY}).catch(function(){}).then(function(){return fetch("data/cities.json")}).then(function(r){return r.json()}).then(function(d){CITYD=d;var sh=document.getElementById("wcities");if(sh)sh.innerHTML='<b style="display:block;margin-bottom:6px">🗺 人気の街（押すと、その国が開きます）</b><div class="hct">'+d.cities.map(function(c){return '<button data-wc="'+c.c+'">'+flag(c.c)+" "+esc(c.name)+'</button>'}).join("")+'</div>';if(openC)wiki()}).catch(function(){});
+document.addEventListener("click",function(e){var b=e.target.closest("[data-wc]");if(b)openCountry(b.getAttribute("data-wc"))});
 function sp(s){return String(s||"").split("｜")}
 function esc(s){return String(s==null?"":s).replace(/&/g,"&amp;").replace(/</g,"&lt;")}
 function rall(){food();towns2();safe2();night();gfilter()}
@@ -1044,7 +1051,7 @@ else if(!body){m2.textContent="このお店はすでに載っています。レ�
 if(body){var rr=await SBX.sb.from("reviews").insert({place_key:key,stars:+$("rv7").value,body:body,visited:$("rv8").value.trim()||null,price:$("rv6").value.trim()||null});if(rr.error){m2.textContent=sbErr(rr.error);await SBX.loadPlaces();mergeAll();return}}
 m2.textContent=body?"投稿しました。ありがとうございます。":"お店を追加しました。";["rv3","rv4","rv5","rv6","rv8","rv9"].forEach(function(i){$(i).value=""});await Promise.all([SBX.loadPlaces(),SBX.loadReviews()]);mergeAll();return}
 });
-(function(){var k=(location.hash||"").slice(1);if(k==="board")k="crew";var ok=function(x){return TABS.some(function(t){return t[0]===x})},st=null;if(!ok(k)&&/[?&]code=/.test(location.search)){try{st=localStorage.getItem("nomad_tab")}catch(e){}k=st}tab(ok(k)?k:"home");window.scrollTo(0,0)})();
+(function(){var k=(location.hash||"").slice(1);if(k==="board")k="crew";if(k==="towns")k="wiki";var ok=function(x){return TABS.some(function(t){return t[0]===x})},st=null;if(!ok(k)&&/[?&]code=/.test(location.search)){try{st=localStorage.getItem("nomad_tab")}catch(e){}k=st}tab(ok(k)?k:"home");window.scrollTo(0,0)})();
 window.addEventListener("hashchange",function(){var k=(location.hash||"").slice(1);if(TABS.some(function(t){return t[0]===k}))tab(k)});
 
 (function(){
@@ -1085,7 +1092,7 @@ function e2(t){return String(t==null?"":t).replace(/[&<>"']/g,function(c){return
 Promise.all([fetch("data/countries.json").then(function(r){return r.json()}),fetch("data/cities.json").then(function(r){return r.json()})]).then(function(a){var C=a[0],D=a[1],jp=C.JP&&C.JP.idx;if(!jp)return;
 var rows=P.filter(function(c){return C[c]&&C[c].idx!=null}).sort(function(x,y){return C[x].idx-C[y].idx});
 var h='<h2 style="margin:0 0 8px;font-size:18px">💴 物価が安い人気の国</h2><div class="hrk">'+rows.map(function(c,i){var r=C[c],p=Math.round(r.idx/jp*100);return '<a href="country/'+c.toLowerCase()+'.html"><span class="n">'+(i+1)+'</span><span class="nm">'+flag(c)+" "+e2(cname(c))+'</span><span class="v">日本の'+p+'%'+(r.est?"（概算）":"")+'</span></a>'}).join("")+'</div><p class="small" style="margin:6px 0 14px"><a href="country/" style="font-weight:700">すべての国のランキングを見る →</a>　「概算」と書いていない数値は、出典で確認したものです。</p>';
-h+='<h2 style="margin:0 0 8px;font-size:18px">🗺 人気の街</h2><div class="hct">'+D.cities.map(function(c){return '<button data-go="towns">'+flag(c.c)+" "+e2(c.name)+'</button>'}).join("")+'</div>';
+h+='<h2 style="margin:0 0 8px;font-size:18px">🗺 人気の街</h2><div class="hct">'+D.cities.map(function(c){return '<button data-wc="'+c.c+'">'+flag(c.c)+" "+e2(c.name)+'</button>'}).join("")+'</div>';
 var el=document.getElementById("hrank");if(el)el.innerHTML=h}).catch(function(){})})();
 </script>
 <footer style="max-width:1100px;margin:32px auto;padding:16px;font-size:12px;color:#888;text-align:center"><a href="privacy.html">プライバシーポリシー</a>｜<a href="terms.html">利用規約・免責</a><p>掲載情報は下書き・概算を含み、正確性を保証しません。渡航前に必ず公的機関の最新情報をご確認ください。</p></footer>
