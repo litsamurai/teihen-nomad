@@ -716,7 +716,7 @@ function $(i){return document.getElementById(i)}
 var TABS=[["home","ホーム"],["wiki","国別コスト"],["fx","両替"],["food","グルメ"],["stays","宿"],["safety","安全"],["adult","18禁"],["board","募集・仲間"],["ch","チャンネル"],["crew","参加"],["prep","準備"]];
 var DISCORD_URL="https://discord.gg/9uVK8Ykvp";
 /* メンバー編集を有効にするには、Supabaseの URL と anon key を入れます（手順は SETUP-supabase.md） */
-var SB_CONFIG={url:"",key:""};
+var SB_CONFIG={url:"https://puciqvaespjdjbhavznt.supabase.co",key:"sb_publishable_JB5RaPplzCEtrYs60uFdWw_z9DKM2ob"};
 function jmsg(t){["jmsg","jmsg2"].forEach(function(i){if($(i))$(i).textContent=t})}
 document.addEventListener("click",function(e){var j=e.target.closest("[data-join]");if(j){if(DISCORD_URL)window.open(DISCORD_URL,"_blank","noopener");else{jmsg("参加リンクは準備中です。もう少しお待ちください。");tab("crew")}}var c=e.target.closest("[data-copy]");if(c){var t=c.getAttribute("data-copy").replace(/\\n/g,"\n");try{navigator.clipboard.writeText(t).then(function(){$("bmsg").textContent="コピーしました。Discordの該当チャンネルに貼り付けてください。"},function(){$("bmsg").textContent="コピーできませんでした。"})}catch(x){$("bmsg").textContent="コピーできませんでした。"}}});
 function tab(t){document.querySelectorAll("[data-t]").forEach(function(e){e.classList.toggle("on",e.getAttribute("data-t")===t)});Array.prototype.forEach.call($("tabs").children,function(b){b.setAttribute("aria-selected",b.getAttribute("data-k")===t)});window.scrollTo(0,0)}
@@ -903,7 +903,7 @@ authbar:function(){var a=$("authbar");a.hidden=false;if(SBX.user){a.innerHTML='<
 $("rvd").hidden=false;$("cbd").hidden=false;$("std").hidden=false},
 setUser:async function(u){if(!u){SBX.user=null;SBX.authbar();return}var nm=(u.user_metadata&&(u.user_metadata.full_name||u.user_metadata.name))||"旅人";try{var r=await SBX.sb.from("profiles").select("display_name").eq("id",u.id).maybeSingle();if(r.data&&r.data.display_name)nm=r.data.display_name}catch(e){}SBX.user={id:u.id,name:nm};SBX.authbar()},
 init:async function(){SBX.on=true;SBX.authbar();
-try{await new Promise(function(ok,ng){var s=document.createElement("script");s.src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js";s.onload=ok;s.onerror=ng;document.head.appendChild(s)})}catch(e){$("wmsg").textContent="共有データの読み込みに失敗しました（通信を確認してください）。";return}
+try{await new Promise(function(ok,ng){var s=document.createElement("script");s.src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.58.0/dist/umd/supabase.js";s.onload=ok;s.onerror=ng;document.head.appendChild(s)})}catch(e){$("wmsg").textContent="共有データの読み込みに失敗しました（通信を確認してください）。";return}
 SBX.sb=window.supabase.createClient(SB_CONFIG.url,SB_CONFIG.key,{auth:{persistSession:true,detectSessionInUrl:true,flowType:"pkce"}});
 var s=await SBX.sb.auth.getSession();await SBX.setUser(s.data&&s.data.session&&s.data.session.user);
 SBX.sb.auth.onAuthStateChange(function(ev,ses){setTimeout(function(){SBX.setUser(ses&&ses.user)},0)});
