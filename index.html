@@ -493,7 +493,7 @@ section .card,section .step,section .box,section .simbox{box-shadow:none!importa
 <main>
 <div id="authbar" class="authbar" hidden></div>
 <div class="gcbar"><label>🌏 国で絞り込む<select id="gc" aria-label="国で絞り込む"></select></label></div>
-<p class="empty" id="gnote" hidden>この国の情報は、まだありません。国別コストで追加していきましょう。</p>
+<p class="empty" id="gnote" hidden></p>
 <section id="home-more" data-t="home">
 <div class="feat">
 <button data-go="wiki" class="f1"><i>📒</i><span class="ft"><b>国別生活費・物価情報</b><span>どの国なら、だらけて暮らせる？世界中の国を検索</span></span></button>
@@ -879,7 +879,7 @@ $("kc").onchange=kcalc;$("kn").onchange=kcalc;$("kt").onchange=kcalc;
 $("gc").innerHTML='<option value="">すべての国</option>'+KC;
 var CT="home",TS={spots:"#grid .card",towns:"#towns .card",food:"#food .card",safety:"#safety .card",adult:"#adult .card"};
 function gfilter(){var c=$("gc").value,f=c?flag(c):"";Array.prototype.forEach.call(document.querySelectorAll("#grid .card,#towns .card,#food .card,#bgrid .card,#chgrid .card,#stgrid .card,#fposts .card,#safety .card,#adult .card"),function(e){var t=e.textContent;e.classList.toggle("gh",!!f&&t.indexOf(f)<0&&t.indexOf("🌏")<0)});
-var n=1;if(TS[CT]){n=document.querySelectorAll(TS[CT]).length-document.querySelectorAll(TS[CT].replace(".card",".card.gh")).length}$("gnote").hidden=!(f&&TS[CT]&&n===0)}
+var n=1;if(TS[CT]){n=document.querySelectorAll(TS[CT]).length-document.querySelectorAll(TS[CT].replace(".card",".card.gh")).length}var gn=$("gnote"),sh=!!(f&&TS[CT]&&n===0);gn.textContent=sh?"この国の情報は、まだありません。国別コストで追加していきましょう。":"";gn.hidden=!sh}
 $("gc").onchange=gfilter;
 var _t=tab;tab=function(t){CT=t;_t(t);if(t==="adult")ngate();gfilter()};
 function ln(i){return $(i).value.split("\n").map(function(s){return s.trim()}).filter(Boolean)}
