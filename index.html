@@ -428,6 +428,24 @@ main h2,section h2,main section>h2:first-child,main section>h2.dh:first-child,h2
 @media(prefers-color-scheme:dark){:root:not([data-theme="light"]) .dsc h2,:root:not([data-theme="light"]) h2.dh[style]{color:#c7d2fe!important}:root:not([data-theme="light"]) #adult h2,:root:not([data-theme="light"]) #consent h2{color:#ffb3d6!important}}
 :root[data-theme="dark"] .dsc h2,:root[data-theme="dark"] h2.dh[style]{color:#c7d2fe!important}:root[data-theme="dark"] #adult h2,:root[data-theme="dark"] #consent h2{color:#ffb3d6!important}
 section .card,section .step,section .box,section .simbox{box-shadow:none!important;transform:none!important}
+
+/* ===== ホーム：3つを大きく、ほかは小さく ===== */
+.feat{display:grid;gap:12px;margin:14px 0 22px}
+.feat button{display:flex;align-items:center;gap:14px;text-align:left;width:100%;border-radius:22px;padding:18px 16px;font:inherit;cursor:pointer;border:3px solid #e5311a;background:#fff;color:#111;box-shadow:0 5px 0 #e5311a}
+.feat button:active{transform:translateY(4px);box-shadow:0 1px 0 #e5311a}
+.feat i{font-style:normal;font-size:42px;line-height:1;flex:none}
+.feat .ft{display:flex;flex-direction:column;gap:4px;min-width:0}
+.feat b{font-size:clamp(18px,5.4vw,23px);font-weight:900;line-height:1.25}
+.feat .ft span{font-size:13px;font-weight:600;color:#555;line-height:1.4}
+.feat .f2{border-color:#f08a47;box-shadow:0 5px 0 #f08a47}
+.feat .f3{background:#5865f2;border-color:#3c45a5;box-shadow:0 5px 0 #3c45a5;color:#fff}
+.feat .f3 .ft span{color:#e8eaff}
+#home-more .big{grid-template-columns:repeat(3,1fr)!important;gap:8px!important;margin:8px 0!important}
+#home-more .big button{padding:10px 6px!important;border-radius:14px!important;border-width:2px!important;box-shadow:0 3px 0 var(--line)!important;align-items:center!important;text-align:center!important;gap:2px!important}
+#home-more .big button i{font-size:24px!important}
+#home-more .big button b{font-size:12px!important;line-height:1.3}
+#home-more .big button span{display:none!important}
+#home-more .big button{min-height:0!important;height:auto!important;justify-content:center!important}
 </style>
 </head>
 <body>
@@ -450,12 +468,15 @@ section .card,section .step,section .box,section .simbox{box-shadow:none!importa
 <div class="gcbar"><label>🌏 国で絞り込む<select id="gc" aria-label="国で絞り込む"></select></label><span class="small" style="margin:0">国別コスト・グルメ・安全に反映されます</span></div>
 <p class="empty" id="gnote" hidden>この国の情報は、まだありません。国別コストで追加していきましょう。</p>
 <section id="home-more" data-t="home">
-<h2 style="display:inline-block;background:linear-gradient(120deg,#fde68a,#fdba74);color:#3b2a1a;padding:4px 16px;border-radius:12px;transform:rotate(-1deg);font-size:clamp(14px,4.8vw,22px);white-space:nowrap;max-width:100%">だらだら使えるもの揃えました</h2>
+<div class="feat">
+<button data-go="wiki" class="f1"><i>📒</i><span class="ft"><b>国別生活費・物価情報</b><span>どの国なら、だらけて暮らせる？世界中の国を検索</span></span></button>
+<button data-go="food" class="f2"><i>🗺</i><span class="ft"><b>ノマド向け街ガイド</b><span>街ごとのグルメ・穴場の宿・作業のしやすさ</span></span></button>
+<button data-join class="f3"><i>💬</i><span class="ft"><b>旅人コミュニティ（Discord）</b><span>無料。旅人と情報交換・仲間探し</span></span></button>
+</div>
+<h2 style="display:inline-block;background:linear-gradient(120deg,#fde68a,#fdba74);color:#3b2a1a;padding:4px 16px;border-radius:12px;transform:rotate(-1deg);font-size:clamp(13px,3.8vw,16px);white-space:nowrap;max-width:100%">だらだら使えるもの揃えました</h2>
 <div class="big">
-<button data-go="wiki"><i>📒</i><b>国別コスト</b><span>生活費と、主な街</span></button>
 <button data-go="fx"><i>💱</i><b>両替</b><span>どの通貨でも換算</span></button>
 <button data-go="news"><i>🌏</i><b>世界のニュース</b><span>いまの出来事を、さっと確認</span></button>
-<button data-go="food"><i>🍜</i><b>グルメ</b><span>おすすめの店を探す</span></button>
 <button data-go="stays"><i>🏠</i><b>穴場の宿</b><span>泊まってよかった宿</span></button>
 <button data-go="market"><i>🛒</i><b>マーケット</b><span>地域ごとに譲る・探す</span></button>
 <button data-go="consent"><i>💗</i><b>大人の同意書</b><span>お互いの気持ちを確かめる</span></button>
@@ -465,7 +486,6 @@ section .card,section .step,section .box,section .simbox{box-shadow:none!importa
 <button data-go="board"><i>🤝</i><b>募集・仲間</b><span>一緒に回る・組む・譲る</span></button>
 <button data-go="ch"><i>📺</i><b>チャンネル</b><span>旅YouTuberの紹介</span></button>
 <button data-go="prep"><i>🎒</i><b>準備</b><span>チェックリストとツール</span></button>
-<button data-go="crew"><i>💬</i><b>仲間になる</b><span>Discordで何ができる？</span></button>
 </div>
 <div style="margin:28px 0 8px"><h2 style="margin:0 0 6px;font-size:20px">🎒 旅の準備に</h2><p class="small" style="margin:0 0 12px">【PR】紹介リンクです。このリンクから登録・購入すると、運営者に報酬が入ることがあります。</p><div class="tools">
 <a class="tool" href="https://rpx.a8.net/svt/ejp?a8mat=4BGHVP+5YC2K2+2HOM+6GRMR&amp;rakuten=y&amp;a8ejpredirect=http%3A%2F%2Fhb.afl.rakuten.co.jp%2Fhgc%2F0ea62065.34400275.0ea62066.204f04c0%2Fa26111080766_4BGHVP_5YC2K2_2HOM_6GRMR%3Fpc%3Dhttp%253A%252F%252Fwww.rakuten.co.jp%252F%26m%3Dhttp%253A%252F%252Fm.rakuten.co.jp%252F" target="_blank" rel="sponsored nofollow noopener"><small>旅行グッズ</small> <small style="background:#ffe0e0;color:#a00000">PR</small><h3>楽天市場</h3><p>変換プラグ・延長コード・圧縮袋など、出発前の買い物に。</p><span class="tgo">見てみる（PR）→</span></a>
