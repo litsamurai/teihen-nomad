@@ -450,6 +450,7 @@ select{border-color:#ff8a8a}
 <button data-go="news"><i>🌏</i><b>世界のニュース</b><span>いまの出来事を、さっと確認</span></button>
 <button data-go="food"><i>🍜</i><b>グルメ</b><span>おすすめの店を探す</span></button>
 <button data-go="stays"><i>🏠</i><b>穴場の宿</b><span>泊まってよかった宿</span></button>
+<button data-go="market"><i>🛒</i><b>マーケット</b><span>地域ごとに譲る・探す</span></button>
 <button data-go="promo"><i>📣</i><b>なんでもPR</b><span>自分のことを宣伝しよう</span></button>
 <button data-go="consent"><i>💗</i><b>大人の同意書</b><span>お互いの気持ちを確かめる</span></button>
 <button data-go="adult"><i>🔞</i><b>18禁</b><span>夜の街の注意（18歳以上）</span></button>
@@ -618,6 +619,30 @@ select{border-color:#ff8a8a}
 <p class="mm" id="stm" role="status"></p>
 </div>
 </section>
+<section id="market" data-t="market">
+<h2>🛒 マーケット（地域ごと）</h2>
+<p class="sub">近くにいる旅人どうしで、いらなくなった物を譲ったり、探したりするページです。国と街で絞り込めます。</p>
+<div class="warn" style="margin-bottom:16px">受け渡しは、人の多い公共の場所で、対面で。先払い・前払いは避けてください。違法なもの・薬物・偽物・武器・持ち込みが禁止されている物は禁止です。連絡先には、SNSやDiscordの名前だけを書き、住所・電話番号は書かないでください。個人間の取引は自己責任です。運営者は仲介しません。</div>
+<div class="row" style="gap:10px;flex-wrap:wrap;margin-bottom:12px">
+<label class="wl" style="flex:1;min-width:140px;margin:0">国<select id="mkc" style="width:100%"></select></label>
+<label class="wl" style="flex:1;min-width:140px;margin:0">キーワード・街<input id="mkq" maxlength="40" placeholder="例：バンコク、バイク" style="width:100%"></label>
+</div>
+<div class="grid" id="mkgrid"></div>
+<p class="empty" id="mkempty" hidden>この地域には、まだ投稿がありません。あなたの「譲ります」「探してます」を、最初に載せませんか？</p>
+<h3 style="margin-top:28px">譲る・探す</h3>
+<p class="sub"><b>Discordでログインすると、このサイトから直接投稿できます。</b>ログインしていないときは、できた文章をDiscordに貼り付けてください。</p>
+<div class="box" style="max-width:560px">
+<label class="wl">国<select id="mk1" style="width:100%"></select></label>
+<label class="wl">街<input id="mk2" maxlength="40" placeholder="例：チェンマイ" style="width:100%"></label>
+<label class="wl">種類<select id="mk3" style="width:100%"><option>譲ります</option><option>探してます</option></select></label>
+<label class="wl">品物（60字まで）<input id="mk4" maxlength="60" placeholder="例：ノマド用リュック（35L）" style="width:100%"></label>
+<label class="wl">価格・条件（任意）<input id="mk5" maxlength="40" placeholder="例：500バーツ／無料／〇日まで" style="width:100%"></label>
+<label class="wl">状態・受け渡し場所など（300字まで）<textarea id="mk6" rows="4" maxlength="300" style="width:100%"></textarea></label>
+<label class="wl">連絡方法（任意・SNSやDiscordの名前だけ）<input id="mk7" maxlength="80" placeholder="例：Instagram @te_ki10" style="width:100%"></label>
+<div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:12px"><button class="go" id="mkd" hidden style="max-width:260px">この内容で投稿する</button><button class="go" id="mkb" style="max-width:260px">投稿文をコピー（Discord用）</button></div>
+<p class="mm" id="mkm" role="status"></p>
+</div>
+</section>
 <section id="promo" data-t="promo">
 <h2>📣 なんでもPR</h2>
 <p class="sub">自分のチャンネル、お店、作ったもの、仕事の募集など、何でも宣伝していいページです。旅人どうしで、おたがいを応援しましょう。</p>
@@ -770,7 +795,7 @@ select{border-color:#ff8a8a}
 
 <script>
 function $(i){return document.getElementById(i)}
-var TABS=[["home","ホーム"],["wiki","国別コスト"],["fx","両替"],["news","ニュース"],["food","グルメ"],["stays","宿"],["promo","なんでもPR"],["consent","大人の同意書"],["adult","18禁"],["safety","安全"],["board","募集・仲間"],["ch","チャンネル"],["crew","参加"],["prep","準備"]];
+var TABS=[["home","ホーム"],["wiki","国別コスト"],["fx","両替"],["news","ニュース"],["food","グルメ"],["stays","宿"],["market","マーケット"],["promo","なんでもPR"],["consent","大人の同意書"],["adult","18禁"],["safety","安全"],["board","募集・仲間"],["ch","チャンネル"],["crew","参加"],["prep","準備"]];
 var DISCORD_URL="https://discord.gg/9uVK8Ykvp";
 /* メンバー編集を有効にするには、Supabaseの URL と anon key を入れます（手順は SETUP-supabase.md） */
 var SB_CONFIG={url:"https://puciqvaespjdjbhavznt.supabase.co",key:"sb_publishable_JB5RaPplzCEtrYs60uFdWw_z9DKM2ob"};
@@ -950,8 +975,8 @@ $("fxtb").onclick=function(e){var b=e.target.closest("[data-fxc]");if(b){$("fxt"
 
 /* ===== メンバー編集（Supabase） ===== */
 var RSB=[],RVB=[],CHB=[],DBP=[],DBR=[],DBC=[];
-function mergeAll(){RS=RSB.concat(DBP);RV=RVB.concat(DBR);CHS=CHB.concat(DBC);rrender();chrender();STS=STB.concat(DBS);strender();prender()}
-var STB=[],DBS=[],STS=[],DBPR=[];
+function mergeAll(){RS=RSB.concat(DBP);RV=RVB.concat(DBR);CHS=CHB.concat(DBC);rrender();chrender();STS=STB.concat(DBS);strender();prender();mkrender()}
+var STB=[],DBS=[],STS=[],DBPR=[],DBMK=[];
 function candel(x){return !!(window.SBX&&SBX.on&&SBX.user&&x&&x.u&&(x.u===SBX.user.id||SBX.user.mod))}
 function delbtn(t,x){return candel(x)&&x.id?'<button class="more" data-del="'+t+':'+x.id+'" style="color:#a00000">🗑 削除</button>':""}
 function stok(u){return !u||/^https:\/\//i.test(u)}
@@ -961,6 +986,13 @@ $("stq").oninput=strender;
 fetch("data/stays.json").then(function(r){return r.json()}).then(function(a){STB=a;mergeAll()}).catch(function(){strender()});
 function prender(){var q=($("prq").value||"").trim().toLowerCase();$("prgrid").innerHTML=DBPR.filter(function(x){return !q||(x.t+" "+(x.k||"")+" "+x.d).toLowerCase().indexOf(q)>-1}).map(function(x){var l=x.l&&/^https:\/\//i.test(x.l)?'<a class="more" href="'+chesc(x.l)+'" target="_blank" rel="noopener nofollow sponsored">リンクを開く</a>':'';return '<div class="card"><div class="cb"><h3>'+chesc(x.t)+' <span class="small">【PR】</span></h3>'+(x.k?'<p>'+chesc(x.k)+'</p>':'')+'<p>'+chesc(x.d)+'</p>'+l+'<button class="more" data-rpt="promo:'+x.id+'">🚩 通報</button>'+delbtn("promos",x)+(x.by?'<span class="small">投稿：'+chesc(x.by)+'</span>':'')+'</div></div>'}).join("");$("prempty").hidden=DBPR.length>0&&$("prgrid").children.length>0}
 $("prq").oninput=prender;
+function mkrender(){var c=$("mkc").value,q=($("mkq").value||"").trim().toLowerCase();var L=DBMK.filter(function(x){return(!c||x.c===c)&&(!q||(x.city+" "+x.t+" "+x.d).toLowerCase().indexOf(q)>-1)});$("mkgrid").innerHTML=L.map(function(x){return '<div class="card"><div class="cb"><h3>'+(x.k==="探してます"?"🔍 ":"🎁 ")+chesc(x.t)+'</h3><p>'+flag(x.c)+" "+chesc(cname(x.c))+" ／ "+chesc(x.city)+" ／ "+chesc(x.k)+'</p>'+(x.p?'<p>💰 '+chesc(x.p)+'</p>':'')+'<p>'+chesc(x.d)+'</p>'+(x.ct?'<p>📮 '+chesc(x.ct)+'</p>':'')+'<button class="more" data-rpt="market:'+x.id+'">🚩 通報</button>'+delbtn("market",x)+(x.by?'<span class="small">投稿：'+chesc(x.by)+'</span>':'')+'</div></div>'}).join("");$("mkempty").hidden=L.length>0}
+$("mkc").innerHTML='<option value="">すべての国</option>'+CL2.map(function(x){return '<option value="'+x.c+'">'+chesc(x.n)+'</option>'}).join("");
+$("mk1").innerHTML='<option value="">国を選ぶ</option>'+CL2.map(function(x){return '<option value="'+x.c+'">'+chesc(x.n)+'</option>'}).join("");
+$("mkc").onchange=mkrender;$("mkq").oninput=mkrender;
+function mkform(){return{c:$("mk1").value,city:$("mk2").value.trim(),k:$("mk3").value,t:$("mk4").value.trim(),p:$("mk5").value.trim(),d:$("mk6").value.trim(),ct:$("mk7").value.trim()}}
+function mkcheck(f,m){if(!f.c||!f.city||!f.t||!f.d){m.textContent="国・街・品物・説明を入れてください。";return false}if(/\d{3}[-\s]?\d{3,4}[-\s]?\d{3,4}|@[^\s]+\.[a-z]{2,}/i.test(f.ct)){m.textContent="連絡方法に、電話番号やメールアドレスは書かないでください。SNSやDiscordの名前だけにしてください。";return false}return true}
+$("mkb").onclick=function(){var f=mkform(),m=$("mkm");if(!mkcheck(f,m))return;var t="🛒 "+f.k+"\n国："+cname(f.c)+"\n街："+f.city+"\n品物："+f.t+"\n価格・条件："+f.p+"\n詳細："+f.d+(f.ct?"\n連絡："+f.ct:"");try{navigator.clipboard.writeText(t).then(function(){m.textContent="コピーしました。Discordに貼り付けてください。"},function(){m.textContent="コピーできませんでした。"})}catch(e){m.textContent="コピーできませんでした。"}};
 function prform(){return{t:$("pr1").value.trim(),k:$("pr2").value,d:$("pr3").value.trim(),l:stlink($("pr4").value)}}
 function prcheck(f,m){if(!f.t||!f.d){m.textContent="タイトルと紹介文を入れてください。";return false}if(!stok(f.l)){m.textContent="リンクは https:// から始まるものだけです。";return false}return true}
 $("prb").onclick=function(){var f=prform(),m=$("prm");if(!prcheck(f,m))return;var t="📣 なんでもPR\nタイトル："+f.t+"\nジャンル："+f.k+"\n紹介："+f.d+(f.l?"\nリンク："+f.l:"")+"\n（自分で運営・制作しているものです）";try{navigator.clipboard.writeText(t).then(function(){m.textContent="コピーしました。Discordに貼り付けてください。"},function(){m.textContent="コピーできませんでした。"})}catch(e){m.textContent="コピーできませんでした。"}};
@@ -976,7 +1008,7 @@ function cnames2codes(s){var out=[];String(s||"").split(/[、,，\s]+/).forEach(
 window.SBX={on:false,user:null,sb:null,
 need:function(){if(!SBX.user){toast("先に、Discordでログインしてください。");return false}return true},
 authbar:function(){var a=$("authbar");a.hidden=false;if(SBX.user){a.innerHTML='<span>👤 '+chesc(SBX.user.name)+' でログイン中</span><button id="logout">ログアウト</button>'}else{a.innerHTML='<span>✏️ 直接編集・投稿するには、Discordでログイン</span><button id="login">Discordでログイン</button>'}
-$("rvd").hidden=false;$("cbd").hidden=false;$("std").hidden=false;$("prd").hidden=false},
+$("rvd").hidden=false;$("cbd").hidden=false;$("std").hidden=false;$("prd").hidden=false;$("mkd").hidden=false},
 setUser:async function(u){if(!u){SBX.user=null;SBX.authbar();return}var nm=(u.user_metadata&&(u.user_metadata.full_name||u.user_metadata.name))||"旅人";try{var r=await SBX.sb.from("profiles").select("display_name,role").eq("id",u.id).maybeSingle();if(r.data&&r.data.display_name)nm=r.data.display_name;var md=!!(r.data&&r.data.role==="moderator")}catch(e){var md=false}SBX.user={id:u.id,name:nm,mod:md};SBX.authbar();try{mergeAll()}catch(e){}},
 init:async function(){SBX.on=true;SBX.authbar();
 try{await new Promise(function(ok,ng){var s=document.createElement("script");s.src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.58.0/dist/umd/supabase.js";s.onload=ok;s.onerror=ng;document.head.appendChild(s)})}catch(e){$("wmsg").textContent="共有データの読み込みに失敗しました（通信を確認してください）。";return}
@@ -984,11 +1016,12 @@ SBX.sb=window.supabase.createClient(SB_CONFIG.url,SB_CONFIG.key,{auth:{persistSe
 var s=await SBX.sb.auth.getSession();await SBX.setUser(s.data&&s.data.session&&s.data.session.user);
 SBX.sb.auth.onAuthStateChange(function(ev,ses){setTimeout(function(){SBX.setUser(ses&&ses.user)},0)});
 await SBX.loadAll()},
-loadAll:async function(){await Promise.all([SBX.loadCountries(),SBX.loadPlaces(),SBX.loadReviews(),SBX.loadChannels(),SBX.loadStays(),SBX.loadPromos()]);mergeAll()},
+loadAll:async function(){await Promise.all([SBX.loadCountries(),SBX.loadPlaces(),SBX.loadReviews(),SBX.loadChannels(),SBX.loadStays(),SBX.loadPromos(),SBX.loadMarket()]);mergeAll()},
 loadCountries:async function(){var r=await SBX.sb.from("countries").select("code,data,rev,updated_at,profiles(display_name)");if(r.error)return;var o=Object.assign({},window.BASE||{});r.data.forEach(function(x){o[x.code]=Object.assign({},x.data,{rev:x.rev,updated:String(x.updated_at||"").slice(0,10),editor:(x.profiles&&x.profiles.display_name)||(x.data&&x.data.est?"Claude（初期入力）":""),_db:1})});ROWS=o;if(!edC){wiki();rall()}kcalc()},
 loadPlaces:async function(){var r=await SBX.sb.from("places").select("id,country,city,area,name,dish,addr,note,profiles(display_name)").order("created_at");if(r.error)return;DBP=r.data.map(function(p){return{id:p.id,c:p.country,city:p.city,area:p.area||"",name:p.name,dish:p.dish||"",addr:p.addr||"",note:p.note||"",src:"",sn:"",award:"",by:(p.profiles&&p.profiles.display_name)||"旅人",db:1}})},
 loadReviews:async function(){var r=await SBX.sb.from("reviews").select("id,created_by,place_key,stars,body,profiles(display_name)").order("created_at",{ascending:false});if(r.error)return;DBR=r.data.map(function(v){return{id:v.id,u:v.created_by,p:v.place_key,stars:v.stars,text:v.body,by:(v.profiles&&v.profiles.display_name)||"旅人"}})},
 loadChannels:async function(){var r=await SBX.sb.from("channels").select("id,created_by,name,url,countries,genre,descr,profiles(display_name)").order("created_at");if(r.error)return;DBC=r.data.map(function(c){return{id:c.id,u:c.created_by,n:c.name,u:c.url,c:c.countries||[],g:c.genre||"",d:c.descr||"",by:(c.profiles&&c.profiles.display_name)||"旅人"}})},
+loadMarket:async function(){var r=await SBX.sb.from("market").select("id,created_by,country,city,kind,title,price,body,contact,profiles(display_name)").order("created_at",{ascending:false});if(r.error)return;DBMK=r.data.map(function(x){return{id:x.id,u:x.created_by,c:x.country,city:x.city,k:x.kind,t:x.title,p:x.price||"",d:x.body,ct:x.contact||"",by:(x.profiles&&x.profiles.display_name)||"旅人"}})},
 loadPromos:async function(){var r=await SBX.sb.from("promos").select("id,created_by,title,kind,body,link,profiles(display_name)").order("created_at",{ascending:false});if(r.error)return;DBPR=r.data.map(function(x){return{id:x.id,u:x.created_by,t:x.title,k:x.kind||"",d:x.body,l:x.link||"",by:(x.profiles&&x.profiles.display_name)||"旅人"}})},
 loadStays:async function(){var r=await SBX.sb.from("stays").select("id,created_by,country,city,name,kind,price,work,body,link,profiles(display_name)").order("created_at",{ascending:false});if(r.error)return;DBS=r.data.map(function(x){return{id:x.id,u:x.created_by,c:x.country,city:x.city,n:x.name,k:x.kind||"",p:x.price||"",w:x.work||"",d:x.body,l:x.link||"",by:(x.profiles&&x.profiles.display_name)||"旅人"}})},
 saveCountry:async function(code,d){var cur=ROWS[code]||{},data=Object.assign({},d);["rev","updated","editor","_db"].forEach(function(k){delete data[k]});var r;
@@ -998,10 +1031,11 @@ await SBX.loadCountries()}};
 document.addEventListener("click",async function(e){
 if(e.target.closest("#login")){SBX.sb.auth.signInWithOAuth({provider:"discord",options:{redirectTo:location.origin+location.pathname}});return}
 if(e.target.closest("#logout")){await SBX.sb.auth.signOut();return}
-var dl=e.target.closest("[data-del]");if(dl&&SBX.on){if(!SBX.need())return;if(dl.getAttribute("data-armed")!=="1"){dl.setAttribute("data-armed","1");dl.textContent="本当に消す？（もう一度）";setTimeout(function(){dl.removeAttribute("data-armed");dl.textContent="🗑 削除"},4000);return}var q=dl.getAttribute("data-del").split(":");var rd=await SBX.sb.from(q[0]).delete().eq("id",q[1]).select("id");if(rd.error||!rd.data||!rd.data.length){toast(rd.error?sbErr(rd.error):"消せませんでした（自分の投稿だけ消せます）。");return}toast("削除しました。");if(q[0]==="stays")await SBX.loadStays();else if(q[0]==="promos")await SBX.loadPromos();else if(q[0]==="channels")await SBX.loadChannels();else if(q[0]==="reviews")await SBX.loadReviews();mergeAll();return}
+var dl=e.target.closest("[data-del]");if(dl&&SBX.on){if(!SBX.need())return;if(dl.getAttribute("data-armed")!=="1"){dl.setAttribute("data-armed","1");dl.textContent="本当に消す？（もう一度）";setTimeout(function(){dl.removeAttribute("data-armed");dl.textContent="🗑 削除"},4000);return}var q=dl.getAttribute("data-del").split(":");var rd=await SBX.sb.from(q[0]).delete().eq("id",q[1]).select("id");if(rd.error||!rd.data||!rd.data.length){toast(rd.error?sbErr(rd.error):"消せませんでした（自分の投稿だけ消せます）。");return}toast("削除しました。");if(q[0]==="stays")await SBX.loadStays();else if(q[0]==="market")await SBX.loadMarket();else if(q[0]==="promos")await SBX.loadPromos();else if(q[0]==="channels")await SBX.loadChannels();else if(q[0]==="reviews")await SBX.loadReviews();mergeAll();return}
 var rp=e.target.closest("[data-rpt]");if(rp&&SBX.on){if(!SBX.need())return;var p=rp.getAttribute("data-rpt").split(":");var r=await SBX.sb.from("reports").insert({kind:p[0],target:p[1]});toast(r.error?sbErr(r.error):"通報しました。ありがとうございます。");if(!r.error)rp.disabled=true;return}
 if(e.target.closest("#cbd")){if(!SBX.need())return;var n=$("cn1").value.trim(),u=$("cu1").value.trim(),m=$("cm1");if(!n||!u){m.textContent="チャンネル名とURLを入れてください。";return}if(!chok(u)){m.textContent="URLは、YouTubeのものを入れてください。";return}
 var r2=await SBX.sb.from("channels").insert({name:n,url:u,countries:cnames2codes($("cc1").value),genre:$("cg1").value.trim()||null,descr:$("cd1").value.trim()||null});if(r2.error){m.textContent=sbErr(r2.error);return}m.textContent="投稿しました。";$("cn1").value=$("cu1").value=$("cc1").value=$("cg1").value=$("cd1").value="";await SBX.loadChannels();mergeAll();return}
+if(e.target.closest("#mkd")){if(!SBX.need())return;var mf=mkform(),mm=$("mkm");if(!mkcheck(mf,mm))return;var mr=await SBX.sb.from("market").insert({country:mf.c,city:mf.city,kind:mf.k,title:mf.t,price:mf.p||null,body:mf.d,contact:mf.ct||null});if(mr.error){mm.textContent=sbErr(mr.error);return}mm.textContent="投稿しました。";["mk2","mk4","mk5","mk6","mk7"].forEach(function(i){$(i).value=""});await SBX.loadMarket();mergeAll();return}
 if(e.target.closest("#prd")){if(!SBX.need())return;var pf=prform(),pm=$("prm");if(!prcheck(pf,pm))return;var pr2=await SBX.sb.from("promos").insert({title:pf.t,kind:pf.k||null,body:pf.d,link:pf.l||null});if(pr2.error){pm.textContent=sbErr(pr2.error);return}pm.textContent="投稿しました。";["pr1","pr3","pr4"].forEach(function(i){$(i).value=""});await SBX.loadPromos();mergeAll();return}
 if(e.target.closest("#std")){if(!SBX.need())return;var f=stform(),m3=$("stm");if(!stcheck(f,m3))return;var r3=await SBX.sb.from("stays").insert({country:f.c,city:f.city,name:f.n,kind:f.k||null,price:f.p||null,work:f.w||null,body:f.d,link:f.l||null});if(r3.error){m3.textContent=sbErr(r3.error);return}m3.textContent="投稿しました。";["st2","st3","st5","st7","st8"].forEach(function(i){$(i).value=""});await SBX.loadStays();mergeAll();return}
 if(e.target.closest("#rvd")){if(!SBX.need())return;var m2=$("rvm"),nm=$("rv4").value.trim(),c=$("rv1").value,city=$("rv2").value.trim(),body=$("rv9").value.trim();if(!nm||!c||!city){m2.textContent="国・街・店名を入れてください。";return}
