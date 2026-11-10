@@ -442,6 +442,11 @@ select{border-color:#ff8a8a}
 <button data-go="prep"><i>🎒</i><b>準備</b><span>チェックリストとツール</span></button>
 <button data-go="crew"><i>💬</i><b>仲間になる</b><span>Discordで何ができる？</span></button>
 </div>
+<div style="margin:28px 0 8px"><h2 style="margin:0 0 6px;font-size:20px">🎒 旅の準備に</h2><p class="small" style="margin:0 0 12px">【PR】紹介リンクです。このリンクから登録・購入すると、運営者に報酬が入ることがあります。</p><div class="tools">
+<a class="tool" href="https://wise.com/invite/irhc/uriuk" target="_blank" rel="sponsored nofollow noopener"><small>海外送金・決済</small> <small style="background:#ffe0e0;color:#a00000">PR</small><h3>Wise</h3><p>現地通貨の引き出しとデビット決済に。（紹介リンク）</p><span class="tgo">見てみる（PR）→</span></a>
+<a class="tool" href="https://rpx.a8.net/svt/ejp?a8mat=4BGHVP+5YC2K2+2HOM+6GRMR&amp;rakuten=y&amp;a8ejpredirect=http%3A%2F%2Fhb.afl.rakuten.co.jp%2Fhgc%2F0ea62065.34400275.0ea62066.204f04c0%2Fa26111080766_4BGHVP_5YC2K2_2HOM_6GRMR%3Fpc%3Dhttp%253A%252F%252Fwww.rakuten.co.jp%252F%26m%3Dhttp%253A%252F%252Fm.rakuten.co.jp%252F" target="_blank" rel="sponsored nofollow noopener"><small>旅行グッズ</small> <small style="background:#ffe0e0;color:#a00000">PR</small><h3>楽天市場</h3><p>変換プラグ・延長コード・圧縮袋など、出発前の買い物に。</p><span class="tgo">見てみる（PR）→</span></a>
+<a class="tool" href="https://rpx.a8.net/svt/ejp?a8mat=4BGHVP+5YC2K2+2HOM+6I9N5&amp;rakuten=y&amp;a8ejpredirect=http%3A%2F%2Fhb.afl.rakuten.co.jp%2Fhgc%2F0eb4779e.5d30c5ba.0eb4779f.b871e4e3%2Fa26111080766_4BGHVP_5YC2K2_2HOM_6I9N5%3Fpc%3Dhttp%253A%252F%252Ftravel.rakuten.co.jp%252F%26m%3Dhttp%253A%252F%252Ftravel.rakuten.co.jp%252F" target="_blank" rel="sponsored nofollow noopener"><small>宿の予約</small> <small style="background:#ffe0e0;color:#a00000">PR</small><h3>楽天トラベル</h3><p>国内・海外のホテル予約に。日本から手配するとき向け。</p><span class="tgo">見てみる（PR）→</span></a>
+</div></div>
 
 <div class="dsc">
 <h2 class="dh" style="display:inline-block;background:linear-gradient(120deg,#fde68a,#fdba74);color:#3b2a1a;padding:4px 16px;border-radius:12px;transform:rotate(-1deg);font-size:22px;margin-top:36px">Discordに入ると、何ができる？</h2>
@@ -474,9 +479,11 @@ select{border-color:#ff8a8a}
 <p class="sub">どこの国なら、だらけて暮らせるか。生活費と、主な街をまとめて見られます。世界中の国を検索できます（国を開くと、街の情報が出ます）。数字は、確認できた国は出典付き、それ以外はClaudeの概算です。違ってたら、気づいた人が直してください。</p>
 <div class="simbox" style="max-width:none;margin-bottom:20px"><b>1か月いくらで暮らせる？</b><div class="row" style="margin-top:10px"><select id="kc" aria-label="国"></select><select id="kn" aria-label="日数"><option value="7">7泊</option><option value="14">14泊</option><option value="30" selected>30泊</option><option value="90">90泊</option></select></div><div class="row"><select id="kt" aria-label="宿のタイプ"><option value="0.8">ドミトリー</option><option value="1" selected>個室ホステル</option><option value="1.5">コリビング</option></select></div><div id="ko" role="status"></div></div>
 <input id="wq" type="search" placeholder="国名で探す（例：ベトナム）" aria-label="国名で探す" style="width:100%;max-width:420px;font:inherit;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 14px;margin-bottom:8px">
+<details id="wd" style="margin-top:6px"><summary style="cursor:pointer;font-weight:800;padding:12px 14px;background:var(--soft);border:1px solid var(--line);border-radius:12px;list-style:none">📂 国の一覧を開く（203か国・地域）</summary><div style="margin-top:12px">
 <select id="ws2" aria-label="並び替え" style="margin-bottom:6px;max-width:260px"><option value="n">名前順</option><option value="a">物価が安い順</option><option value="d">物価が高い順</option></select>
 <p class="sub" id="wsum"></p>
 <div id="wl"></div>
+</div></details>
 <p class="mm" id="wmsg" role="status"></p>
 <p class="note" style="border:0">物価指数はNumbeoの2026年版（家賃を除く、ニューヨーク＝100）です。第三者の記事を通して確認した値です。変動するので、出典と確認日を必ず見てください。空欄の国は、信頃できる値が見つからなかった国です。</p>
 </section>
@@ -766,7 +773,7 @@ if(SB_CONFIG.url&&SB_CONFIG.key){loc={};DBH={collection:function(){return{doc:fu
 try{var r=await fetch("data/countries.json");apply(await r.json());if(SB_CONFIG.url&&SB_CONFIG.key){m.textContent="";window.SBX.init()}else m.textContent="公開前の試用版です。編集はこの端末だけに保存されます。"}catch(e){m.textContent="データを読み込めませんでした。"}})();
 wiki();
 function WL(){var s=$("ws2").value;if(s==="n")return CL2;var a=CL2.slice();a.sort(function(x,y){var i=ROWS[x.c]&&ROWS[x.c].idx,j=ROWS[y.c]&&ROWS[y.c].idx;if(i==null&&j==null)return 0;if(i==null)return 1;if(j==null)return -1;return s==="a"?i-j:j-i});return a}
-$("ws2").onchange=wiki;
+$("ws2").onchange=wiki;$("wq").addEventListener("input",function(){$("wd").open=true});
 var KC=CL2.map(function(x){return '<option value="'+x.c+'">'+flag(x.c)+" "+x.n+'</option>'}).join("");
 $("kc").innerHTML=KC;$("kc").value="TH";
 function kcalc(){var r=ROWS[$("kc").value]||{},n=+$("kn").value,t=+$("kt").value,b=r.cost!=null?r.cost:(r.idx!=null?Math.round((15000+3000*r.idx)/1000)*1000:null),o=$("ko");
