@@ -1,6 +1,7 @@
 -- 「なんでもPR」タブ用の追加設定。Supabase の SQL Editor に貼って Run してください（何度実行しても大丈夫です）。
 create table if not exists public.promos (
   id uuid primary key default gen_random_uuid(),
+  country text check (country is null or country ~ '^[A-Z]{2}$'),
   title text not null check (char_length(title) between 1 and 60),
   kind text check (kind in ('YouTube・SNS','お店・サービス','商品','仕事の募集・依頼','イベント','その他')),
   body text not null check (char_length(body) between 1 and 300),
@@ -9,6 +10,8 @@ create table if not exists public.promos (
   created_at timestamptz not null default now(),
   hidden boolean not null default false
 );
+
+alter table public.promos add column if not exists country text check (country is null or country ~ '^[A-Z]{2}$');
 
 alter table public.reports drop constraint if exists reports_kind_check;
 alter table public.reports add constraint reports_kind_check check (kind in ('place','review','channel','stay','promo'));
