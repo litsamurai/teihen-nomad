@@ -447,6 +447,7 @@ select{border-color:#ff8a8a}
 <div class="big">
 <button data-go="wiki"><i>📒</i><b>国別コスト</b><span>生活費と、主な街</span></button>
 <button data-go="fx"><i>💱</i><b>両替</b><span>どの通貨でも換算</span></button>
+<button data-go="news"><i>🌏</i><b>世界のニュース</b><span>いまの出来事を、さっと確認</span></button>
 <button data-go="food"><i>🍜</i><b>グルメ</b><span>おすすめの店を探す</span></button>
 <button data-go="stays"><i>🏠</i><b>穴場の宿</b><span>泊まってよかった宿</span></button>
 <button data-go="consent"><i>💗</i><b>大人の同意書</b><span>お互いの気持ちを確かめる</span></button>
@@ -656,6 +657,14 @@ select{border-color:#ff8a8a}
 <div class="grid" id="ngrid"></div>
 </div>
 </section>
+<section id="news" data-t="news">
+<h2>🌏 世界のニュース</h2>
+<p class="sub">旅先の情勢や災害、デモ、ストなどを、さっと確認するためのページです。見出しと出典へのリンクだけを表示します（記事の本文は、各社のサイトで読めます）。</p>
+<div class="row" id="nsrc" style="flex-wrap:wrap;gap:8px;margin-bottom:12px"></div>
+<div class="grid" id="nlist" role="status" aria-live="polite"></div>
+<p class="small" id="nmsg" style="margin-top:10px"></p>
+<p class="small">⚠ ニュースは各社の配信をそのまま表示しています。内容の正確さは、運営者が確認したものではありません。渡航の判断は、<a href="https://www.anzen.mofa.go.jp/" target="_blank" rel="noopener noreferrer">外務省 海外安全ホームページ</a>など、公式の情報も必ず確認してください。</p>
+</section>
 <section id="fx" data-t="fx">
 <h2>💱 通貨換算</h2>
 <p class="sub">世界中の通貨どうし、どの組み合わせでも換算できます。旅先でレートを調べる手間をなくすためのページです。</p>
@@ -742,7 +751,7 @@ select{border-color:#ff8a8a}
 
 <script>
 function $(i){return document.getElementById(i)}
-var TABS=[["home","ホーム"],["wiki","国別コスト"],["fx","両替"],["food","グルメ"],["stays","宿"],["consent","大人の同意書"],["adult","18禁"],["safety","安全"],["board","募集・仲間"],["ch","チャンネル"],["crew","参加"],["prep","準備"]];
+var TABS=[["home","ホーム"],["wiki","国別コスト"],["fx","両替"],["news","ニュース"],["food","グルメ"],["stays","宿"],["consent","大人の同意書"],["adult","18禁"],["safety","安全"],["board","募集・仲間"],["ch","チャンネル"],["crew","参加"],["prep","準備"]];
 var DISCORD_URL="https://discord.gg/9uVK8Ykvp";
 /* メンバー編集を有効にするには、Supabaseの URL と anon key を入れます（手順は SETUP-supabase.md） */
 var SB_CONFIG={url:"https://puciqvaespjdjbhavznt.supabase.co",key:"sb_publishable_JB5RaPplzCEtrYs60uFdWw_z9DKM2ob"};
@@ -977,6 +986,24 @@ if(body){var rr=await SBX.sb.from("reviews").insert({place_key:key,stars:+$("rv7
 m2.textContent=body?"投稿しました。ありがとうございます。":"お店を追加しました。";["rv3","rv4","rv5","rv6","rv8","rv9"].forEach(function(i){$(i).value=""});await Promise.all([SBX.loadPlaces(),SBX.loadReviews()]);mergeAll();return}
 });
 tab("home");
+
+(function(){
+var SRC=[{k:"nhk",n:"NHK 国際",u:"https://www3.nhk.or.jp/rss/news/cat6.xml",site:"https://www3.nhk.or.jp/news/world/"},{k:"bbc",n:"BBC World",u:"https://feeds.bbci.co.uk/news/world/rss.xml",site:"https://www.bbc.com/news/world"},{k:"aje",n:"Al Jazeera",u:"https://www.aljazeera.com/xml/rss/all.xml",site:"https://www.aljazeera.com/news/"}];
+var cur="nhk",loaded=false;
+function esc(t){return String(t==null?"":t).replace(/[&<>"']/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]})}
+function safe(u){return /^https:\/\//.test(u||"")?u:""}
+function bar(){$("nsrc").innerHTML=SRC.map(function(x){return '<button class="go" data-ns="'+x.k+'" style="'+(x.k===cur?'':'background:#fff;color:#111;border:1px solid #ccc')+'">'+esc(x.n)+'</button>'}).join("")}
+function get(x){var K="nomad_news_"+x.k,c=null;try{c=JSON.parse(sessionStorage.getItem(K)||"null")}catch(e){}
+if(c&&Date.now()-c.t<900000)return Promise.resolve(c.i);
+return new Promise(function(res,rej){var t=setTimeout(function(){rej(0)},8000);fetch("https://api.rss2json.com/v1/api.json?rss_url="+encodeURIComponent(x.u)).then(function(r){return r.json()}).then(function(d){clearTimeout(t);if(!d||d.status!=="ok"||!d.items)throw 0;var i=d.items.slice(0,20).map(function(it){return{t:it.title,l:it.link,d:it.pubDate}});try{sessionStorage.setItem(K,JSON.stringify({t:Date.now(),i:i}))}catch(e){}res(i)}).catch(function(){clearTimeout(t);rej(0)})})}
+function show(){var x=SRC.filter(function(s){return s.k===cur})[0];bar();$("nlist").innerHTML='<p class="small">読み込み中…</p>';$("nmsg").textContent="";
+get(x).then(function(it){$("nlist").innerHTML=it.map(function(i){var l=safe(i.l);return '<div class="card"><div class="cb"><a href="'+esc(l)+'" target="_blank" rel="noopener noreferrer" style="font-weight:700;color:inherit">'+esc(i.t)+'</a><div class="small">'+esc(x.n)+(i.d?'　'+esc(String(i.d).slice(0,16)):'')+'</div></div></div>'}).join("");$("nmsg").textContent="出典："+x.n+"（配信の見出しを表示しています。最大15分ほど、古いことがあります）"},function(){$("nlist").innerHTML="";$("nmsg").innerHTML='いま見出しを取得できませんでした。こちらから直接どうぞ：<a href="'+esc(x.site)+'" target="_blank" rel="noopener noreferrer">'+esc(x.n)+'のニュースページ</a>'})}
+$("nsrc").addEventListener("click",function(e){var b=e.target.closest("[data-ns]");if(b){cur=b.getAttribute("data-ns");show()}});
+document.addEventListener("click",function(e){if(e.target.closest('[data-go="news"],[data-k="news"]'))go()});
+function go(){if(!loaded){loaded=true;show()}}
+window.addEventListener("hashchange",function(){if(location.hash.indexOf("news")>-1)go()});
+bar();setTimeout(function(){var n=$("news");if(n&&!n.hidden&&n.offsetParent)go()},300);
+})();
 </script>
 <footer style="max-width:1100px;margin:32px auto;padding:16px;font-size:12px;color:#888;text-align:center"><a href="privacy.html">プライバシーポリシー</a>｜<a href="terms.html">利用規約・免責</a><p>掲載情報は下書き・概算を含み、正確性を保証しません。渡航前に必ず公的機関の最新情報をご確認ください。</p></footer>
 </body>
