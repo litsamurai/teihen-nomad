@@ -493,9 +493,11 @@ select{border-color:#ff8a8a}
 <div class="rsearch">
 <input id="rq" type="search" placeholder="店名・料理・エリアで探す（例：フォー）" aria-label="店名・料理・エリアで探す">
 </div>
+<details id="rd" style="margin-top:10px"><summary style="cursor:pointer;font-weight:800;padding:12px 14px;background:var(--soft);border:1px solid var(--line);border-radius:12px;list-style:none">📂 おすすめのお店の一覧を開く（<span id="rdc">0</span>件）</summary><div style="margin-top:12px">
 <div class="chips" id="rchips" role="group" aria-label="街"></div>
 <div class="grid" id="rgrid"></div>
 <p class="empty" id="rempty" hidden></p>
+</div></details>
 <p class="small" id="rnote" style="margin-top:10px">掲載は、出典記事をもとにした下書きです。営業状況・価格・賞は変わっている可能性があるので、行く前に地図などで確認してください。</p>
 <h3 id="rform" style="margin:32px 0 8px">お店を追加する・レビューを書く</h3>
 <p class="small" style="margin:0 0 10px">行ったお店の感想を、フォームに入れて、できた文章をDiscordの「グルメ」に貼り付けてください。新しいお店の追加も同じフォームです。</p>
@@ -773,7 +775,7 @@ if(SB_CONFIG.url&&SB_CONFIG.key){loc={};DBH={collection:function(){return{doc:fu
 try{var r=await fetch("data/countries.json");apply(await r.json());if(SB_CONFIG.url&&SB_CONFIG.key){m.textContent="";window.SBX.init()}else m.textContent="公開前の試用版です。編集はこの端末だけに保存されます。"}catch(e){m.textContent="データを読み込めませんでした。"}})();
 wiki();
 function WL(){var s=$("ws2").value;if(s==="n")return CL2;var a=CL2.slice();a.sort(function(x,y){var i=ROWS[x.c]&&ROWS[x.c].idx,j=ROWS[y.c]&&ROWS[y.c].idx;if(i==null&&j==null)return 0;if(i==null)return 1;if(j==null)return -1;return s==="a"?i-j:j-i});return a}
-$("ws2").onchange=wiki;$("wq").addEventListener("input",function(){$("wd").open=true});
+$("ws2").onchange=wiki;$("rq").addEventListener("input",function(){$("rd").open=true});$("wq").addEventListener("input",function(){$("wd").open=true});
 var KC=CL2.map(function(x){return '<option value="'+x.c+'">'+flag(x.c)+" "+x.n+'</option>'}).join("");
 $("kc").innerHTML=KC;$("kc").value="TH";
 function kcalc(){var r=ROWS[$("kc").value]||{},n=+$("kn").value,t=+$("kt").value,b=r.cost!=null?r.cost:(r.idx!=null?Math.round((15000+3000*r.idx)/1000)*1000:null),o=$("ko");
@@ -820,7 +822,7 @@ function ngate(){var ok=false;try{ok=sessionStorage.getItem("nomad_18")==="1"}ca
 $("age18").onclick=function(){try{sessionStorage.setItem("nomad_18","1")}catch(e){}$("agegate").hidden=true;$("nbody").hidden=false};
 var GEN='<div class="card"><div class="cb"><h3>🌏 ぼったくりタクシー</h3><p>メーターを使わず、乗ってから高い料金を言われる手口です。</p><p><b>対策</b>　配車アプリを使うか、乗る前に料金を確認します。</p><div class="spec"><span>📍 世界共通</span></div></div></div>';
 function safe2(){var h=GEN;CL2.forEach(function(x){var r=ROWS[x.c];if(!r||!r.safety)return;r.safety.forEach(function(s,i){var p=sp(s);h+=dcard(x.c,p[0],p[1],'<p><b>対策</b>　'+esc(p[2])+'</p>',x.n,"safety",i,r.ssrc)})});$("sgrid").innerHTML=h}
-var fg=document.querySelector("#food details .grid:not(#fposts)");fg.id="fgrid";fg.innerHTML="";fg.insertAdjacentHTML("beforebegin",addForm("food"));$("fchips").style.display="none";$("fchips").innerHTML="";
+var fg=document.querySelector("#food details.dd .grid:not(#fposts)");fg.id="fgrid";fg.innerHTML="";fg.insertAdjacentHTML("beforebegin",addForm("food"));$("fchips").style.display="none";$("fchips").innerHTML="";
 $("towns").innerHTML='<h2>🗺 街ガイド</h2><p class="sub">行く前に、街の暮らしをのぞき見。各国の主な街の特徴です。内容はClaudeの下書きで、みんなで直していけます。1か月の生活費は<button class="more" data-go="wiki">国別ガイド</button>で計算できます。</p><div class="grid" id="tgrid"></div>';
 $("safety").innerHTML='<h2>🛡 安全情報</h2><p class="sub">ここだけは、ふざけません。だまされない・盗まれないための、詐欺・強盗の手口と対策です。✅がついた国（タイ・ベトナム・カンボジア・台湾・インドネシア・フィリピン・マレーシア・メキシコ・コロンビア）は、大使館などの情報で確認済みです。それ以外はClaudeの下書きで未検証です。最新の情報は<a href="https://www.anzen.mofa.go.jp/" target="_blank" rel="noopener">外務省 海外安全ホームページ</a>で必ず確認してください。</p>'+addForm("safety")+'<div class="grid" id="sgrid"></div>';
 towns2();safe2();food();
@@ -845,9 +847,9 @@ var base=RS.filter(function(r){return !c||r.c===c});
 var cities=[];base.forEach(function(r){if(cities.indexOf(r.city)<0)cities.push(r.city)});if(cities.indexOf(rcity)<0)rcity="";
 $("rchips").innerHTML=cities.length>1?['<button class="chip" data-rc="" aria-pressed="'+(rcity==="")+'">すべて</button>'].concat(cities.map(function(x){return '<button class="chip" data-rc="'+chesc(x)+'" aria-pressed="'+(rcity===x)+'">'+chesc(x)+'</button>'})).join(""):"";
 var list=base.filter(function(r){return (!rcity||r.city===rcity)&&(!q||(r.name+r.dish+r.city+r.area+(r.addr||"")).toLowerCase().indexOf(q)>-1)});
-$("rgrid").innerHTML=list.map(function(r){var rv=RV.filter(function(v){return v.p===r.id}),avg=rv.length?(rv.reduce(function(a,v){return a+v.stars},0)/rv.length):0;
+$("rdc").textContent=list.length;if(c)$("rd").open=true;$("rgrid").innerHTML=list.map(function(r){var rv=RV.filter(function(v){return v.p===r.id}),avg=rv.length?(rv.reduce(function(a,v){return a+v.stars},0)/rv.length):0;
 var mp="https://www.google.com/maps/search/?api=1&query="+encodeURIComponent(r.name+" "+r.city);
-return '<div class="card"><div class="cb"><h3>'+flag(r.c)+" "+chesc(r.name)+'</h3>'+(r.award?'<p><b style="color:var(--brand)">🏅 '+chesc(r.award)+'</b></p>':'')+'<p>'+chesc(r.dish)+'</p>'+(r.note?'<p>'+chesc(r.note)+'</p>':'')+'<div class="spec"><span>📍 '+chesc(r.city)+'・'+chesc(r.area)+'</span>'+(r.addr?'<span>'+chesc(r.addr)+'</span>':'')+'</div>'+(rv.length?'<p>'+stars(Math.round(avg))+" "+avg.toFixed(1)+"（旅人レビュー"+rv.length+"件）</p>"+rv.slice(0,3).map(function(v){return '<p class="small">'+stars(v.stars||0)+' 「'+chesc(v.text)+'」— '+chesc(v.by||"旅人")+(v.id?' <button class="more" data-rpt="review:'+v.id+'" style="padding:0 6px">🚩</button>':'')+'</p>'}).join(""):'<p class="small">旅人のレビューは、まだありません。</p>')+'<div style="display:flex;gap:8px;flex-wrap:wrap"><a class="more" href="'+mp+'" target="_blank" rel="noopener">🗺 地図で探す</a><button class="more" data-rw="'+r.id+'">✏️ レビューを書く</button>'+(r.src?'<a class="more" href="'+chesc(r.src)+'" target="_blank" rel="noopener nofollow">出典：'+chesc(r.sn)+'</a>':'<span class="small">投稿：'+chesc(r.by||"旅人")+'</span>')+(r.db?'<button class="more" data-rpt="place:'+r.id+'">🚩 通報</button>':'')+'</div></div></div>'}).join("");
+return '<div class="card"><div class="cb"><h3>'+flag(r.c)+" "+chesc(r.name)+'</h3>'+(r.award?'<p><b style="color:var(--brand)">🏅 '+chesc(r.award)+'</b></p>':'')+'<p>'+chesc(r.dish)+'</p>'+(r.note?'<p>'+chesc(r.note)+'</p>':'')+'<div class="spec"><span>📍 '+chesc(r.city)+(r.area?'・'+chesc(r.area):'')+'</span>'+(r.addr?'<span>'+chesc(r.addr)+'</span>':'')+'</div>'+(rv.length?'<p>'+stars(Math.round(avg))+" "+avg.toFixed(1)+"（旅人レビュー"+rv.length+"件）</p>"+rv.slice(0,3).map(function(v){return '<p class="small">'+stars(v.stars||0)+' 「'+chesc(v.text)+'」— '+chesc(v.by||"旅人")+(v.id?' <button class="more" data-rpt="review:'+v.id+'" style="padding:0 6px">🚩</button>':'')+'</p>'}).join(""):'<p class="small">旅人のレビューは、まだありません。</p>')+'<div style="display:flex;gap:8px;flex-wrap:wrap"><a class="more" href="'+mp+'" target="_blank" rel="noopener">🗺 地図で探す</a><button class="more" data-rw="'+r.id+'">✏️ レビューを書く</button>'+(r.src?'<a class="more" href="'+chesc(r.src)+'" target="_blank" rel="noopener nofollow">出典：'+chesc(r.sn)+'</a>':'<span class="small">投稿：'+chesc(r.by||"旅人")+'</span>')+(r.db?'<button class="more" data-rpt="place:'+r.id+'">🚩 通報</button>':'')+'</div></div></div>'}).join("");
 $("rempty").hidden=list.length>0;$("rempty").textContent=list.length?"":(RS.length?"この条件のお店は、まだありません。あなたが最初の1軒を追加しませんか？（下のフォームから）":"読み込み中です…")}
 $("rq").addEventListener("input",rrender);
 $("rchips").onclick=function(e){var b=e.target.closest("[data-rc]");if(b){rcity=b.getAttribute("data-rc");rrender()}};
