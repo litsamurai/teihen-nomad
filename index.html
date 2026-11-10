@@ -453,6 +453,18 @@ section .card,section .step,section .box,section .simbox{box-shadow:none!importa
 #home-more .big button{min-height:0!important;height:auto!important;justify-content:center!important}
 
 .hero h1 em{background:none!important;box-shadow:none!important;border-radius:0!important;padding:0!important;color:#e5311a!important;-webkit-text-stroke:8px #fff;paint-order:stroke fill;text-shadow:3px 3px 0 #12295a!important;text-decoration:underline;text-decoration-color:#e5311a;text-decoration-thickness:6px;text-underline-offset:8px;text-decoration-skip-ink:none}
+
+/* 同意OKアニメーション */
+.okfx{position:relative;text-align:center;padding:10px 0 4px;overflow:hidden}
+.okfx svg{display:block;margin:0 auto;animation:okpop .5s cubic-bezier(.2,1.6,.4,1) both}
+.okc{fill:#e9f7ee;stroke:#2e8b57;stroke-width:6}
+.okp{fill:none;stroke:#2e8b57;stroke-width:9;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:80;stroke-dashoffset:80;animation:okdraw .5s .35s ease-out forwards}
+.okt{font-size:30px;font-weight:900;color:#1f6b42;margin-top:4px;animation:okpop .5s .6s cubic-bezier(.2,1.6,.4,1) both}
+.okh{position:absolute;bottom:0;font-size:22px;opacity:0;animation:okfloat 1.8s ease-out forwards}
+@keyframes okpop{from{transform:scale(0);opacity:0}to{transform:scale(1);opacity:1}}
+@keyframes okdraw{to{stroke-dashoffset:0}}
+@keyframes okfloat{0%{transform:translateY(0) scale(.6);opacity:0}15%{opacity:1}100%{transform:translateY(-130px) scale(1.2);opacity:0}}
+@media(prefers-reduced-motion:reduce){.okfx svg,.okt{animation:none}.okp{animation:none;stroke-dashoffset:0}.okh{display:none}}
 </style>
 </head>
 <body>
@@ -856,7 +868,7 @@ var f=Object.keys(ROWS).filter(function(k){return ROWS[k].idx!=null}).length;$("
 function chk(){var no=[];for(var i=0;i<QN;i++){if(!on("a"+i)||!on("b"+i))no.push(i+1)}
 var r=$("cres");
 if(no.length){r.innerHTML='<div class="warn" style="border-color:#c00"><b>今日は、進まないでください。</b><br>2人とも「はい」になっていない項目があります：'+no.join("、")+'番。<br>まず、そのことについて、話しましょう。話して、お互いが「はい」になるまで、待ってください。</div>';return}
-r.innerHTML='<div class="box" style="background:#e9f7ee;border-color:#2e8b57"><b>いまのところ、お互いに「はい」です。</b><br>でも、同意は、いつでも取り消せます。途中で「やめる」と言われたら、すぐ止まってください。</div>'}
+r.innerHTML='<div class="okfx" aria-hidden="true"><svg viewBox="0 0 100 100" width="96" height="96"><circle class="okc" cx="50" cy="50" r="44"/><path class="okp" d="M28 52 L44 68 L73 34"/></svg><div class="okt">同意OK</div><span class="okh" style="left:12%;animation-delay:.1s">💗</span><span class="okh" style="left:30%;animation-delay:.5s">💗</span><span class="okh" style="left:50%;animation-delay:.25s">💗</span><span class="okh" style="left:70%;animation-delay:.7s">💗</span><span class="okh" style="left:88%;animation-delay:.4s">💗</span></div><div class="box" style="background:#e9f7ee;border-color:#2e8b57"><b>いまのところ、お互いに「はい」です。</b><br>でも、同意は、いつでも取り消せます。途中で「やめる」と言われたら、すぐ止まってください。</div>';try{r.scrollIntoView({behavior:"smooth",block:"center"})}catch(e){}}
 $("cchk").onclick=chk;$("crst").onclick=function(){Array.prototype.forEach.call(document.querySelectorAll('[data-cq]'),function(e){e.checked=false});$("cres").innerHTML=""}})();
 $("wq").oninput=wiki;
 
