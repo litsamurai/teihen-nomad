@@ -805,7 +805,7 @@ var DISCORD_URL="https://discord.gg/9uVK8Ykvp";
 var SB_CONFIG={url:"https://puciqvaespjdjbhavznt.supabase.co",key:"sb_publishable_JB5RaPplzCEtrYs60uFdWw_z9DKM2ob"};
 function jmsg(t){["jmsg","jmsg2"].forEach(function(i){if($(i))$(i).textContent=t})}
 document.addEventListener("click",function(e){var j=e.target.closest("[data-join]");if(j){if(DISCORD_URL)window.open(DISCORD_URL,"_blank","noopener");else{jmsg("参加リンクは準備中です。もう少しお待ちください。");tab("crew")}}var c=e.target.closest("[data-copy]");if(c){var t=c.getAttribute("data-copy").replace(/\\n/g,"\n");try{navigator.clipboard.writeText(t).then(function(){$("bmsg").textContent="コピーしました。Discordの該当チャンネルに貼り付けてください。"},function(){$("bmsg").textContent="コピーできませんでした。"})}catch(x){$("bmsg").textContent="コピーできませんでした。"}}});
-function tab(t){document.querySelectorAll("[data-t]").forEach(function(e){e.classList.toggle("on",e.getAttribute("data-t")===t)});Array.prototype.forEach.call($("tabs").children,function(b){b.setAttribute("aria-selected",b.getAttribute("data-k")===t)});window.scrollTo(0,0)}
+function tab(t){document.querySelectorAll("[data-t]").forEach(function(e){e.classList.toggle("on",e.getAttribute("data-t")===t)});Array.prototype.forEach.call($("tabs").children,function(b){b.setAttribute("aria-selected",b.getAttribute("data-k")===t)});try{history.replaceState(null,"",t==="home"?location.pathname+location.search:"#"+t)}catch(e){}try{localStorage.setItem("nomad_tab",t)}catch(e){}window.scrollTo(0,0)}
 $("tabs").innerHTML=TABS.map(function(t){return '<button class="tab" role="tab" data-k="'+t[0]+'">'+t[1]+'</button>'}).join("");
 document.addEventListener("click",function(e){var b=e.target.closest("[data-k],[data-go]");if(b){tab(b.getAttribute("data-k")||b.getAttribute("data-go"))}});
 var CITIES={cm:["チェンマイ",1200,1200,150],dn:["ダナン",950,1000,150],tb:["トビリシ",1800,1500,100],md:["メデジン",1900,1400,200]};
@@ -1050,7 +1050,8 @@ else if(!body){m2.textContent="このお店はすでに載っています。レ�
 if(body){var rr=await SBX.sb.from("reviews").insert({place_key:key,stars:+$("rv7").value,body:body,visited:$("rv8").value.trim()||null,price:$("rv6").value.trim()||null});if(rr.error){m2.textContent=sbErr(rr.error);await SBX.loadPlaces();mergeAll();return}}
 m2.textContent=body?"投稿しました。ありがとうございます。":"お店を追加しました。";["rv3","rv4","rv5","rv6","rv8","rv9"].forEach(function(i){$(i).value=""});await Promise.all([SBX.loadPlaces(),SBX.loadReviews()]);mergeAll();return}
 });
-tab("home");
+(function(){var k=(location.hash||"").slice(1),ok=function(x){return TABS.some(function(t){return t[0]===x})},st=null;if(!ok(k)&&/[?&]code=/.test(location.search)){try{st=localStorage.getItem("nomad_tab")}catch(e){}k=st}tab(ok(k)?k:"home");window.scrollTo(0,0)})();
+window.addEventListener("hashchange",function(){var k=(location.hash||"").slice(1);if(TABS.some(function(t){return t[0]===k}))tab(k)});
 
 (function(){
 var SRC=[{k:"nhk",n:"NHK 国際",u:"https://www3.nhk.or.jp/rss/news/cat6.xml",site:"https://www3.nhk.or.jp/news/world/"},{k:"bbc",n:"BBC World",u:"https://feeds.bbci.co.uk/news/world/rss.xml",site:"https://www.bbc.com/news/world"},{k:"aje",n:"Al Jazeera",u:"https://www.aljazeera.com/xml/rss/all.xml",site:"https://www.aljazeera.com/news/"}];
