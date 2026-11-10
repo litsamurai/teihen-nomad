@@ -489,7 +489,7 @@ section .card,section .step,section .box,section .simbox{box-shadow:none!importa
 <section id="home-more" data-t="home">
 <div class="feat">
 <button data-go="wiki" class="f1"><i>📒</i><span class="ft"><b>国別生活費・物価情報</b><span>どの国なら、だらけて暮らせる？世界中の国を検索</span></span></button>
-<button data-go="food" class="f2"><i>🗺</i><span class="ft"><b>ノマド向け街ガイド</b><span>街ごとのグルメ・穴場の宿・作業のしやすさ</span></span></button>
+<button data-go="towns" class="f2"><i>🗺</i><span class="ft"><b>ノマド向け街ガイド</b><span>人気の街の生活費の目安・出典つき</span></span></button>
 <button data-join class="f3"><i>💬</i><span class="ft"><b>旅人コミュニティ（Discord）</b><span>無料。旅人と情報交換・仲間探し</span></span></button>
 </div>
 <h2 style="display:inline-block;background:linear-gradient(120deg,#fde68a,#fdba74);color:#3b2a1a;padding:4px 16px;border-radius:12px;transform:rotate(-1deg);font-size:clamp(13px,3.8vw,16px);white-space:nowrap;max-width:100%">だらだら使えるもの揃えました</h2>
@@ -763,18 +763,12 @@ section .card,section .step,section .box,section .simbox{box-shadow:none!importa
 </section>
 
 <section id="towns" data-t="towns">
-<h2>🗺 街ガイド</h2>
-<p class="sub">行く前に、街の暮らしをのぞき見。</p>
-<div class="grid">
-<div class="card"><div class="cb"><h3>🇹🇭 チェンマイ</h3><p>カフェと作業場所が多く、長期滞在の人が集まる街。</p><div class="spec"><span>🏠 宿 1,200円〜</span><span>📶 回線 ◎</span><span>🍜 食費 安い</span><span>👥 日本人 多め</span></div></div></div>
-<div class="card"><div class="cb"><h3>🇻🇳 ダナン</h3><p>海の近くで、物価が低め。静かに作業しやすい。</p><div class="spec"><span>🏠 宿 950円〜</span><span>📶 回線 ○</span><span>🥖 食費 とても安い</span><span>👥 日本人 ふつう</span></div></div></div>
-<div class="card"><div class="cb"><h3>🇬🇪 トビリシ</h3><p>回線が速く、コーカサス周遊の拠点にしやすい。</p><div class="spec"><span>🏠 宿 1,800円〜</span><span>📶 回線 ◎</span><span>🍳 食費 ふつう</span><span>👥 日本人 少なめ</span></div></div></div>
-<div class="card"><div class="cb"><h3>🇨🇴 メデジン</h3><p>気候が穏やかで、中南米のノマド拠点として人気。</p><div class="spec"><span>🏠 宿 1,900円〜</span><span>📶 回線 ○</span><span>🥘 食費 ふつう</span><span>👥 日本人 少ない</span></div></div></div>
-</div>
-<h2 style="margin-top:36px">月いくらで暮らせる？</h2>
-<p class="sub">街と日数を選ぶと、目安の費用がわかります（ダミーの数字）。</p>
-<div class="simbox"><div class="row"><select id="sc" aria-label="街"></select><select id="sn" aria-label="日数"><option value="7">7泊</option><option value="14">14泊</option><option value="30" selected>30泊</option></select></div><div id="so" role="status"></div></div>
-<div class="warn" style="margin-top:16px">ビザや滞在できる日数は変わります。渡航前に、各国の公式情報で必ず確認してください。</div>
+<h2>🗺 ノマド向け街ガイド</h2>
+<p class="sub">ノマドに人気の街の、生活費の目安です。出典と、信頼度を付けています。</p>
+<div class="warn" style="margin-bottom:16px">数字は、公開されている二次情報から集めた参考値です。為替や時期で変わります。渡航前に、必ず最新の情報を確認してください。</div>
+<div class="grid" id="tcards"></div>
+<p class="small" id="tmeta"></p>
+<p class="small"><a href="country/" style="font-weight:700">🧾 国ごとの物価ランキングも見る</a>　／　行った人の声は、<a href="#crew" data-go="crew" style="font-weight:700">Discord</a>で。</p>
 </section>
 <section id="prep1" data-t="prep">
 <h2>🎒 出発前チェックリスト</h2>
@@ -797,7 +791,7 @@ section .card,section .step,section .box,section .simbox{box-shadow:none!importa
 
 <script>
 function $(i){return document.getElementById(i)}
-var TABS=[["home","ホーム"],["wiki","国別コスト"],["fx","両替"],["news","ニュース"],["food","グルメ"],["stays","宿"],["market","マーケット"],["consent","大人の同意書"],["adult","18禁"],["promo","なんでもPR"],["safety","安全"],["ch","チャンネル"],["crew","仲間"],["prep","準備"]];
+var TABS=[["home","ホーム"],["wiki","国別コスト"],["towns","街ガイド"],["fx","両替"],["news","ニュース"],["food","グルメ"],["stays","宿"],["market","マーケット"],["consent","大人の同意書"],["adult","18禁"],["promo","なんでもPR"],["safety","安全"],["ch","チャンネル"],["crew","仲間"],["prep","準備"]];
 var DISCORD_URL="https://discord.gg/9uVK8Ykvp";
 /* メンバー編集を有効にするには、Supabaseの URL と anon key を入れます（手順は SETUP-supabase.md） */
 var SB_CONFIG={url:"https://puciqvaespjdjbhavznt.supabase.co",key:"sb_publishable_JB5RaPplzCEtrYs60uFdWw_z9DKM2ob"};
@@ -806,11 +800,7 @@ document.addEventListener("click",function(e){var j=e.target.closest("[data-join
 function tab(t){document.querySelectorAll("[data-t]").forEach(function(e){e.classList.toggle("on",e.getAttribute("data-t")===t)});Array.prototype.forEach.call($("tabs").children,function(b){b.setAttribute("aria-selected",b.getAttribute("data-k")===t)});try{history.replaceState(null,"",t==="home"?location.pathname+location.search:"#"+t)}catch(e){}try{localStorage.setItem("nomad_tab",t)}catch(e){}window.scrollTo(0,0)}
 $("tabs").innerHTML=TABS.map(function(t){return '<button class="tab" role="tab" data-k="'+t[0]+'">'+t[1]+'</button>'}).join("");
 document.addEventListener("click",function(e){var b=e.target.closest("[data-k],[data-go]");if(b){tab(b.getAttribute("data-k")||b.getAttribute("data-go"))}});
-var CITIES={cm:["チェンマイ",1200,1200,150],dn:["ダナン",950,1000,150],tb:["トビリシ",1800,1500,100],md:["メデジン",1900,1400,200]};
 function yen(x){return x.toLocaleString("ja-JP")+"円"}
-$("sc").innerHTML=Object.keys(CITIES).map(function(k){return '<option value="'+k+'">'+CITIES[k][0]+'</option>'}).join("");
-function sim(){var c=CITIES[$("sc").value],n=+$("sn").value,r=[["宿",c[1]*n],["食費",c[2]*n],["交通",c[3]*n],["通信（eSIM）",1500]],t=0;r.forEach(function(x){t+=x[1]});$("so").innerHTML=r.map(function(x){return '<div class="ln"><span>'+x[0]+'</span><span>'+yen(x[1])+'</span></div>'}).join("")+'<div class="tot"><span>合計の目安</span><span>'+yen(t)+'</span></div>'}
-$("sc").onchange=sim;$("sn").onchange=sim;sim();
 var CL=["入国条件（ビザ・出国チケット）を確認","パスポートの残存期間を確認","海外送金・決済（Wise）を用意","eSIMを入れる","海外保険に加入","変換プラグと延長コード"];
 $("cl").innerHTML=CL.map(function(t){return '<label class="ck"><input type="checkbox" data-c> '+t+'</label>'}).join("");
 function cnt(){$("cn").textContent=document.querySelectorAll("[data-c]:checked").length+" / "+CL.length+" 完了"}
@@ -915,7 +905,7 @@ $("age18").onclick=function(){try{sessionStorage.setItem("nomad_18","1")}catch(e
 var GEN='<div class="card"><div class="cb"><h3>🌏 ぼったくりタクシー</h3><p>メーターを使わず、乗ってから高い料金を言われる手口です。</p><p><b>対策</b>　配車アプリを使うか、乗る前に料金を確認します。</p><div class="spec"><span>📍 世界共通</span></div></div></div>';
 function safe2(){var h=GEN;CL2.forEach(function(x){var r=ROWS[x.c];if(!r||!r.safety)return;r.safety.forEach(function(s,i){var p=sp(s);h+=dcard(x.c,p[0],p[1],'<p><b>対策</b>　'+esc(p[2])+'</p>',x.n,"safety",i,r.ssrc)})});$("sgrid").innerHTML=h}
 var fg=document.querySelector("#food details.dd .grid:not(#fposts)");fg.id="fgrid";fg.innerHTML="";fg.insertAdjacentHTML("beforebegin",addForm("food"));$("fchips").style.display="none";$("fchips").innerHTML="";
-$("towns").innerHTML='<h2>🗺 街ガイド</h2><p class="sub">行く前に、街の暮らしをのぞき見。各国の主な街の特徴です。内容はClaudeの下書きで、みんなで直していけます。1か月の生活費は<button class="more" data-go="wiki">国別ガイド</button>で計算できます。</p><div class="grid" id="tgrid"></div>';
+$("towns").insertAdjacentHTML("beforeend",'<details class="dd" style="margin-top:20px"><summary style="cursor:pointer;font-weight:800;padding:12px 14px;background:var(--soft);border:1px solid var(--line);border-radius:12px;list-style:none">📂 世界の主な街（下書き・未検証）を開く</summary><p class="sub" style="margin-top:10px">各国の主な街の特徴です。内容はClaudeの下書きで、みんなで直していけます。</p><div class="grid" id="tgrid"></div></details>');
 $("safety").innerHTML='<h2>🛡 安全情報</h2><p class="sub">ここだけは、ふざけません。だまされない・盗まれないための、詐欺・強盗の手口と対策です。✅がついた国（タイ・ベトナム・カンボジア・台湾・インドネシア・フィリピン・マレーシア・メキシコ・コロンビア）は、大使館などの情報で確認済みです。それ以外はClaudeの下書きで未検証です。最新の情報は<a href="https://www.anzen.mofa.go.jp/" target="_blank" rel="noopener">外務省 海外安全ホームページ</a>で必ず確認してください。</p>'+addForm("safety")+'<div class="grid" id="sgrid"></div>';
 towns2();safe2();food();
 $("nadd").innerHTML=addForm("night");night();ngate();
@@ -1069,6 +1059,18 @@ document.addEventListener("click",function(e){if(e.target.closest('[data-go="new
 function go(){if(!loaded){loaded=true;show()}}
 window.addEventListener("hashchange",function(){if(location.hash.indexOf("news")>-1)go()});
 bar();setTimeout(function(){var n=$("news");if(n&&!n.hidden&&n.offsetParent)go()},300);
+})();
+
+(function(){var done=false;
+function esc2(t){return String(t==null?"":t).replace(/[&<>"']/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]})}
+function load(){if(done)return;done=true;Promise.all([fetch("data/cities.json").then(function(r){return r.json()}),fetch("data/fx.json").then(function(r){return r.json()}).catch(function(){return null})]).then(function(a){var d=a[0],rate=(a[1]&&a[1].rates&&a[1].rates.JPY)||158;
+var yen=function(u){return"約"+(Math.round(u*rate/1000)*1000).toLocaleString("ja-JP")+"円"};
+$("tcards").innerHTML=d.cities.map(function(c){return '<div class="card"><div class="cb"><h3>'+flag(c.c)+" "+esc2(c.name)+'</h3><p><b>月の目安：'+esc2(c.month.label)+'</b><br><span class="small">'+(c.month.usd[0]===c.month.usd[1]?yen(c.month.usd[0]):yen(c.month.usd[0])+"〜"+yen(c.month.usd[1]))+'（円換算）</span></p>'+c.items.map(function(i){return '<div class="ln" style="display:block"><span class="small">'+esc2(i[0])+'：</span><b>'+esc2(i[1])+'</b></div>'}).join("")+'<p class="small" style="margin-top:8px">信頼度：'+esc2(c.grade)+'<br>出典：'+c.src.map(function(s){return '<a href="'+esc2(s[1])+'" target="_blank" rel="noopener nofollow">'+esc2(s[0])+'</a>'}).join("、")+'（取得日 '+esc2(d.retrieved)+'）</p></div></div>'}).join("");
+$("tmeta").textContent="1ドル＝"+Math.round(rate)+"円で換算した目安です（実際のレートとは違います）。";
+}).catch(function(){$("tcards").innerHTML='<p class="empty">読み込めませんでした。時間をおいて、もう一度開いてください。</p>'})}
+document.addEventListener("click",function(e){if(e.target.closest('[data-go="towns"],[data-k="towns"]'))load()});
+window.addEventListener("hashchange",function(){if(location.hash==="#towns")load()});
+setTimeout(function(){var n=$("towns");if(n&&n.classList.contains("on"))load()},400);
 })();
 </script>
 <footer style="max-width:1100px;margin:32px auto;padding:16px;font-size:12px;color:#888;text-align:center"><a href="privacy.html">プライバシーポリシー</a>｜<a href="terms.html">利用規約・免責</a><p>掲載情報は下書き・概算を含み、正確性を保証しません。渡航前に必ず公的機関の最新情報をご確認ください。</p></footer>

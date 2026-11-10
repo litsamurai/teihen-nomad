@@ -25,7 +25,7 @@ ${noindex?'<meta name="robots" content="noindex,follow">':''}
 <meta property="og:url" content="${url}"><meta property="og:image" content="${BASE}img/og.png"><meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="../favicon.svg"><link rel="stylesheet" href="style.css"></head><body>
 <header><a class="logo" href="../">底辺くんのノマドノート</a><a class="join" href="../#crew">💬 Discordで仲間と繋がる</a></header><main>`;
-const foot=`</main><footer><p><a href="../">ホーム</a>・<a href="./">国別の生活費ランキング</a>・<a href="../privacy.html">プライバシーポリシー</a>・<a href="../terms.html">利用規約</a></p><p>掲載情報には、概算・下書き（未検証）が含まれます。渡航前に、必ず公式情報を確認してください。</p></footer></body></html>`;
+const foot=`</main><footer><p><a href="../">ホーム</a>・<a href="../country/">国別の生活費ランキング</a>・<a href="../privacy.html">プライバシーポリシー</a>・<a href="../terms.html">利用規約</a></p><p>掲載情報には、概算・下書き（未検証）が含まれます。渡航前に、必ず公式情報を確認してください。</p></footer></body></html>`;
 const sp=s=>String(s).split('｜');
 function page(c){
   const r=DATA[c],name=nameOf(c),p=rel(r.idx),b=cost(r),url=`${BASE}country/${c.toLowerCase()}.html`;
@@ -57,8 +57,35 @@ h+=`<nav class="bc"><a href="../">ホーム</a> › 国別の生活費</nav><h1>
 rows.forEach((c,i)=>{const r=DATA[c],b=cost(r);h+=`<tr><td>${i+1}</td><td><a href="${c.toLowerCase()}.html">${flag(c)} ${esc(nameOf(c))}</a></td><td>${rel(r.idx)}</td><td>${b?'約'+yen(b):'—'}</td><td>${r.est?'⚠':'✅'}</td></tr>`});
 h+=`</table>`+foot;
 fs.writeFileSync(path.join(ROOT,'country/index.html'),h);
+
+// ===== 都市ページ（data/cities.json）=====
+const CI=JSON.parse(fs.readFileSync(path.join(ROOT,'data/cities.json'),'utf8'));
+const FX=JSON.parse(fs.readFileSync(path.join(ROOT,'data/fx.json'),'utf8'));
+const RATE=(FX.rates&&FX.rates.JPY)||158;
+const yenU=u=>'約'+(Math.round(u*RATE/1000)*1000).toLocaleString('ja-JP')+'円';
+fs.mkdirSync(path.join(ROOT,'city'),{recursive:true});
+const chead=(t,d,u,ni)=>head(t,d,u,ni).replace('href="../favicon.svg"><link rel="stylesheet" href="style.css"','href="../favicon.svg"><link rel="stylesheet" href="../country/style.css"').replace('<a class="join" href="../#crew">','<a class="join" href="../#crew">');
+CI.cities.forEach(c=>{
+  const url=`${BASE}city/${c.id}.html`,cn=nameOf(c.c);
+  const rng=c.month.usd[0]===c.month.usd[1]?yenU(c.month.usd[0]):yenU(c.month.usd[0])+'〜'+yenU(c.month.usd[1]);
+  const title=`${c.name}の生活費の目安【ノマド向け】｜底辺くんのノマドノート`;
+  const desc=`${c.name}（${cn}）の月の生活費の目安は${rng}。家賃、食事、ネット代などの目安と、出典・信頼度を載せています。`;
+  let h=chead(title,desc,url,!c.index);
+  h+=`<nav class="bc"><a href="../">ホーム</a> › <a href="./">街ガイド</a> › ${esc(c.name)}</nav><h1>${flag(c.c)} ${esc(c.name)}の生活費の目安</h1>`;
+  h+=`<section><h2>月の目安</h2><div class="kv" style="grid-template-columns:1fr"><div><span>${esc(c.month.label)}</span><b>${rng}</b></div></div><p class="small">円換算は、1ドル=${Math.round(RATE)}円の目安です。実際のレートとは違います。</p>`;
+  h+=`<table>`+c.items.map(i=>`<tr><th>${esc(i[0])}</th><td style="white-space:normal">${esc(i[1])}</td></tr>`).join('')+`</table>`;
+  h+=`<p class="src">信頼度：${esc(c.grade)}<br>出典：${c.src.map(s=>`<a href="${esc(s[1])}" rel="noopener nofollow">${esc(s[0])}</a>`).join('、')}（取得日 ${esc(CI.retrieved)}）</p></section>`;
+  h+=`<section><p><a href="../country/${c.c.toLowerCase()}.html">${flag(c.c)} ${esc(cn)}の物価・治安を見る</a></p></section>`;
+  h+=`<section class="cta"><h2>${esc(c.name)}の最新情報は、旅人に聞こう</h2><p>行った人の声や、いまの様子は、Discordコミュニティで。無料で、見るだけでもOKです。</p><a class="btn" href="../#crew">💬 Discordで仲間と繋がる</a></section>`;
+  h+=`<p class="small">数字は、公開されている二次情報から集めた参考値です。渡航前に、最新の情報を必ず確認してください。</p>`;
+  fs.writeFileSync(path.join(ROOT,'city',c.id+'.html'),h+foot);
+});
+{let h=chead('ノマド向け街ガイド｜底辺くんのノマドノート','ノマドに人気の街の、生活費の目安と出典をまとめています。',BASE+'city/',false);
+ h+=`<nav class="bc"><a href="../">ホーム</a> › 街ガイド</nav><h1>🗺 ノマド向け街ガイド</h1><p class="lead">人気の街の、生活費の目安です。</p><ul class="list">`+CI.cities.map(c=>`<li><a href="${c.id}.html"><b>${flag(c.c)} ${esc(c.name)}</b></a><br><span>${esc(c.month.label)}</span></li>`).join('')+`</ul>`+foot;
+ fs.writeFileSync(path.join(ROOT,'city/index.html'),h);}
+
 // sitemap（検索に載せるのは、出典で確認できた国だけ）
-const urls=[BASE,BASE+'country/',...codes.filter(c=>indexable(DATA[c])).map(c=>`${BASE}country/${c.toLowerCase()}.html`)];
+const urls=[BASE,BASE+'country/',...codes.filter(c=>indexable(DATA[c])).map(c=>`${BASE}country/${c.toLowerCase()}.html`),BASE+'city/',...CI.cities.filter(c=>c.index).map(c=>`${BASE}city/${c.id}.html`)];
 const today=new Date().toISOString().slice(0,10);
 fs.writeFileSync(path.join(ROOT,'sitemap.xml'),`<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n`+urls.map(u=>`<url><loc>${u}</loc><lastmod>${today}</lastmod></url>`).join('\n')+`\n</urlset>\n`);
 fs.writeFileSync(path.join(ROOT,'robots.txt'),`User-agent: *\nAllow: /\nSitemap: ${BASE}sitemap.xml\n`);
