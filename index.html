@@ -406,6 +406,8 @@ select{border-color:#ff8a8a}
 .hero .go[data-join]{background:#5865f2;box-shadow:0 4px 0 #3c45a5}
 .tgo{display:inline-block;margin-top:10px;background:#ff0000;color:#fff;font-weight:800;font-size:13px;padding:7px 14px;border-radius:999px}
 .tool:hover .tgo{background:#cc0000}
+.ck{display:flex;align-items:center;gap:8px;flex:1;min-width:0;font-weight:700;padding:10px 12px;border:1px solid var(--line);border-radius:12px;background:#fff;cursor:pointer}
+.ck input{width:22px;height:22px;accent-color:#ff0000;flex:0 0 auto}
 </style>
 </head>
 <body>
@@ -437,7 +439,7 @@ select{border-color:#ff8a8a}
 <button data-go="stays"><i>🏠</i><b>穴場の宿</b><span>泊まってよかった宿</span></button>
 <button data-go="safety"><i>🛡</i><b>安全</b><span>だまされない・奪われない</span></button>
 <button data-go="adult"><i>🔞</i><b>18禁</b><span>夜の街の注意（18歳以上）</span></button>
-<button data-go="consent"><i>🤝</i><b>同意チェック</b><span>お互いの気持ちを確かめる</span></button>
+<button data-go="consent"><i>🤝</i><b>大人の同意書</b><span>お互いの気持ちを確かめる</span></button>
 <button data-go="board"><i>🤝</i><b>募集・仲間</b><span>一緒に回る・組む・譲る</span></button>
 <button data-go="ch"><i>📺</i><b>チャンネル</b><span>旅YouTuberの紹介</span></button>
 <button data-go="prep"><i>🎒</i><b>準備</b><span>チェックリストとツール</span></button>
@@ -603,12 +605,12 @@ select{border-color:#ff8a8a}
 </div>
 </section>
 <section id="consent" data-t="consent">
-<h2>🤝 同意チェック</h2>
+<h2>🤝 大人の同意書</h2>
 <p class="sub">大人どうしが、お互いの気持ちを、ちゃんと確かめるためのチェックです。空気を壊さないように、ゆるく、でも、はっきり。</p>
 <div class="warn" style="margin-bottom:16px"><b>これは、法的な証拠にはなりません。</b>この画面は、何も記録せず、どこにも送りません。同意は、一度きりではなく、途中で変わっていいものです。黙っている、反応が薄い、酔っている、は同意ではありません。迷ったら、止まって、話しましょう。</div>
 <div class="box" style="max-width:640px">
-<p class="small" style="margin:0 0 6px">それぞれ、いまの気持ちを選んでください。2人で、画面を見ながら、選んでも大丈夫です。</p>
-<div class="ln" style="display:block;padding:10px 0"><div style="font-weight:700;margin-bottom:6px">1. お互いに、18歳以上である</div><div class="row"><label class="wl" style="flex:1;margin:0">あなた<select data-cq="a0"><option value="">選ぶ</option><option value="y">はい</option><option value="m">まだ・わからない</option><option value="n">いいえ</option></select></label><label class="wl" style="flex:1;margin:0">相手<select data-cq="b0"><option value="">選ぶ</option><option value="y">はい</option><option value="m">まだ・わからない</option><option value="n">いいえ</option></select></label></div></div><div class="ln" style="display:block;padding:10px 0"><div style="font-weight:700;margin-bottom:6px">2. お酒や薬で、判断力が落ちていない（酔いつぶれている・眠い、は「いいえ」）</div><div class="row"><label class="wl" style="flex:1;margin:0">あなた<select data-cq="a1"><option value="">選ぶ</option><option value="y">はい</option><option value="m">まだ・わからない</option><option value="n">いいえ</option></select></label><label class="wl" style="flex:1;margin:0">相手<select data-cq="b1"><option value="">選ぶ</option><option value="y">はい</option><option value="m">まだ・わからない</option><option value="n">いいえ</option></select></label></div></div><div class="ln" style="display:block;padding:10px 0"><div style="font-weight:700;margin-bottom:6px">3. 「したい」という気持ちが、自分にある（頼まれたから、断れないから、ではない）</div><div class="row"><label class="wl" style="flex:1;margin:0">あなた<select data-cq="a2"><option value="">選ぶ</option><option value="y">はい</option><option value="m">まだ・わからない</option><option value="n">いいえ</option></select></label><label class="wl" style="flex:1;margin:0">相手<select data-cq="b2"><option value="">選ぶ</option><option value="y">はい</option><option value="m">まだ・わからない</option><option value="n">いいえ</option></select></label></div></div><div class="ln" style="display:block;padding:10px 0"><div style="font-weight:700;margin-bottom:6px">4. 途中で「やっぱりやめる」と言っていい。言われたら、すぐに止める</div><div class="row"><label class="wl" style="flex:1;margin:0">あなた<select data-cq="a3"><option value="">選ぶ</option><option value="y">はい</option><option value="m">まだ・わからない</option><option value="n">いいえ</option></select></label><label class="wl" style="flex:1;margin:0">相手<select data-cq="b3"><option value="">選ぶ</option><option value="y">はい</option><option value="m">まだ・わからない</option><option value="n">いいえ</option></select></label></div></div><div class="ln" style="display:block;padding:10px 0"><div style="font-weight:700;margin-bottom:6px">5. 避妊・性感染症の予防について、話した（用意した）</div><div class="row"><label class="wl" style="flex:1;margin:0">あなた<select data-cq="a4"><option value="">選ぶ</option><option value="y">はい</option><option value="m">まだ・わからない</option><option value="n">いいえ</option></select></label><label class="wl" style="flex:1;margin:0">相手<select data-cq="b4"><option value="">選ぶ</option><option value="y">はい</option><option value="m">まだ・わからない</option><option value="n">いいえ</option></select></label></div></div><div class="ln" style="display:block;padding:10px 0"><div style="font-weight:700;margin-bottom:6px">6. 写真・動画・録音は、しない（する場合は、お互いが、はっきり事前に合意している）</div><div class="row"><label class="wl" style="flex:1;margin:0">あなた<select data-cq="a5"><option value="">選ぶ</option><option value="y">はい</option><option value="m">まだ・わからない</option><option value="n">いいえ</option></select></label><label class="wl" style="flex:1;margin:0">相手<select data-cq="b5"><option value="">選ぶ</option><option value="y">はい</option><option value="m">まだ・わからない</option><option value="n">いいえ</option></select></label></div></div><div class="ln" style="display:block;padding:10px 0"><div style="font-weight:700;margin-bottom:6px">7. 断りにくい関係や状況ではない（上下関係、宿やお金の都合、帰れない場所、など）</div><div class="row"><label class="wl" style="flex:1;margin:0">あなた<select data-cq="a6"><option value="">選ぶ</option><option value="y">はい</option><option value="m">まだ・わからない</option><option value="n">いいえ</option></select></label><label class="wl" style="flex:1;margin:0">相手<select data-cq="b6"><option value="">選ぶ</option><option value="y">はい</option><option value="m">まだ・わからない</option><option value="n">いいえ</option></select></label></div></div><div class="ln" style="display:block;padding:10px 0"><div style="font-weight:700;margin-bottom:6px">8. どこまでするかを、言葉に出して、話した</div><div class="row"><label class="wl" style="flex:1;margin:0">あなた<select data-cq="a7"><option value="">選ぶ</option><option value="y">はい</option><option value="m">まだ・わからない</option><option value="n">いいえ</option></select></label><label class="wl" style="flex:1;margin:0">相手<select data-cq="b7"><option value="">選ぶ</option><option value="y">はい</option><option value="m">まだ・わからない</option><option value="n">いいえ</option></select></label></div></div>
+<p class="small" style="margin:0 0 6px">それぞれ、本当に「はい」と思う項目だけ、チェックを入れてください。迷うときは、チェックしないでください。2人で、画面を見ながら、入れても大丈夫です。</p>
+<div class="ln" style="display:block;padding:10px 0"><div style="font-weight:700;margin-bottom:6px">1. お互いに、18歳以上である</div><div class="row"><label class="ck"><input type="checkbox" data-cq="a0"> あなた：はい</label><label class="ck"><input type="checkbox" data-cq="b0"> 相手：はい</label></div></div><div class="ln" style="display:block;padding:10px 0"><div style="font-weight:700;margin-bottom:6px">2. お酒や薬で、判断力が落ちていない（酔いつぶれている・眠い、は「いいえ」）</div><div class="row"><label class="ck"><input type="checkbox" data-cq="a1"> あなた：はい</label><label class="ck"><input type="checkbox" data-cq="b1"> 相手：はい</label></div></div><div class="ln" style="display:block;padding:10px 0"><div style="font-weight:700;margin-bottom:6px">3. 「したい」という気持ちが、自分にある（頼まれたから、断れないから、ではない）</div><div class="row"><label class="ck"><input type="checkbox" data-cq="a2"> あなた：はい</label><label class="ck"><input type="checkbox" data-cq="b2"> 相手：はい</label></div></div><div class="ln" style="display:block;padding:10px 0"><div style="font-weight:700;margin-bottom:6px">4. 途中で「やっぱりやめる」と言っていい。言われたら、すぐに止める</div><div class="row"><label class="ck"><input type="checkbox" data-cq="a3"> あなた：はい</label><label class="ck"><input type="checkbox" data-cq="b3"> 相手：はい</label></div></div><div class="ln" style="display:block;padding:10px 0"><div style="font-weight:700;margin-bottom:6px">5. 避妊・性感染症の予防について、話した（用意した）</div><div class="row"><label class="ck"><input type="checkbox" data-cq="a4"> あなた：はい</label><label class="ck"><input type="checkbox" data-cq="b4"> 相手：はい</label></div></div><div class="ln" style="display:block;padding:10px 0"><div style="font-weight:700;margin-bottom:6px">6. 写真・動画・録音は、しない（する場合は、お互いが、はっきり事前に合意している）</div><div class="row"><label class="ck"><input type="checkbox" data-cq="a5"> あなた：はい</label><label class="ck"><input type="checkbox" data-cq="b5"> 相手：はい</label></div></div><div class="ln" style="display:block;padding:10px 0"><div style="font-weight:700;margin-bottom:6px">7. 断りにくい関係や状況ではない（上下関係、宿やお金の都合、帰れない場所、など）</div><div class="row"><label class="ck"><input type="checkbox" data-cq="a6"> あなた：はい</label><label class="ck"><input type="checkbox" data-cq="b6"> 相手：はい</label></div></div><div class="ln" style="display:block;padding:10px 0"><div style="font-weight:700;margin-bottom:6px">8. どこまでするかを、言葉に出して、話した</div><div class="row"><label class="ck"><input type="checkbox" data-cq="a7"> あなた：はい</label><label class="ck"><input type="checkbox" data-cq="b7"> 相手：はい</label></div></div>
 <div style="margin-top:14px"><button class="go" id="cchk" style="max-width:260px">チェックする</button> <button class="cl" id="crst" style="max-width:160px">やり直す</button></div>
 <div id="cres" role="status" style="margin-top:14px"></div>
 </div>
@@ -728,7 +730,7 @@ select{border-color:#ff8a8a}
 
 <script>
 function $(i){return document.getElementById(i)}
-var TABS=[["home","ホーム"],["wiki","国別コスト"],["fx","両替"],["food","グルメ"],["stays","宿"],["safety","安全"],["adult","18禁"],["consent","同意"],["board","募集・仲間"],["ch","チャンネル"],["crew","参加"],["prep","準備"]];
+var TABS=[["home","ホーム"],["wiki","国別コスト"],["fx","両替"],["food","グルメ"],["stays","宿"],["safety","安全"],["adult","18禁"],["consent","大人の同意書"],["board","募集・仲間"],["ch","チャンネル"],["crew","参加"],["prep","準備"]];
 var DISCORD_URL="https://discord.gg/9uVK8Ykvp";
 /* メンバー編集を有効にするには、Supabaseの URL と anon key を入れます（手順は SETUP-supabase.md） */
 var SB_CONFIG={url:"https://puciqvaespjdjbhavznt.supabase.co",key:"sb_publishable_JB5RaPplzCEtrYs60uFdWw_z9DKM2ob"};
@@ -768,12 +770,12 @@ h+='<div class="wr"><button class="wb" data-w="'+x.c+'" aria-expanded="'+(openC=
 $("wl").innerHTML=h||'<p class="empty">見つかりませんでした。</p>';
 var f=Object.keys(ROWS).filter(function(k){return ROWS[k].idx!=null}).length;$("wsum").textContent=CODES.length+"か国・地域のうち、物価を入力済み："+f}
 
-(function(){var QN=8;function val(k){var e=document.querySelector('[data-cq="'+k+'"]');return e?e.value:""}
-function chk(){var miss=[],no=[];for(var i=0;i<QN;i++){var a=val("a"+i),b=val("b"+i);if(!a||!b){miss.push(i+1);continue}if(a!=="y"||b!=="y")no.push(i+1)}
-var r=$("cres");if(miss.length){r.innerHTML='<div class="warn">まだ選んでいない項目があります：'+miss.join("、")+'番</div>';return}
-if(no.length){r.innerHTML='<div class="warn" style="border-color:#c00"><b>今日は、進まないでください。</b><br>「はい」ではない項目があります：'+no.join("、")+'番。<br>まず、そのことについて、話しましょう。話して、お互いが「はい」になるまで、待ってください。</div>';return}
+(function(){var QN=8;function on(k){var e=document.querySelector('[data-cq="'+k+'"]');return !!(e&&e.checked)}
+function chk(){var no=[];for(var i=0;i<QN;i++){if(!on("a"+i)||!on("b"+i))no.push(i+1)}
+var r=$("cres");
+if(no.length){r.innerHTML='<div class="warn" style="border-color:#c00"><b>今日は、進まないでください。</b><br>2人とも「はい」になっていない項目があります：'+no.join("、")+'番。<br>まず、そのことについて、話しましょう。話して、お互いが「はい」になるまで、待ってください。</div>';return}
 r.innerHTML='<div class="box" style="background:#e9f7ee;border-color:#2e8b57"><b>いまのところ、お互いに「はい」です。</b><br>でも、同意は、いつでも取り消せます。途中で「やめる」と言われたら、すぐ止まってください。</div>'}
-$("cchk").onclick=chk;$("crst").onclick=function(){Array.prototype.forEach.call(document.querySelectorAll('[data-cq]'),function(e){e.value=""});$("cres").innerHTML=""}})();
+$("cchk").onclick=chk;$("crst").onclick=function(){Array.prototype.forEach.call(document.querySelectorAll('[data-cq]'),function(e){e.checked=false});$("cres").innerHTML=""}})();
 $("wq").oninput=wiki;
 
 $("wl").onclick=function(e){var b=e.target.closest("[data-w],[data-e],[data-s],[data-x]");if(!b)return;
