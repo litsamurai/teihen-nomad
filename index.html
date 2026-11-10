@@ -465,6 +465,12 @@ section .card,section .step,section .box,section .simbox{box-shadow:none!importa
 @keyframes okdraw{to{stroke-dashoffset:0}}
 @keyframes okfloat{0%{transform:translateY(0) scale(.6);opacity:0}15%{opacity:1}100%{transform:translateY(-130px) scale(1.2);opacity:0}}
 @media(prefers-reduced-motion:reduce){.okfx svg,.okt{animation:none}.okp{animation:none;stroke-dashoffset:0}.okh{display:none}}
+
+.hrk{display:grid;gap:6px}
+.hrk a{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink);background:var(--soft);border-radius:12px;padding:10px 12px}
+.hrk .n{font-weight:900;color:#e5311a;width:18px;text-align:center}.hrk .nm{flex:1;font-weight:700}.hrk .v{font-size:13px;color:var(--sub)}
+.hct{display:flex;flex-wrap:wrap;gap:8px}
+.hct button{border:2px solid #f08a47;background:#fff;color:var(--ink);border-radius:99px;padding:6px 12px;font:inherit;font-size:13px;font-weight:700;cursor:pointer}
 </style>
 </head>
 <body>
@@ -492,6 +498,7 @@ section .card,section .step,section .box,section .simbox{box-shadow:none!importa
 <button data-go="towns" class="f2"><i>🗺</i><span class="ft"><b>ノマド向け街ガイド</b><span>人気の街の生活費の目安・出典つき</span></span></button>
 <button data-join class="f3"><i>💬</i><span class="ft"><b>旅人コミュニティ（Discord）</b><span>無料。旅人と情報交換・仲間探し</span></span></button>
 </div>
+<div id="hrank" style="margin:0 0 18px"></div>
 <h2 style="display:inline-block;background:linear-gradient(120deg,#fde68a,#fdba74);color:#3b2a1a;padding:4px 16px;border-radius:12px;transform:rotate(-1deg);font-size:clamp(13px,3.8vw,16px);white-space:nowrap;max-width:100%">だらだら使えるもの揃えました</h2>
 <div class="big">
 <button data-go="fx"><i>💱</i><b>両替</b><span>どの通貨でも換算</span></button>
@@ -1072,6 +1079,14 @@ document.addEventListener("click",function(e){if(e.target.closest('[data-go="tow
 window.addEventListener("hashchange",function(){if(location.hash==="#towns")load()});
 setTimeout(function(){var n=$("towns");if(n&&n.classList.contains("on"))load()},400);
 })();
+
+(function(){var P=["ID","VN","PH","MY","TH","GE"];
+function e2(t){return String(t==null?"":t).replace(/[&<>"']/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]})}
+Promise.all([fetch("data/countries.json").then(function(r){return r.json()}),fetch("data/cities.json").then(function(r){return r.json()})]).then(function(a){var C=a[0],D=a[1],jp=C.JP&&C.JP.idx;if(!jp)return;
+var rows=P.filter(function(c){return C[c]&&C[c].idx!=null}).sort(function(x,y){return C[x].idx-C[y].idx});
+var h='<h2 style="margin:0 0 8px;font-size:18px">💴 物価が安い人気の国</h2><div class="hrk">'+rows.map(function(c,i){var r=C[c],p=Math.round(r.idx/jp*100);return '<a href="country/'+c.toLowerCase()+'.html"><span class="n">'+(i+1)+'</span><span class="nm">'+flag(c)+" "+e2(cname(c))+'</span><span class="v">日本の'+p+'%'+(r.est?"（概算）":"")+'</span></a>'}).join("")+'</div><p class="small" style="margin:6px 0 14px"><a href="country/" style="font-weight:700">すべての国のランキングを見る →</a>　「概算」と書いていない数値は、出典で確認したものです。</p>';
+h+='<h2 style="margin:0 0 8px;font-size:18px">🗺 人気の街</h2><div class="hct">'+D.cities.map(function(c){return '<button data-go="towns">'+flag(c.c)+" "+e2(c.name)+'</button>'}).join("")+'</div>';
+var el=document.getElementById("hrank");if(el)el.innerHTML=h}).catch(function(){})})();
 </script>
 <footer style="max-width:1100px;margin:32px auto;padding:16px;font-size:12px;color:#888;text-align:center"><a href="privacy.html">プライバシーポリシー</a>｜<a href="terms.html">利用規約・免責</a><p>掲載情報は下書き・概算を含み、正確性を保証しません。渡航前に必ず公的機関の最新情報をご確認ください。</p></footer>
 </body>
