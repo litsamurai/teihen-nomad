@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>底辺くんのノマドノート｜底辺でも、世界で暮らせる。</title>
+<meta name="description" content="国別の生活費・街・グルメ・安全を、旅するリモートワーカーどうしで書き足していく共有ノートと、日本語のオンラインコミュニティ。">
+<meta property="og:title" content="底辺くんのノマドノート">
+<meta property="og:description" content="旅するリモートワーカーの共有ノートとコミュニティ。">
+<meta property="og:type" content="website">
+<link rel="icon" type="image/png" href="img/teihen-64.png"><link rel="apple-touch-icon" href="img/teihen.webp">
+<style>
+:root{--bg:#f8fafc;--card:#fff;--ink:#1e293b;--sub:#64748b;--line:#e2e8f0;--brand:#16a34a;--brand-ink:#fff;--soft:#f1f5f9;--amber:#fef3c7;--amber-ink:#92400e;--hero:#0f172a;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0b1220;--card:#131d30;--ink:#e6edf5;--sub:#93a3b8;--line:#243249;--brand:#34d27b;--brand-ink:#052e16;--soft:#192740;--amber:#3a2f10;--amber-ink:#fcd98a;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0b1220;--card:#131d30;--ink:#e6edf5;--sub:#93a3b8;--line:#243249;--brand:#34d27b;--brand-ink:#052e16;--soft:#192740;--amber:#3a2f10;--amber-ink:#fcd98a;color-scheme:dark}
+*{box-sizing:border-box}
+html{scroll-padding-top:calc(64px + env(safe-area-inset-top,0px));scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.7 -apple-system,BlinkMacSystemFont,"Hiragino Sans","Noto Sans JP","Yu Gothic",sans-serif}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--card);z-index:30}
+a{color:inherit}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--card);border-bottom:1px solid var(--line)}
+.bar{max-width:1040px;margin:0 auto;padding:0 16px;height:60px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.logo{display:flex;align-items:center;gap:8px;font-weight:800;text-decoration:none}
+.logo b{background:var(--brand);color:var(--brand-ink);border-radius:8px;padding:2px 9px;font-weight:900}
+nav{display:none;gap:22px;font-size:14px;color:var(--sub)}
+nav a{text-decoration:none}
+@media(min-width:760px){nav{display:flex}}
+.pill{background:#5865f2;color:#fff;border-radius:99px;padding:8px 14px;font-size:13px;font-weight:700;text-decoration:none;white-space:nowrap}
+.hero{background:var(--hero);color:#f1f5f9;text-align:center;padding:48px 16px 56px;position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;opacity:.18;background:radial-gradient(#22c55e 1px,transparent 1px) 0 0/16px 16px}
+.hero>*{position:relative}
+.tag{display:inline-block;border:1px solid rgba(74,222,128,.4);color:#4ade80;border-radius:99px;padding:2px 12px;font-size:12px;font-weight:600;margin-bottom:16px}
+h1{font-size:clamp(28px,6.5vw,46px);line-height:1.3;margin:0 0 16px;font-weight:900}
+h1 em{font-style:normal;color:#4ade80}
+.hero p{color:#cbd5e1;max-width:36em;margin:0 auto 24px;font-size:14px}
+.live{max-width:560px;margin:0 auto;background:rgba(30,41,59,.85);border:1px solid #334155;border-radius:16px;padding:14px;text-align:left}
+.live .t{display:flex;justify-content:space-between;font-size:13px;font-weight:700}
+.live .t small{color:#94a3b8;font-weight:400}
+.dot{display:inline-block;width:10px;height:10px;border-radius:50%;background:#22c55e;margin-right:8px}
+.live .c{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.live .c span{background:#334155;border-radius:8px;padding:2px 10px;font-size:12px}
+main{max-width:1040px;margin:0 auto;padding:40px 16px 56px}
+section{margin-bottom:56px}
+h2{font-size:22px;margin:0 0 4px;font-weight:800}
+.sub{color:var(--sub);font-size:14px;margin:0 0 18px}
+.chips{display:flex;gap:8px;overflow-x:auto;padding-bottom:6px;margin-bottom:16px}
+.chip{flex:none;border:1px solid var(--line);background:var(--card);color:var(--sub);border-radius:10px;padding:7px 14px;font:inherit;font-size:13px;font-weight:600;cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--brand);color:var(--brand-ink);border-color:var(--brand)}
+.grid{display:grid;gap:18px;grid-template-columns:repeat(auto-fill,minmax(285px,1fr))}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;overflow:hidden;display:flex;flex-direction:column}
+.ph{height:150px;position:relative;display:grid;place-items:center;font-size:48px}
+.ph .l,.ph .p{position:absolute;top:10px;font-size:12px;font-weight:700;border-radius:8px;padding:3px 9px}
+.ph .l{left:10px;background:rgba(15,23,42,.8);color:#fff}
+.ph .p{right:10px;background:#22c55e;color:#052e16;font-weight:900}
+.cb{padding:16px;display:flex;flex-direction:column;flex:1;gap:10px}
+.cb h3{margin:0;font-size:17px}
+.cb p{margin:0;color:var(--sub);font-size:13px}
+.spec{display:grid;grid-template-columns:1fr 1fr;gap:6px 10px;background:var(--soft);border-radius:12px;padding:10px 12px;font-size:12px}
+.foot{margin-top:auto;border-top:1px solid var(--line);padding-top:10px;display:flex;justify-content:space-between;align-items:center;gap:8px}
+.cd{font-size:11px;font-weight:700;background:var(--amber);color:var(--amber-ink);border-radius:6px;padding:1px 7px;margin-right:6px}
+code{font:700 12px ui-monospace,Menlo,monospace;background:var(--soft);border-radius:6px;padding:2px 7px}
+.more{border:0;background:none;color:var(--brand);font:inherit;font-size:13px;font-weight:700;cursor:pointer}
+.empty{color:var(--sub);padding:24px 0}
+.disc{background:linear-gradient(135deg,#312e81,#0f172a 60%);color:#f1f5f9;border-radius:24px;padding:28px 20px}
+.disc .tag{border-color:rgba(165,180,252,.5);color:#c7d2fe}
+.disc h2{font-size:clamp(22px,5vw,32px);font-weight:900;margin-bottom:12px}
+.disc>p{color:#cbd5e1;font-size:14px;max-width:40em}
+.msgs{background:rgba(15,23,42,.85);border:1px solid #334155;border-radius:16px;padding:14px;margin:18px 0;display:grid;gap:12px;font-size:13px;max-width:40em}
+.msgs b{background:#22c55e;color:#052e16;border-radius:5px;padding:0 6px;font-size:11px;margin-right:6px}
+.msgs i{color:#94a3b8;font-style:normal;font-size:11px;margin-left:6px}
+.dbtn{background:#5865f2;color:#fff;border:0;border-radius:12px;padding:14px 22px;font:inherit;font-weight:800;cursor:pointer}
+.say{font-size:13px;color:#a5b4fc;margin-top:10px;min-height:1.5em}
+.amb{background:var(--card);border:1px solid var(--line);border-radius:24px;padding:28px 20px}
+.steps{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));margin:20px 0}
+.step{background:var(--soft);border-radius:14px;padding:14px;font-size:13px;color:var(--sub)}
+.step b{display:block;color:var(--ink);font-size:14px;margin-bottom:4px}
+.warn{background:var(--amber);color:var(--amber-ink);border-radius:14px;padding:12px 14px;font-size:13px}
+.tools{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(230px,1fr))}
+.tool{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px;text-decoration:none;display:block}
+.tool small{display:inline-block;background:var(--soft);border-radius:6px;padding:0 8px;font-size:11px;font-weight:700;margin-bottom:8px}
+.tool h3{margin:0 0 4px;font-size:16px}
+.tool p{margin:0;color:var(--sub);font-size:13px}
+.note{font-size:12px;color:var(--sub);border-top:1px solid var(--line);padding-top:16px}
+#modal{position:fixed;inset:0;z-index:40;background:rgba(15,23,42,.6);display:none;align-items:center;justify-content:center;padding:16px}
+#modal.on{display:flex}
+.sheet{background:var(--card);border-radius:24px;max-width:480px;width:100%;max-height:calc(100% - 24px);overflow:auto;padding:22px;position:relative}
+.sheet h3{margin:6px 0 14px;font-size:20px}
+.x{position:absolute;top:12px;right:12px;width:34px;height:34px;border-radius:50%;border:0;background:var(--soft);color:var(--ink);font-size:16px;cursor:pointer}
+.box{background:var(--soft);border-radius:12px;padding:12px;font-size:13px;color:var(--sub);margin-bottom:12px}
+.box b{color:var(--ink)}
+.big{display:flex;gap:8px;margin-top:8px}
+.big code{flex:1;text-align:center;font-size:17px;padding:8px;letter-spacing:.08em}
+.big button{border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:8px;padding:0 14px;font:inherit;cursor:pointer}
+.acts{display:flex;gap:10px;margin-top:14px}
+.go{flex:1;background:var(--brand);color:var(--brand-ink);border:0;border-radius:12px;padding:12px;font:inherit;font-weight:800;cursor:pointer}
+.cl{padding:0 16px;border:0;background:var(--soft);color:var(--ink);border-radius:12px;font:inherit;cursor:pointer}
+.mm{font-size:12px;color:var(--sub);margin-top:8px;min-height:1.4em}
+[data-t]{display:none}[data-t].on{display:block}
+.tabs{display:flex;gap:4px;overflow-x:auto;padding:0 12px;max-width:1040px;margin:0 auto}
+.tab{flex:none;border:0;border-bottom:3px solid transparent;background:none;color:var(--sub);font:inherit;font-weight:700;font-size:14px;padding:10px 14px;cursor:pointer}
+.tab[aria-selected="true"]{color:var(--brand);border-bottom-color:var(--brand)}
+.entry{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+.entry button{text-align:left;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px;color:var(--ink);font:inherit;cursor:pointer}
+.entry b{display:block;font-size:16px;margin-bottom:2px}.entry span{font-size:13px;color:var(--sub)}
+.vids{display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(240px,1fr))}
+.vd{border-radius:14px;overflow:hidden;background:var(--card);border:1px solid var(--line)}
+.vd .th{height:120px;display:grid;place-items:center;color:#fff;font-size:28px}
+.vd p{margin:0;padding:10px 12px;font-size:13px;font-weight:700}
+.simbox{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:16px;max-width:520px}
+.row{display:flex;gap:10px;margin-bottom:12px}
+select{flex:1;font:inherit;color:var(--ink);background:var(--soft);border:1px solid var(--line);border-radius:10px;padding:10px}
+.ln{display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid var(--line);font-size:14px}
+.tot{display:flex;justify-content:space-between;padding-top:12px;font-weight:900;font-size:20px;color:var(--brand)}
+.ck{display:flex;gap:10px;padding:10px 0;border-bottom:1px solid var(--line);font-size:14px;cursor:pointer}
+.wr{border-bottom:1px solid var(--line)}
+.wb{display:flex;justify-content:space-between;gap:10px;width:100%;background:none;border:0;color:var(--ink);font:inherit;padding:12px 4px;cursor:pointer;text-align:left}
+.wv{color:var(--sub);font-size:13px;white-space:nowrap}
+.wd{background:var(--soft);border-radius:12px;padding:12px;margin-bottom:12px}
+.wd input,.wd textarea{width:100%;font:inherit;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:8px;padding:8px;margin:4px 0}
+.wl{display:block;font-size:12px;color:var(--sub);margin-top:8px}
+.gh{display:none!important}
+.gcbar{display:flex;flex-wrap:wrap;gap:8px 12px;align-items:center;margin-bottom:20px}
+.gcbar label{display:flex;gap:10px;align-items:center;font-size:13px;color:var(--sub)}
+.gcbar select{min-width:200px}
+a:focus-visible,button:focus-visible,select:focus-visible{outline:3px solid var(--brand);outline-offset:2px}
+
+.hero{background:linear-gradient(160deg,#fde68a 0%,#fdba74 45%,#c4b5fd 100%);color:#3b2a1a;padding:44px 16px 52px}
+.hero::before{opacity:.35;background:radial-gradient(#fff 1.5px,transparent 1.5px) 0 0/22px 22px}
+.hero h1{color:#3b2a1a;font-size:clamp(38px,12vw,84px);line-height:1.25;font-weight:900;letter-spacing:-.02em;transform:rotate(-1.5deg);margin:10px 0 20px}
+.hero h1 em{font-style:normal;background:#fff8;border-radius:14px;padding:0 10px;color:#9a3412;display:inline-block;margin-top:4px}
+.hero p{color:#4a3520}
+.hero .tag{color:#7c2d12;border-color:#7c2d1266;background:#fff6}
+.hero .go{background:#7c2d12;color:#fff;box-shadow:0 4px 0 #431407}
+.hero .go:active{transform:translateY(3px);box-shadow:0 1px 0 #431407}
+.hero .oks{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:0 0 18px;padding:0;list-style:none}
+.hero .oks li{background:#fff9;border-radius:99px;padding:3px 12px;font-size:12px;font-weight:700;color:#7c2d12}
+.hero .oks li:nth-child(odd){transform:rotate(-2deg)}.hero .oks li:nth-child(even){transform:rotate(2deg)}
+.hero .fl{position:absolute;font-size:28px;opacity:.85;animation:fl 6s ease-in-out infinite;pointer-events:none}
+@keyframes fl{0%,100%{transform:translateY(0) rotate(-6deg)}50%{transform:translateY(-10px) rotate(6deg)}}
+.entry button:nth-child(odd){transform:rotate(-.6deg)}.entry button:nth-child(even){transform:rotate(.6deg)}
+.entry button:hover{transform:rotate(0) translateY(-2px)}
+@media(prefers-reduced-motion:reduce){.hero .fl{animation:none}.entry button{transform:none!important}}
+.logo{white-space:nowrap;font-size:14px;gap:5px}.logo b{white-space:nowrap}.bar .pill{white-space:nowrap;font-size:12px!important;padding:6px 10px}
+
+:root{--bg:#fff7ed;--line:#fed7aa;--soft:#ffedd5;--brand:#c2410c;--brand-ink:#fff;--ink:#3b2a1a;--sub:#7c5a3a;--card:#fffdf9}
+:root[data-theme="dark"]{--bg:#1c1410;--card:#2a1f18;--ink:#f5e9dc;--sub:#c9b29a;--line:#4a3426;--soft:#33241b;--brand:#fb923c;--brand-ink:#2b1204}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1c1410;--card:#2a1f18;--ink:#f5e9dc;--sub:#c9b29a;--line:#4a3426;--soft:#33241b;--brand:#fb923c;--brand-ink:#2b1204}}
+main section>h2:first-child{display:inline-block;background:linear-gradient(120deg,#fde68a,#fdba74);color:#3b2a1a;padding:4px 16px;border-radius:12px;transform:rotate(-1deg);font-size:22px}
+.tab[aria-selected="true"]{color:var(--brand)}
+.card{border-radius:20px}
+.card:nth-child(3n+1){transform:rotate(-.4deg)}.card:nth-child(3n+2){transform:rotate(.3deg)}
+.go{box-shadow:0 3px 0 #0003}
+@media(prefers-reduced-motion:reduce){.card{transform:none!important}}
+select{max-width:100%;box-sizing:border-box}
+.row select{flex:1 1 0;min-width:0}
+#kn{flex:0 0 96px!important}
+.logo{font-size:13px}.logo b{padding:2px 7px}
+@media(max-width:380px){.bar .pill{font-size:11px!important;padding:6px 8px}.bar{gap:6px}}
+.gcbar select{min-width:0!important;flex:1 1 0;max-width:100%}.gcbar{flex-wrap:wrap}.gcbar label{flex:1 1 100%;min-width:0}
+@media(max-width:340px){.bar{flex-wrap:wrap;justify-content:center}}
+#rq{width:100%;max-width:480px;box-sizing:border-box;font:inherit;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 14px;margin-bottom:12px}
+.chips{flex-wrap:wrap}
+#fxq{width:100%;max-width:480px;box-sizing:border-box;font:inherit;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 14px;margin-bottom:10px}
+#fxa{box-sizing:border-box;font:inherit;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 14px}
+.fxtb{max-height:520px;overflow:auto;border:1px solid var(--line);border-radius:14px;background:var(--card)}
+.fxr{display:flex;justify-content:space-between;gap:10px;padding:9px 14px;border-bottom:1px solid var(--line);font-size:14px}
+.fxr:last-child{border-bottom:0}.fxr b{white-space:nowrap}.fxr span{color:var(--sub);min-width:0}
+.fxr button{all:unset;cursor:pointer;display:flex;justify-content:space-between;gap:10px;width:100%}
+.big{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:14px 0}
+.big button{display:flex;flex-direction:column;align-items:flex-start;gap:2px;text-align:left;background:var(--card);border:2px solid var(--line);border-radius:20px;padding:16px 14px;color:var(--ink);font:inherit;cursor:pointer;min-height:112px;box-shadow:0 4px 0 var(--line)}
+.big button:active{transform:translateY(3px);box-shadow:0 1px 0 var(--line)}
+.big i{font-style:normal;font-size:34px;line-height:1.1}
+.big b{font-size:18px;font-weight:900}
+.big span{font-size:12px;color:var(--sub);line-height:1.4}
+.big button:first-child,.big button:nth-child(2){border-color:var(--brand)}
+@media(min-width:700px){.big{grid-template-columns:repeat(4,1fr)}}
+.tab{font-size:16px!important;padding:12px 16px!important}
+.authbar{display:flex;gap:10px;align-items:center;justify-content:space-between;flex-wrap:wrap;background:var(--soft);border:1px solid var(--line);border-radius:14px;padding:8px 12px;margin:0 0 14px;font-size:13px}
+.authbar button{font:inherit;font-weight:800;background:var(--brand);color:var(--brand-ink);border:0;border-radius:10px;padding:6px 12px;cursor:pointer}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:#3b2a1a;color:#fff;padding:10px 16px;border-radius:12px;z-index:60;max-width:88vw;font-size:14px;box-shadow:0 6px 20px #0004}
+.addf{margin:10px 0;background:#fff7ec;border:1px solid #f0d9b8;border-radius:14px;padding:8px 12px}.addf summary{cursor:pointer;font-weight:700;color:#b5441c;padding:6px 0}.addf .wd{margin-top:8px}.card .more[data-ek]{margin:8px 0 2px;font-size:13px}[hidden]{display:none!important}
+/* ウユニ塩湖パレット：空の青・塩の白・テロップの紺と黄色 */
+:root[data-theme="light"]{--bg:#eef5fb;--card:#ffffff;--ink:#0f1f3d;--sub:#2f4468;--line:#8db6dc;--soft:#d9eafa;--brand:#1c5db0;--brand-ink:#fff;--teal:#1c5db0}
+@media(prefers-color-scheme:light){:root:not([data-theme="dark"]){--bg:#eef5fb;--card:#ffffff;--ink:#0f1f3d;--sub:#2f4468;--line:#8db6dc;--soft:#d9eafa;--brand:#1c5db0;--brand-ink:#fff;--teal:#1c5db0}}
+:root[data-theme="dark"]{--bg:#14171c;--card:#1f242c;--ink:#f1f5fb;--sub:#a9b8cc;--line:#34465f;--soft:#232c3a;--brand:#6bb6ff;--brand-ink:#08203d;--teal:#6bb6ff}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#14171c;--card:#1f242c;--ink:#f1f5fb;--sub:#a9b8cc;--line:#34465f;--soft:#232c3a;--brand:#6bb6ff;--brand-ink:#08203d;--teal:#6bb6ff}}
+header{border-bottom:0}
+header::after{content:"";display:block;height:6px;background:repeating-linear-gradient(135deg,#12295a 0 14px,#fff 14px 22px,#f47a1f 22px 36px,#fff 36px 44px)}
+.hero{background:linear-gradient(180deg,#1c74cf 0%,#4aa6ea 45%,#a9d6f6 80%,#eef5fb 100%);color:#0f1f3d}
+.hero::before{opacity:.5;background:radial-gradient(#fff 1.5px,transparent 1.5px) 0 0/26px 26px}
+.hero h1{color:#fff;-webkit-text-stroke:0;text-shadow:-3px -3px 0 #12295a,3px -3px 0 #12295a,-3px 3px 0 #12295a,3px 3px 0 #12295a,0 5px 0 #12295a}
+.hero h1 em{background:#f47a1f;color:#12295a;text-shadow:none}
+.hero p{color:#0f1f3d;font-weight:600}
+.hero .tag{color:#12295a;border-color:#12295a88;background:#fffc}
+.hero .go{background:#12295a;color:#fff;box-shadow:0 4px 0 #060f27}
+.hero .go:active{box-shadow:0 1px 0 #060f27}
+.hero .oks li{background:#12295a;color:#fff}
+main section>h2:first-child,h2[style*="linear-gradient"]{background:#12295a!important;color:#fff!important;box-shadow:0 4px 0 #f47a1f}
+.big button{border-color:var(--line);box-shadow:0 4px 0 var(--line)}
+.big button:first-child,.big button:nth-child(2){border-color:var(--brand);box-shadow:0 4px 0 #12295a}
+.card,.simbox{border:2px solid var(--line)}
+.addf{background:var(--soft);border-color:var(--line)}
+.addf summary{color:var(--brand)}
+.tab[aria-selected="true"]{color:var(--brand);border-bottom-color:#f47a1f}
+
+.card,.simbox{box-shadow:0 4px 0 var(--line)}
+.card p,.sub,.small,.simbox .ln{font-weight:500}
+.card h3,.simbox b{font-weight:800}
+.tab{color:var(--sub);font-weight:800!important}
+.tab[aria-selected="true"]{color:var(--brand)}
+body{font-weight:500}
+/* Discordの部分はDiscordの色 */
+[data-join].go,.hero .go[data-join]{background:#5865f2;color:#fff;box-shadow:0 4px 0 #3c45a5}
+[data-join].go:active,.hero .go[data-join]:active{box-shadow:0 1px 0 #3c45a5}
+.dsc h2{background:#5865f2!important;color:#fff!important;box-shadow:0 3px 0 #3c45a5}
+.dsc .step{background:#e3e6ff;color:#1b1f4d;border:2px solid #5865f2;border-radius:18px}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]) .dsc .step{background:#242a5c;color:#e8eaff}}
+:root[data-theme="dark"] .dsc .step{background:#242a5c;color:#e8eaff}
+.dsc .step b{color:inherit}
+.big button[data-go="crew"] b,.big button[data-go="crew"] span{color:#1b1f4d}
+.dsc .sub,.dsc .small{color:inherit}
+.big button[data-go="crew"]{border-color:#5865f2;box-shadow:0 4px 0 #3c45a5;background:#e3e6ff}
+/* 18禁はピンク */
+#adult h2{background:#d6247a!important;color:#fff!important;box-shadow:0 4px 0 #8f1050}
+#adult .simbox,#adult .card,#adult .addf{background:#ffe3f0;border-color:#e0559a;color:#4a0d2a}
+#adult .card h3,#adult .card p,#adult .card b,#adult .simbox .ln,#adult .sub,#adult .small,#adult summary{color:#4a0d2a}
+#adult .card .spec span{background:#ffc4de;color:#4a0d2a}
+#adult .go,#adult .more{background:#d6247a;color:#fff;border-color:#d6247a;box-shadow:0 4px 0 #8f1050}
+#adult .addf summary{color:#a3125f}
+#adult input,#adult select,#adult textarea{border-color:#e0559a}
+.tab[data-k="adult"]{color:#d6247a}
+.tab[data-k="adult"][aria-selected="true"]{color:#d6247a;border-bottom-color:#d6247a}
+.big button[data-go="adult"]{border-color:#e0559a;box-shadow:0 4px 0 #e0559a;background:#ffe3f0}
+.big button[data-go="adult"] b,.big button[data-go="adult"] span{color:#4a0d2a}
+.logo .av{width:30px;height:30px;border-radius:50%;object-fit:cover;flex:none;border:2px solid var(--line)}
+/* ビーチ：空・海・砂浜・太陽・波 */
+:root[data-theme="light"]{--bg:#ffffff;--card:#ffffff;--ink:#05282e;--sub:#2a4f55;--line:#4fc8c9;--soft:#d6f3f0;--brand:#0a7288;--brand-ink:#fff;--teal:#0a7288}
+@media(prefers-color-scheme:light){:root:not([data-theme="dark"]){--bg:#ffffff;--card:#ffffff;--ink:#05282e;--sub:#2a4f55;--line:#4fc8c9;--soft:#d6f3f0;--brand:#0a7288;--brand-ink:#fff;--teal:#0a7288}}
+header::after{background:repeating-linear-gradient(135deg,#14b8c4 0 14px,#fff 14px 22px,#f47a1f 22px 36px,#fff 36px 44px)}
+.hero{background:radial-gradient(circle at 86% 15%,#fff3b8 0 13px,#ffc247 14px 23px,#ffc24766 24px 35px,transparent 36px),linear-gradient(180deg,#4cc1f2 0%,#8bdcf6 34%,#2cc9c7 58%,#14a7bb 80%,#0e8fa8 100%)}
+.hero::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:36px;background:var(--bg);-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 20' preserveAspectRatio='none'%3E%3Cpath d='M0 11Q15 1 30 11T60 11T90 11T120 11V20H0Z'/%3E%3C/svg%3E") bottom/120px 36px repeat-x;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 20' preserveAspectRatio='none'%3E%3Cpath d='M0 11Q15 1 30 11T60 11T90 11T120 11V20H0Z'/%3E%3C/svg%3E") bottom/120px 36px repeat-x;pointer-events:none}
+.hero{padding-bottom:64px}
+.hero p{color:#06303a}
+main section>h2:first-child,h2[style*="linear-gradient"]{background:#0a6f80!important;box-shadow:0 4px 0 #f47a1f}
+.big button:first-child,.big button:nth-child(2){border-color:var(--brand);box-shadow:0 4px 0 #086274}
+.tab[aria-selected="true"]{border-bottom-color:#f47a1f}
+.simbox,.card{box-shadow:0 4px 0 #4fc8c9}
+#adult .card,#adult .simbox{box-shadow:0 4px 0 #e0559a}
+.big button:not([data-go="crew"]):not([data-go="adult"]){background:#eefaf1;border-color:#4fbf84;box-shadow:0 4px 0 #4fbf84}
+.big button:not([data-go="crew"]):not([data-go="adult"]) b{color:#04200f}
+.big button:not([data-go="crew"]):not([data-go="adult"]) span{color:#123d26;font-weight:700}
+main section>h2.dh:first-child,h2.dh[style]{background:#5865f2!important;color:#fff!important;box-shadow:0 4px 0 #3c45a5!important}
+/* メインカラー：彩度の高い緑と白 */
+:root[data-theme="light"]{--bg:#ffffff;--card:#ffffff;--ink:#062414;--sub:#2c5a3f;--line:#58d086;--soft:#e4f8ec;--brand:#0b8a3e;--brand-ink:#fff;--teal:#0b8a3e}
+@media(prefers-color-scheme:light){:root:not([data-theme="dark"]){--bg:#ffffff;--card:#ffffff;--ink:#062414;--sub:#2c5a3f;--line:#58d086;--soft:#e4f8ec;--brand:#0b8a3e;--brand-ink:#fff;--teal:#0b8a3e}}
+:root[data-theme="dark"]{--brand:#4ade80;--brand-ink:#052e16;--teal:#4ade80}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--brand:#4ade80;--brand-ink:#052e16;--teal:#4ade80}}
+header::after{background:repeating-linear-gradient(135deg,#0b8a3e 0 14px,#fff 14px 22px,#22c55e 22px 36px,#fff 36px 44px)}
+.hero{background:radial-gradient(circle at 86% 15%,#fff3b8 0 13px,#ffc247 14px 23px,#ffc24766 24px 35px,transparent 36px),linear-gradient(180deg,#7df0a6 0%,#3fdc7a 45%,#1fc45f 100%);color:#03301a}
+.hero::before{opacity:.45}
+.hero h1{color:#fff;text-shadow:-3px -3px 0 #064e24,3px -3px 0 #064e24,-3px 3px 0 #064e24,3px 3px 0 #064e24,0 5px 0 #064e24}
+.hero h1 em{background:#fff;color:#0a6b30}
+.hero p{color:#03301a}
+.hero .tag{color:#064e24;border-color:#064e2488;background:#fffc}
+.hero .go{background:#064e24;color:#fff;box-shadow:0 4px 0 #02240f}
+.hero .oks li{background:#064e24;color:#fff}
+main section>h2:first-child,h2[style*="linear-gradient"]{background:#0b8a3e!important;box-shadow:0 4px 0 #064e24}
+.dh,h2.dh[style]{background:#5865f2!important;box-shadow:0 4px 0 #3c45a5!important}
+.big button:first-child,.big button:nth-child(2){border-color:var(--brand);box-shadow:0 4px 0 #064e24}
+.big button:not([data-go="crew"]):not([data-go="adult"]){background:#eefaf1;border-color:#4fc27e;box-shadow:0 4px 0 #4fc27e}
+.simbox,.card{box-shadow:0 4px 0 var(--line)}
+.tab[aria-selected="true"]{color:var(--brand);border-bottom-color:var(--brand)}
+#adult .card,#adult .simbox{box-shadow:0 4px 0 #e0559a}
+#adult h2{background:#d6247a!important;box-shadow:0 4px 0 #8f1050!important}
+.big button[data-go="adult"]{border-color:#e0559a;box-shadow:0 4px 0 #e0559a;background:#ffe3f0}
+.big button[data-go="crew"]{border-color:#5865f2;box-shadow:0 4px 0 #3c45a5;background:#e3e6ff}
+.tab[data-k="adult"][aria-selected="true"]{color:#d6247a;border-bottom-color:#d6247a}
+.dsc h2{background:#5865f2!important;box-shadow:0 4px 0 #3c45a5!important}
+/* メインカラー：濃いオレンジと白 */
+:root[data-theme="light"]{--bg:#ffffff;--card:#ffffff;--ink:#2b1405;--sub:#6a3a1a;--line:#f5a468;--soft:#ffeedd;--brand:#d4500f;--brand-ink:#fff;--teal:#d4500f}
+@media(prefers-color-scheme:light){:root:not([data-theme="dark"]){--bg:#ffffff;--card:#ffffff;--ink:#2b1405;--sub:#6a3a1a;--line:#f5a468;--soft:#ffeedd;--brand:#d4500f;--brand-ink:#fff;--teal:#d4500f}}
+:root[data-theme="dark"]{--brand:#ff9a52;--brand-ink:#2b1204;--teal:#ff9a52}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--brand:#ff9a52;--brand-ink:#2b1204;--teal:#ff9a52}}
+header::after{background:repeating-linear-gradient(135deg,#d4500f 0 14px,#fff 14px 22px,#ff8a3d 22px 36px,#fff 36px 44px)}
+.hero{background:radial-gradient(circle at 86% 15%,#fff3b8 0 13px,#ffe07a 14px 23px,#ffe07a66 24px 35px,transparent 36px),linear-gradient(180deg,#ffb877 0%,#ff9244 45%,#f36d1e 100%);color:#3a1500}
+.hero h1{color:#fff;text-shadow:-3px -3px 0 #7a2a05,3px -3px 0 #7a2a05,-3px 3px 0 #7a2a05,3px 3px 0 #7a2a05,0 5px 0 #7a2a05}
+.hero h1 em{background:#fff;color:#b83a08}
+.hero p{color:#3a1500}
+.hero .tag{color:#7a2a05;border-color:#7a2a0588;background:#fffc}
+.hero .go{background:#7a2a05;color:#fff;box-shadow:0 4px 0 #3a1500}
+.hero .oks li{background:#7a2a05;color:#fff}
+main section>h2:first-child,h2[style*="linear-gradient"]{background:#d4500f!important;box-shadow:0 4px 0 #7a2a05}
+.big button:first-child,.big button:nth-child(2){border-color:var(--brand);box-shadow:0 4px 0 #7a2a05}
+.big button:not([data-go="crew"]):not([data-go="adult"]){background:#fff4ea;border-color:#f08a47;box-shadow:0 4px 0 #f08a47}
+.big button:not([data-go="crew"]):not([data-go="adult"]) b{color:#2b1405}
+.big button:not([data-go="crew"]):not([data-go="adult"]) span{color:#5a2f12;font-weight:700}
+#adult .card,#adult .simbox{box-shadow:0 4px 0 #e0559a}
+#adult h2{background:#d6247a!important;box-shadow:0 4px 0 #8f1050!important}
+.big button[data-go="adult"]{border-color:#e0559a;box-shadow:0 4px 0 #e0559a;background:#ffe3f0}
+.big button[data-go="crew"]{border-color:#5865f2;box-shadow:0 4px 0 #3c45a5;background:#e3e6ff}
+.tab[data-k="adult"][aria-selected="true"]{color:#d6247a;border-bottom-color:#d6247a}
+.dsc h2,h2.dh[style]{background:#5865f2!important;box-shadow:0 4px 0 #3c45a5!important}
+/* 黄色を追加 */
+:root[data-theme="light"]{--soft:#fff2bd;--line:#f2b04a}
+@media(prefers-color-scheme:light){:root:not([data-theme="dark"]){--soft:#fff2bd;--line:#f2b04a}}
+header::after{background:repeating-linear-gradient(135deg,#d4500f 0 12px,#fff 12px 18px,#ffd21f 18px 32px,#fff 32px 38px)}
+.hero{background:radial-gradient(circle at 86% 15%,#fffbe0 0 13px,#fff0a0 14px 23px,#fff0a066 24px 35px,transparent 36px),linear-gradient(180deg,#ffe85c 0%,#ffc734 32%,#ff9d2e 66%,#f57420 100%)}
+.hero h1 em{background:#ffe14d;color:#5a2400}
+.hero .oks li{background:#ffe14d;color:#5a2400}
+.hero .go{background:#5a2400;color:#fff}
+main section>h2:first-child,h2[style*="linear-gradient"]{box-shadow:0 4px 0 #ffd21f}
+.big button:first-child,.big button:nth-child(2){box-shadow:0 4px 0 #ffc21a}
+.big button:not([data-go="crew"]):not([data-go="adult"]){background:#fff6c9;border-color:#f2a73b;box-shadow:0 4px 0 #ffc21a}
+.big button:not([data-go="crew"]):not([data-go="adult"]) span{color:#5a3a00}
+.simbox,.card{box-shadow:0 4px 0 #ffd54a}
+.tab[aria-selected="true"]{border-bottom-color:#ffc21a}
+.addf{background:#fff2bd}
+#adult .card,#adult .simbox{box-shadow:0 4px 0 #e0559a}
+#adult h2{background:#d6247a!important;box-shadow:0 4px 0 #8f1050!important}
+.big button[data-go="adult"]{border-color:#e0559a;box-shadow:0 4px 0 #e0559a;background:#ffe3f0}
+.big button[data-go="crew"]{border-color:#5865f2;box-shadow:0 4px 0 #3c45a5;background:#e3e6ff}
+.tab[data-k="adult"][aria-selected="true"]{color:#d6247a;border-bottom-color:#d6247a}
+.dsc h2,h2.dh[style]{background:#5865f2!important;box-shadow:0 4px 0 #3c45a5!important}
+/* ホームのヒーローだけビーチ */
+.hero{background:radial-gradient(circle at 86% 15%,#fff3b8 0 13px,#ffc247 14px 23px,#ffc24766 24px 35px,transparent 36px),linear-gradient(180deg,#4cc1f2 0%,#8bdcf6 30%,#2cc9c7 52%,#14a7bb 72%,#f4dfae 90%,#efd093 100%);color:#06303a}
+.hero::before{opacity:.5;background:radial-gradient(#fff 1.5px,transparent 1.5px) 0 0/26px 26px}
+.hero h1{color:#fff;text-shadow:-3px -3px 0 #0a4660,3px -3px 0 #0a4660,-3px 3px 0 #0a4660,3px 3px 0 #0a4660,0 5px 0 #0a4660}
+.hero h1 em{background:#ffe14d;color:#0a4660}
+.hero p{color:#06303a;font-weight:600}
+.hero .tag{color:#0a4660;border-color:#0a466088;background:#fffc}
+.hero .go{background:#0a4660;color:#fff;box-shadow:0 4px 0 #06293a}
+.hero .oks li{background:#0a4660;color:#fff}
+.hero .go[data-join]{background:#5865f2;color:#fff;box-shadow:0 4px 0 #3c45a5}
+.hero::before{display:none!important}
+/* ベースのオレンジを黄色寄りに */
+:root[data-theme="light"]{--brand:#b45309;--brand-ink:#2b1200;--teal:#b45309;--line:#f0b84a}
+@media(prefers-color-scheme:light){:root:not([data-theme="dark"]){--brand:#b45309;--brand-ink:#2b1200;--teal:#b45309;--line:#f0b84a}}
+header::after{background:repeating-linear-gradient(135deg,#f59e0b 0 12px,#fff 12px 18px,#ffd21f 18px 32px,#fff 32px 38px)}
+.logo b{background:#f59e0b;color:#2b1200}
+.go{background:#f59e0b;color:#2b1200;box-shadow:0 4px 0 #b45309}
+main section>h2:first-child,h2[style*="linear-gradient"]{background:#f59e0b!important;color:#2b1200!important;box-shadow:0 4px 0 #b45309}
+.big button:first-child,.big button:nth-child(2){border-color:#e08a00;box-shadow:0 4px 0 #e08a00}
+.big button:not([data-go="crew"]):not([data-go="adult"]){border-color:#f0b84a;box-shadow:0 4px 0 #f0b84a}
+.simbox,.card{box-shadow:0 4px 0 #f6cf6a}
+.tab[aria-selected="true"]{color:#b45309;border-bottom-color:#f59e0b}
+.addf summary{color:#b45309}
+#adult .card,#adult .simbox{box-shadow:0 4px 0 #e0559a}
+#adult h2{background:#d6247a!important;color:#fff!important;box-shadow:0 4px 0 #8f1050!important}
+#adult .go,#adult .more{background:#d6247a;color:#fff;box-shadow:0 4px 0 #8f1050}
+.big button[data-go="adult"]{border-color:#e0559a;box-shadow:0 4px 0 #e0559a;background:#ffe3f0}
+.big button[data-go="crew"]{border-color:#5865f2;box-shadow:0 4px 0 #3c45a5;background:#e3e6ff}
+.tab[data-k="adult"][aria-selected="true"]{color:#d6247a;border-bottom-color:#d6247a}
+.dsc h2,h2.dh[style]{background:#5865f2!important;color:#fff!important;box-shadow:0 4px 0 #3c45a5!important}
+[data-join].go,.hero .go[data-join]{background:#5865f2;color:#fff;box-shadow:0 4px 0 #3c45a5}
+.hero .go{background:#0a4660;color:#fff;box-shadow:0 4px 0 #06293a}
+.hero .go[data-join]{background:#5865f2;box-shadow:0 4px 0 #3c45a5}
+/* 太陽みたいな赤 */
+:root[data-theme="light"]{--brand:#c8260f;--brand-ink:#fff;--teal:#c8260f;--line:#f2a08c;--soft:#ffe6df}
+@media(prefers-color-scheme:light){:root:not([data-theme="dark"]){--brand:#c8260f;--brand-ink:#fff;--teal:#c8260f;--line:#f2a08c;--soft:#ffe6df}}
+header::after{background:repeating-linear-gradient(135deg,#e5311a 0 12px,#fff 12px 18px,#ffd21f 18px 32px,#fff 32px 38px)}
+.logo b{background:#e5311a;color:#fff}
+.go{background:#e5311a;color:#fff;box-shadow:0 4px 0 #8f1a0a}
+main section>h2:first-child,h2[style*="linear-gradient"]{background:#e5311a!important;color:#fff!important;box-shadow:0 4px 0 #ffd21f}
+.big button:first-child,.big button:nth-child(2){border-color:#e5311a;box-shadow:0 4px 0 #ffc21a}
+.big button:not([data-go="crew"]):not([data-go="adult"]){background:#fff6c9;border-color:#ee6a52;box-shadow:0 4px 0 #ffc21a}
+.simbox,.card{box-shadow:0 4px 0 #ffd54a}
+.tab[aria-selected="true"]{color:#c8260f;border-bottom-color:#e5311a}
+.addf{background:#fff2bd;border-color:#f2a08c}
+.addf summary{color:#c8260f}
+#adult .card,#adult .simbox{box-shadow:0 4px 0 #e0559a}
+#adult h2{background:#d6247a!important;color:#fff!important;box-shadow:0 4px 0 #8f1050!important}
+#adult .go,#adult .more{background:#d6247a;color:#fff;box-shadow:0 4px 0 #8f1050}
+.big button[data-go="adult"]{border-color:#e0559a;box-shadow:0 4px 0 #e0559a;background:#ffe3f0}
+.big button[data-go="crew"]{border-color:#5865f2;box-shadow:0 4px 0 #3c45a5;background:#e3e6ff}
+.tab[data-k="adult"][aria-selected="true"]{color:#d6247a;border-bottom-color:#d6247a}
+.dsc h2,h2.dh[style]{background:#5865f2!important;color:#fff!important;box-shadow:0 4px 0 #3c45a5!important}
+[data-join].go,.hero .go[data-join]{background:#5865f2;color:#fff;box-shadow:0 4px 0 #3c45a5}
+.hero .go{background:#0a4660;color:#fff;box-shadow:0 4px 0 #06293a}
+.hero .go[data-join]{background:#5865f2;box-shadow:0 4px 0 #3c45a5}
+/* YouTubeの赤と白 */
+:root[data-theme="light"]{--bg:#ffffff;--card:#ffffff;--ink:#0f0f0f;--sub:#4a4a4a;--brand:#cc0000;--brand-ink:#fff;--teal:#cc0000;--line:#ff8a8a;--soft:#fff0f0}
+@media(prefers-color-scheme:light){:root:not([data-theme="dark"]){--bg:#ffffff;--card:#ffffff;--ink:#0f0f0f;--sub:#4a4a4a;--brand:#cc0000;--brand-ink:#fff;--teal:#cc0000;--line:#ff8a8a;--soft:#fff0f0}}
+header::after{background:repeating-linear-gradient(135deg,#ff0000 0 14px,#fff 14px 22px,#cc0000 22px 36px,#fff 36px 44px)}
+.logo b{background:#ff0000;color:#fff}
+.go{background:#ff0000;color:#fff;box-shadow:0 4px 0 #990000}
+main section>h2:first-child,h2[style*="linear-gradient"]{background:#ff0000!important;color:#fff!important;box-shadow:0 4px 0 #990000}
+.big button:first-child,.big button:nth-child(2){border-color:#ff0000;box-shadow:0 4px 0 #ff0000}
+.big button:not([data-go="crew"]):not([data-go="adult"]){background:#fff;border-color:#ff0000;box-shadow:0 4px 0 #ff0000}
+.big button:not([data-go="crew"]):not([data-go="adult"]) b{color:#0f0f0f}
+.big button:not([data-go="crew"]):not([data-go="adult"]) span{color:#4a4a4a}
+.simbox,.card{border-color:#ff8a8a;box-shadow:0 4px 0 #ff8a8a}
+.tab[aria-selected="true"]{color:#cc0000;border-bottom-color:#ff0000}
+.addf{background:#fff0f0;border-color:#ff8a8a}
+.addf summary{color:#cc0000}
+select{border-color:#ff8a8a}
+#adult .card,#adult .simbox{box-shadow:0 4px 0 #e0559a;border-color:#e0559a}
+#adult h2{background:#d6247a!important;color:#fff!important;box-shadow:0 4px 0 #8f1050!important}
+#adult .go,#adult .more{background:#d6247a;color:#fff;box-shadow:0 4px 0 #8f1050}
+.big button[data-go="adult"]{border-color:#e0559a;box-shadow:0 4px 0 #e0559a;background:#ffe3f0}
+.big button[data-go="crew"]{border-color:#5865f2;box-shadow:0 4px 0 #3c45a5;background:#e3e6ff}
+.tab[data-k="adult"][aria-selected="true"]{color:#d6247a;border-bottom-color:#d6247a}
+.dsc h2,h2.dh[style]{background:#5865f2!important;color:#fff!important;box-shadow:0 4px 0 #3c45a5!important}
+[data-join].go,.hero .go[data-join]{background:#5865f2;color:#fff;box-shadow:0 4px 0 #3c45a5}
+.hero .go{background:#0a4660;color:#fff;box-shadow:0 4px 0 #06293a}
+.hero .go[data-join]{background:#5865f2;box-shadow:0 4px 0 #3c45a5}
+</style>
+</head>
+<body>
+<header><div class="bar">
+<a class="logo" href="#top"><img class="av" src="img/teihen.webp" alt="" width="30" height="30"><b>底辺くん</b>のノマドノート</a>
+<button class="pill" data-join style="border:0;font:inherit;font-size:13px;font-weight:700;cursor:pointer">💬 ゆるっと参加（無料）</button>
+</div><div class="tabs" id="tabs" role="tablist"></div></header>
+
+<div class="hero" id="top" data-t="home">
+<span class="fl" style="left:6%;top:18px">🛌</span><span class="fl" style="left:34%;top:8px;animation-delay:-1s">🌊</span><span class="fl" style="right:26%;bottom:40px;animation-delay:-3s">🐚</span><span class="fl" style="left:4%;bottom:44px;animation-delay:-5s">🏖</span><span class="fl" style="right:7%;top:30px;animation-delay:-2s">🌴</span><span class="fl" style="left:12%;bottom:14px;animation-delay:-4s">🍺</span><span class="fl" style="right:10%;bottom:22px;animation-delay:-1s">💤</span>
+<span class="tag">底辺くん発 × だらだら旅暮らしの溜まり場</span>
+<h1>頑張らずに、<br><em>世界で暮らす。</em></h1>
+<p>朝は起きなくていい。物価は安い国で。仕事はノートパソコンひとつ。そんな暮らしの現実を、金のない旅人どうしでこっそり共有する場所です。国ごとの生活費、安い飯、危ない手口まで、みんなで書き足していきます。</p>
+<ul class="oks"><li>二度寝OK</li><li>遅刻OK</li><li>貧乏OK</li><li>ひとり旅OK</li><li>意識低めOK</li></ul>
+<div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center"><button class="go" data-join style="max-width:340px;width:100%;font-size:17px;padding:14px">ゆるっと仲間になる（無料）</button></div>
+<p class="small" id="jmsg" role="status" style="margin-top:8px"></p>
+</div>
+
+<main>
+<div id="authbar" class="authbar" hidden></div>
+<div class="gcbar"><label>🌏 国で絞り込む<select id="gc" aria-label="国で絞り込む"></select></label><span class="small" style="margin:0">国別コスト・グルメ・安全に反映されます</span></div>
+<p class="empty" id="gnote" hidden>この国の情報は、まだありません。国別コストで追加していきましょう。</p>
+<section id="home-more" data-t="home">
+<h2 style="display:inline-block;background:linear-gradient(120deg,#fde68a,#fdba74);color:#3b2a1a;padding:4px 16px;border-radius:12px;transform:rotate(-1deg);font-size:22px">だらだら使えるもの、そろえました</h2>
+<div class="big">
+<button data-go="wiki"><i>📒</i><b>国別コスト</b><span>生活費と、主な街</span></button>
+<button data-go="fx"><i>💱</i><b>両替</b><span>どの通貨でも換算</span></button>
+<button data-go="food"><i>🍜</i><b>グルメ</b><span>おすすめの店を探す</span></button>
+<button data-go="stays"><i>🏠</i><b>穴場の宿</b><span>泊まってよかった宿</span></button>
+<button data-go="safety"><i>🛡</i><b>安全</b><span>だまされない・奪われない</span></button>
+<button data-go="adult"><i>🔞</i><b>18禁</b><span>夜の街の注意（18歳以上）</span></button>
+<button data-go="board"><i>🤝</i><b>募集・仲間</b><span>一緒に回る・組む・譲る</span></button>
+<button data-go="ch"><i>📺</i><b>チャンネル</b><span>旅YouTuberの紹介</span></button>
+<button data-go="prep"><i>🎒</i><b>準備</b><span>チェックリストとツール</span></button>
+<button data-go="crew"><i>💬</i><b>仲間になる</b><span>Discordで何ができる？</span></button>
+</div>
+
+<div class="dsc">
+<h2 class="dh" style="display:inline-block;background:linear-gradient(120deg,#fde68a,#fdba74);color:#3b2a1a;padding:4px 16px;border-radius:12px;transform:rotate(-1deg);font-size:22px;margin-top:36px">Discordに入ると、何ができる？</h2>
+<p class="sub">Discordは、無料のチャットアプリです。LINEのグループに、話題ごとの部屋が付いたものだと思ってください。本名やメールアドレスは、他の人には見えません。スマホだけで使えます。</p>
+<div class="steps">
+<div class="step"><b>👋 自己紹介する</b>今いる国と、一言だけ。それで仲間として見てもらえます。</div>
+<div class="step"><b>📍 今いる街を共有する</b>「いまここ」に街と期間を書くと、近くにいる人が声をかけてくれます。</div>
+<div class="step"><b>🚶 一緒に回る人を探す</b>ごはん、散歩、作業の合流。ひとりが寂しい日の相手が見つかります。</div>
+<div class="step"><b>❓ 質問する</b>ビザ、SIM、保険、物価、治安。実際に行った人から答えが返ってきます。</div>
+<div class="step"><b>🛠 プロジェクト仲間を探す</b>動画、開発、ライティングなど、一緒にやる人を募集できます。</div>
+<div class="step"><b>🛒 譲る・探す</b>近くにいる人どうしで、不用品の譲渡や売買ができます。</div>
+<div class="step"><b>🛡 危ない情報を共有する</b>最近の詐欺や強盗の手口を、すぐ知らせ合えます。</div>
+<div class="step"><b>📺 チャンネルを紹介する</b>旅YouTuberなら、自分のチャンネルを載せて、他の人のも見られます。</div>
+<div class="step"><b>🍜 行った店をレビューする</b>おいしかった店、ひどかった店を、国・街ごとに書き残せます。</div>
+<div class="step"><b>🧾 ノートを直す</b>国別コストや街・グルメの間違いを、気づいた人が提案できます。</div>
+</div>
+<p class="small">参加は無料です。いつでも抜けられます。見ているだけでもOKです。</p>
+</div>
+<h2 style="margin-top:36px">入り方はかんたん</h2>
+<div class="steps">
+<div class="step"><b>1 入って一言</b>Discordに入って、今いる国と「何者でもない自分」を一言。肩書きはいりません。</div>
+<div class="step"><b>2 失敗談も書く</b>高かった、だまされた、行ってよかった。1行でも、次の誰かを助けます。</div>
+<div class="step"><b>3 聞く・誘う・譲る</b>質問、街の同行、プロジェクト仲間、不用品。ひとりで抱えずに掲示板へ。</div>
+</div>
+<div class="warn" style="margin-top:20px">掲載情報にはClaudeの概算・下書き（未検証）が含まれ、画面に表示されます。気づいた人が直す前提のノートです。安全情報は外務省 海外安全ホームページで必ず確認してください。</div>
+</section>
+
+<section id="wiki" data-t="wiki">
+<h2>🧾 国別コスト</h2>
+<p class="sub">どこの国なら、だらけて暮らせるか。生活費と、主な街をまとめて見られます。世界中の国を検索できます（国を開くと、街の情報が出ます）。数字は、確認できた国は出典付き、それ以外はClaudeの概算です。違ってたら、気づいた人が直してください。</p>
+<div class="simbox" style="max-width:none;margin-bottom:20px"><b>1か月いくらで暮らせる？</b><div class="row" style="margin-top:10px"><select id="kc" aria-label="国"></select><select id="kn" aria-label="日数"><option value="7">7泊</option><option value="14">14泊</option><option value="30" selected>30泊</option><option value="90">90泊</option></select></div><div class="row"><select id="kt" aria-label="宿のタイプ"><option value="0.8">ドミトリー</option><option value="1" selected>個室ホステル</option><option value="1.5">コリビング</option></select></div><div id="ko" role="status"></div></div>
+<input id="wq" type="search" placeholder="国名で探す（例：ベトナム）" aria-label="国名で探す" style="width:100%;max-width:420px;font:inherit;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 14px;margin-bottom:8px">
+<select id="ws2" aria-label="並び替え" style="margin-bottom:6px;max-width:260px"><option value="n">名前順</option><option value="a">物価が安い順</option><option value="d">物価が高い順</option></select>
+<p class="sub" id="wsum"></p>
+<div id="wl"></div>
+<p class="mm" id="wmsg" role="status"></p>
+<p class="note" style="border:0">物価指数はNumbeoの2026年版（家賃を除く、ニューヨーク＝100）です。第三者の記事を通して確認した値です。変動するので、出典と確認日を必ず見てください。空欄の国は、信頃できる値が見つからなかった国です。</p>
+</section>
+<section id="food" data-t="food">
+<h2>🍜 旅人しか知らないグルメ</h2>
+<p class="sub">安くて、うまくて、ちょっと怪しい。国とエリアで、おすすめの店を探そう。行った人のレビューも、ここに貯まっていきます。</p>
+<div class="rsearch">
+<input id="rq" type="search" placeholder="店名・料理・エリアで探す（例：フォー）" aria-label="店名・料理・エリアで探す">
+</div>
+<div class="chips" id="rchips" role="group" aria-label="街"></div>
+<div class="grid" id="rgrid"></div>
+<p class="empty" id="rempty" hidden></p>
+<p class="small" id="rnote" style="margin-top:10px">掲載は、出典記事をもとにした下書きです。営業状況・価格・賞は変わっている可能性があるので、行く前に地図などで確認してください。</p>
+<h3 id="rform" style="margin:32px 0 8px">お店を追加する・レビューを書く</h3>
+<p class="small" style="margin:0 0 10px">行ったお店の感想を、フォームに入れて、できた文章をDiscordの「グルメ」に貼り付けてください。新しいお店の追加も同じフォームです。</p>
+<div class="box" style="max-width:560px">
+<label class="wl">国<select id="rv1" style="width:100%"></select></label>
+<label class="wl">街<input id="rv2" maxlength="30" placeholder="例：チェンマイ" style="width:100%"></label>
+<label class="wl">エリア（わかれば）<input id="rv3" maxlength="40" style="width:100%"></label>
+<label class="wl">店名<input id="rv4" maxlength="60" style="width:100%"></label>
+<label class="wl">食べたもの<input id="rv5" maxlength="60" style="width:100%"></label>
+<label class="wl">値段の目安（現地通貨でOK）<input id="rv6" maxlength="30" style="width:100%"></label>
+<label class="wl">評価<select id="rv7" style="width:100%"><option value="5">★★★★★ 最高</option><option value="4">★★★★ よかった</option><option value="3" selected>★★★ ふつう</option><option value="2">★★ いまいち</option><option value="1">★ おすすめしない</option></select></label>
+<label class="wl">行った時期<input id="rv8" maxlength="20" placeholder="例：2026年10月" style="width:100%"></label>
+<label class="wl">レビュー（200字まで）<textarea id="rv9" rows="3" maxlength="200" style="width:100%"></textarea></label>
+<div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:12px"><button class="go" id="rvd" hidden style="max-width:260px">この内容で投稿する</button><button class="go" id="rvb" style="max-width:260px">投稿文をコピー（Discord用）</button></div>
+<p class="mm" id="rvm" role="status"></p>
+</div>
+<details class="dd" style="margin-top:32px"><summary style="cursor:pointer;font-weight:800;font-size:16px">🍽 料理の定番メモ（国ごと）</summary>
+<input id="fq" type="search" placeholder="街や料理で探す（例：チェンマイ）" aria-label="街や料理で探す" style="width:100%;max-width:420px;font:inherit;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 14px;margin-bottom:12px">
+<div class="chips" id="fchips" role="group" aria-label="街"></div>
+<p class="empty" id="fe" hidden>見つかりませんでした。別の街や料理で試してください。</p>
+<h3 style="margin:24px 0 8px">📮 みんなの投稿</h3>
+<p class="small" style="margin:0 0 10px">街・店・料理ごとの一言です。いまは編集部の定番メモだけです。あなたの1皿も、下のフォームから投稿してください。</p>
+<div class="grid" id="fposts"></div>
+<h3 style="margin:28px 0 8px">🍽 国ごとの定番料理</h3>
+<div class="grid">
+<div class="card"><div class="cb"><h3>🇹🇭 カオソーイ</h3><p>ココナッツミルクのカレー麺。揚げ麺をのせるのが定番です。</p><div class="spec"><span>💴 約150円</span><span>📍 チェンマイ</span></div></div></div>
+<div class="card"><div class="cb"><h3>🇻🇳 ミークアン</h3><p>黄色い太めの麺を、少ないスープで食べるダナンの名物です。</p><div class="spec"><span>💴 約200円</span><span>📍 ダナン</span></div></div></div>
+<div class="card"><div class="cb"><h3>🇻🇳 ブンチャー</h3><p>炭火焼きの肉団子とつけ麺。お昼どきは行列ができます。</p><div class="spec"><span>💴 約300円</span><span>📍 ハノイ</span></div></div></div>
+<div class="card"><div class="cb"><h3>🇬🇪 ハチャプリ</h3><p>チーズがたっぷり入った舟形のパン。朝ごはんにもなります。</p><div class="spec"><span>💴 約500円</span><span>📍 トビリシ</span></div></div></div>
+<div class="card"><div class="cb"><h3>🇨🇴 バンデハ・パイサ</h3><p>豆・肉・卵などをのせた大皿料理。一皿でお腹いっぱいです。</p><div class="spec"><span>💴 約900円</span><span>📍 メデジン</span></div></div></div>
+<div class="card"><div class="cb"><h3>🇹🇭 カオカームー</h3><p>豚足の煎込みごはん。屋台の定番で、一皿でしっかり食べられます。</p><div class="spec"><span>💴 約200円</span><span>📍 チェンマイ</span></div></div></div>
+<div class="card"><div class="cb"><h3>🇻🇳 バインセオ</h3><p>米粉の生地で具を包んだ、パリッと焼いたクレープです。</p><div class="spec"><span>💴 約250円</span><span>📍 ダナン</span></div></div></div>
+<div class="card"><div class="cb"><h3>🇻🇳 エッグコーヒー</h3><p>卵のクリームをのせた甘いコーヒー。カフェ作業のお供に。</p><div class="spec"><span>💴 約250円</span><span>📍 ハノイ</span></div></div></div>
+<div class="card"><div class="cb"><h3>🇬🇪 ヒンカリ</h3><p>スープが入った大ぶりの餃子。手でつかんで食べます。</p><div class="spec"><span>💴 約700円</span><span>📍 トビリシ</span></div></div></div>
+<div class="card"><div class="cb"><h3>🇨🇴 アレパ</h3><p>とうもろこし粉の丸いパン。具をはさんで朝ごはんに。</p><div class="spec"><span>💴 約400円</span><span>📍 メデジン</span></div></div></div>
+</div>
+<h3 style="margin:32px 0 8px">自分の1皿を投稿する</h3>
+<p class="small" style="margin:0 0 10px">フォームに入れて、できた文章をDiscordの「グルメ」に貼り付けてください。</p>
+<div class="box" style="max-width:560px">
+<label class="wl">国<input id="gp1" maxlength="30" placeholder="例：タイ" style="width:100%"></label>
+<label class="wl">街<input id="gp2" maxlength="30" placeholder="例：チェンマイ" style="width:100%"></label>
+<label class="wl">料理名・店名<input id="gp3" maxlength="60" style="width:100%"></label>
+<label class="wl">値段の目安（現地通貨でOK）<input id="gp4" maxlength="30" style="width:100%"></label>
+<label class="wl">ひとこと（100字まで）<textarea id="gp5" rows="2" maxlength="100" style="width:100%"></textarea></label>
+<button class="go" id="gpb" style="max-width:260px;margin-top:12px">投稿文をコピー</button>
+<p class="mm" id="gpm" role="status"></p>
+</div>
+</details>
+</section>
+<section id="board" data-t="board">
+<h2>🤝 募集・仲間</h2>
+<p class="sub">ひとりで暇なら、誰かを誘おう。投稿はDiscordで行います。下のテンプレートをコピーして、貼り付けるだけです。</p>
+<div class="warn" style="margin-bottom:16px">初めて会うときは、人の多い公共の場所で。お金・投資・情報商材の勧誘と、金銭の貸し借りは禁止です。マーケットでは、違法なもの・薬物・偽物・武器・持ち込みが禁止されている物は出品できません。</div>
+<div class="grid" id="bgrid2">
+<div class="card"><div class="cb"><h3>🚶 #一緒に回ろう</h3><p>街を一緒に歩く、ごはんに行く、作業を合流する。</p><button class="more" data-copy="🚶 一緒に回ろう\n場所：\n日時：\n内容：\n人数：\n集合場所（人の多い所）：">投稿テンプレをコピー</button></div></div>
+<div class="card"><div class="cb"><h3>🛠 #プロジェクト募集</h3><p>動画、開発、ライティングなどの仲間探し。</p><button class="more" data-copy="🛠 プロジェクト募集\n内容：\n募集する役割：\n稼働の目安：\n報酬の有無：\n連絡方法：">投稿テンプレをコピー</button></div></div>
+<div class="card"><div class="cb"><h3>🛒 #譲ります・探してます</h3><p>近くにいる人どうしの売買・譲渡。受け渡しは対面で。</p><button class="more" data-copy="🛒 譲ります／探してます\n品物：\n状態：\n価格：\n受け渡し場所・期間：">投稿テンプレをコピー</button></div></div>
+<div class="card"><div class="cb"><h3>📍 #いまここ</h3><p>今いる街と滞在期間を一言。近くの人が声をかけられます。</p><button class="more" data-copy="📍 いまここ\n街：\n滞在期間：\n作業場所：\n一言：">投稿テンプレをコピー</button></div></div>
+<div class="card"><div class="cb"><h3>❓ #質問</h3><p>ビザ、SIM、保険、治安など何でも。</p><button class="more" data-copy="❓ 質問\n国・街：\n知りたいこと：\nいつまでに：">投稿テンプレをコピー</button></div></div>
+</div>
+<p class="mm" id="bmsg" role="status"></p>
+</section>
+<section id="ch" data-t="ch">
+<h2>📺 旅チャンネル紹介</h2>
+<p class="sub">旅YouTuberの溜まり場です。自分のも載せて、他の人のも見にいこう。再生数は、みんなで分け合うもの。</p>
+<div class="warn" style="margin-bottom:16px">紹介できるのは、自分のチャンネルか、自分が実際に見ておすすめできるチャンネルです。相互登録だけが目的の依頼、再生数・登録者の売買、過度な勧誘は禁止です。お金や物をもらって紹介する場合は、「PR」と書いてください。</div>
+<div class="grid" id="chgrid"></div>
+<p class="empty" id="chempty" hidden>この国のチャンネルは、まだありません。あなたのチャンネルを、最初に載せませんか？</p>
+<h3 style="margin-top:28px">自分のチャンネルを載せる</h3>
+<p class="sub">フォームに入れて、できた文章をDiscordの「チャンネル紹介」に貼り付けてください。確認後に、このページに載ります。</p>
+<div class="box" style="max-width:560px">
+<label class="wl">チャンネル名<input id="cn1" maxlength="60" style="width:100%"></label>
+<label class="wl">チャンネルのURL（YouTube）<input id="cu1" placeholder="https://www.youtube.com/@..." style="width:100%"></label>
+<label class="wl">主な国・地域<input id="cc1" maxlength="60" placeholder="例：タイ、インド" style="width:100%"></label>
+<label class="wl">ジャンル<input id="cg1" maxlength="40" placeholder="例：長尺の旅Vlog、節約旅、バックパッカー" style="width:100%"></label>
+<label class="wl">ひとこと（100字まで）<textarea id="cd1" rows="2" maxlength="100" style="width:100%"></textarea></label>
+<div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:12px"><button class="go" id="cbd" hidden style="max-width:260px">この内容で投稿する</button><button class="go" id="cb1" style="max-width:260px">投稿文をコピー（Discord用）</button></div>
+<p class="mm" id="cm1" role="status"></p>
+</div>
+</section>
+<section id="stays" data-t="stays">
+<h2>🏠 穴場の宿</h2>
+<p class="sub">実際に泊まって「ここよかった」という宿を、みんなで貯めていくページです。国と街で探せます。</p>
+<div class="warn" style="margin-bottom:16px">載せられるのは、自分が泊まった宿だけです。宿からお金や宿泊をもらった場合は、必ず「PR」と書いてください。部屋番号・他の宿泊客の情報・性的サービスの紹介は禁止です。</div>
+<label class="wl" style="max-width:420px">宿名・街で絞り込み<input id="stq" maxlength="40" placeholder="例：チェンマイ、コリビング" style="width:100%"></label>
+<div class="grid" id="stgrid" style="margin-top:12px"></div>
+<p class="empty" id="stempty" hidden>まだ宿が載っていません。あなたが泊まったいい宿を、最初に載せませんか？</p>
+<h3 style="margin-top:28px">泊まった宿を載せる</h3>
+<p class="sub">フォームに入れて、できた文章をDiscordの「穴場の宿」に貼り付けてください。確認後に、このページに載ります。</p>
+<div class="box" style="max-width:560px">
+<label class="wl">国<select id="st1" style="width:100%"></select></label>
+<label class="wl">街<input id="st2" maxlength="40" placeholder="例：チェンマイ" style="width:100%"></label>
+<label class="wl">宿の名前<input id="st3" maxlength="60" style="width:100%"></label>
+<label class="wl">タイプ<select id="st4" style="width:100%"><option value="">選ぶ</option><option>ホステル</option><option>ゲストハウス</option><option>コリビング</option><option>ホテル</option><option>アパート・民泊</option><option>その他</option></select></label>
+<label class="wl">1泊の目安（任意）<input id="st5" maxlength="40" placeholder="例：1,500円（ドミトリー）／月3万円" style="width:100%"></label>
+<label class="wl">仕事のしやすさ（Wi-Fi・机）<select id="st6" style="width:100%"><option value="">選ぶ</option><option>◎</option><option>○</option><option>△</option><option>×</option></select></label>
+<label class="wl">ここがよかった・注意点（300字まで）<textarea id="st7" rows="4" maxlength="300" style="width:100%"></textarea></label>
+<label class="wl">予約・地図のリンク（任意・https）<input id="st8" maxlength="300" placeholder="https://..." style="width:100%"></label>
+<div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:12px"><button class="go" id="std" hidden style="max-width:260px">この内容で投稿する</button><button class="go" id="stb" style="max-width:260px">投稿文をコピー（Discord用）</button></div>
+<p class="mm" id="stm" role="status"></p>
+</div>
+</section>
+<section id="safety" data-t="safety">
+<h2>🛡 安全情報</h2>
+<p class="sub">詐欺・強盗などの手口と対策です。以下は手口の解説サンプルで、本番では日付と出典リンクを付けて更新します。</p>
+<div class="grid">
+<div class="card"><div class="cb"><h3>🇹🇭 偽の親切案内</h3><p>「今日は観光地が休み」と声をかけ、別の店や高額ツアーへ連れて行く手口です。</p><p><b>対策</b>　知らない人の案内にはついていかず、公式の情報で確認します。</p><div class="spec"><span>注意度 中</span><span>観光地の周辺</span></div></div></div>
+<div class="card"><div class="cb"><h3>🇻🇳 バイクのひったくり</h3><p>歩道や道ばたでスマホを持っていると、バイクで近づいて奪われます。</p><p><b>対策</b>　車道側でスマホを持たず、バッグは体の前にかけます。</p><div class="spec"><span>注意度 高</span><span>大きな街</span></div></div></div>
+<div class="card"><div class="cb"><h3>🇨🇴 夜道の強盗</h3><p>人通りの少ない道で、スマホや現金を狙われます。</p><p><b>対策</b>　夜は配車アプリで移動し、持ち歩く貴重品は最小限にします。</p><div class="spec"><span>注意度 高</span><span>夜間</span></div></div></div>
+<div class="card"><div class="cb"><h3>🌏 ぼったくりタクシー</h3><p>メーターを使わず、乗ってから高い料金を言われる手口です。</p><p><b>対策</b>　配車アプリを使うか、乗る前に料金を確認します。</p><div class="spec"><span>注意度 中</span><span>空港・駅の周辺</span></div></div></div>
+</div>
+<p class="sub" style="margin-top:14px">最新の情報は<a href="https://www.anzen.mofa.go.jp/" target="_blank" rel="noopener">外務省 海外安全ホームページ</a>でも確認できます。</p>
+</section>
+<section id="adult" data-t="adult">
+<h2>🔞 18禁（夜の街）</h2>
+<div id="agegate" class="simbox" style="max-width:none"><p style="margin:0 0 10px"><b>このページは18歳以上向けです。</b>夜の街で、だまされない・巻き込まれないための情報を載せています。</p><button class="go" id="age18" style="max-width:300px">18歳以上です。見る</button><p class="small" style="margin-top:8px">18歳未満の方は、見ないでください。</p></div>
+<div id="nbody" hidden>
+<p class="sub">夜の街で、だまされない・巻き込まれないための情報を、国と街ごとに集めます。<b>性的サービスを行う店の紹介・レビュー・勧誘は、このサイトでは扱いません。</b>投稿されたら削除します。バー、クラブ、夜市など、ふつうの夜のお店の情報と、ぼったくり・法律・危険な手口は、誰でも書き込めます。</p>
+<div class="simbox" style="max-width:none">
+<div class="ln" style="display:block">値段が決まっていない店や客引きにはついていかず、入る前に総額を確認します。</div>
+<div class="ln" style="display:block">飲み物から目を離さず、知らない人にもらったものは口にしません。</div>
+<div class="ln" style="display:block">国や地域によって法律が違います。違法になる行為は避け、現地のルールを確認します。</div>
+<div class="ln" style="display:block">未成年が関わる場や、人身取引・搾取が疑われる場には、絶対に関わりません。</div>
+<div class="ln" style="display:block;border-bottom:0">パスポートや多額の現金は持ち歩かず、帰りの足を先に決めておきます。</div>
+</div>
+<div id="nadd"></div>
+<div class="grid" id="ngrid"></div>
+</div>
+</section>
+<section id="fx" data-t="fx">
+<h2>💱 通貨換算</h2>
+<p class="sub">世界中の通貨どうし、どの組み合わせでも換算できます。旅先でレートを調べる手間をなくすためのページです。</p>
+<div class="simbox" style="max-width:none">
+<label class="wl">金額<input id="fxa" type="number" inputmode="decimal" value="1000" min="0" step="any" style="width:100%;font-size:20px;font-weight:800"></label>
+<div class="row" style="margin-top:10px;align-items:flex-end">
+<label class="wl" style="flex:1;min-width:0;margin:0">換算元<select id="fxf" style="width:100%"></select></label>
+<button class="go" id="fxs" aria-label="通貨を入れ替える" style="flex:0 0 48px;padding:10px">⇄</button>
+<label class="wl" style="flex:1;min-width:0;margin:0">換算先<select id="fxt" style="width:100%"></select></label>
+</div>
+<div id="fxr" style="margin-top:16px;font-size:28px;font-weight:900;line-height:1.3" role="status"></div>
+<div id="fxl" class="small"></div>
+</div>
+<p class="small" id="fxm" role="status" style="margin-top:10px"></p>
+<h3 style="margin:28px 0 8px">この金額を、全部の通貨にすると</h3>
+<input id="fxq" type="search" placeholder="通貨を探す（例：バーツ、THB、ドル）" aria-label="通貨を探す">
+<div id="fxtb" class="fxtb"></div>
+<p class="small" style="margin-top:14px">表示は目安の中値です。実際の両替所・ATM・カードのレートは、手数料や上乗せで、これより悪くなります。大きな金額は、現地で確認してください。レートの提供：<a href="https://www.exchangerate-api.com" target="_blank" rel="noopener">ExchangeRate-API</a>（1日1回ほど更新）。</p>
+</section>
+<section id="crew" data-t="crew">
+<h2>💤 底辺くんの仲間になる</h2>
+<p class="sub">無料です。登録はDiscordのアカウントだけ（Discordの登録にメールアドレスは必要ですが、他の人には見えません）。クレジットカードは不要。意識低めでも、貧乏でも、大歓迎。</p>
+<button class="go" data-join style="max-width:280px">Discordに参加（無料）</button>
+<p class="small" id="jmsg2" role="status"></p>
+<div class="dsc">
+<h2 class="dh" style="display:inline-block;background:linear-gradient(120deg,#fde68a,#fdba74);color:#3b2a1a;padding:4px 16px;border-radius:12px;transform:rotate(-1deg);font-size:22px;margin-top:32px">Discordに入ると、何ができる？</h2>
+<p class="sub">Discordは、無料のチャットアプリです。LINEのグループに、話題ごとの部屋が付いたものだと思ってください。本名やメールアドレスは、他の人には見えません。スマホだけで使えます。</p>
+<div class="steps">
+<div class="step"><b>👋 自己紹介する</b>今いる国と、一言だけ。それで仲間として見てもらえます。</div>
+<div class="step"><b>📍 今いる街を共有する</b>「いまここ」に街と期間を書くと、近くにいる人が声をかけてくれます。</div>
+<div class="step"><b>🚶 一緒に回る人を探す</b>ごはん、散歩、作業の合流。ひとりが寂しい日の相手が見つかります。</div>
+<div class="step"><b>❓ 質問する</b>ビザ、SIM、保険、物価、治安。実際に行った人から答えが返ってきます。</div>
+<div class="step"><b>🛠 プロジェクト仲間を探す</b>動画、開発、ライティングなど、一緒にやる人を募集できます。</div>
+<div class="step"><b>🛒 譲る・探す</b>近くにいる人どうしで、不用品の譲渡や売買ができます。</div>
+<div class="step"><b>🛡 危ない情報を共有する</b>最近の詐欺や強盗の手口を、すぐ知らせ合えます。</div>
+<div class="step"><b>📺 チャンネルを紹介する</b>旅YouTuberなら、自分のチャンネルを載せて、他の人のも見られます。</div>
+<div class="step"><b>🍜 行った店をレビューする</b>おいしかった店、ひどかった店を、国・街ごとに書き残せます。</div>
+<div class="step"><b>🧾 ノートを直す</b>国別コストや街・グルメの間違いを、気づいた人が提案できます。</div>
+</div>
+<p class="small">参加は無料です。いつでも抜けられます。見ているだけでもOKです。</p>
+</div>
+<h2 style="margin-top:32px">みんなのルール</h2>
+<div class="steps">
+<div class="step"><b>笑わない、バカにしない</b>失敗談も節約術も歓迎。国・街・日付を添えると、もっと役に立ちます。</div>
+<div class="step"><b>勧誘・出会い目的はNG</b>投資・情報商材・マルチ・恋愛目的の勧誘、個人情報の晒しは削除します。</div>
+<div class="step"><b>通報で守る</b>おかしな投稿は🚩で通報。複数の通報で自動的に隠れます。</div>
+</div>
+<h2 style="margin-top:32px">世話役になる</h2>
+<p class="sub">国や街ごとの「世話役」を募集します。質問に答えたり、国別コストを更新したりする人です。報酬はありませんが、プロフィールに世話役の称号が付きます。</p>
+</section>
+
+<section id="towns" data-t="towns">
+<h2>🗺 街ガイド</h2>
+<p class="sub">行く前に、街の暮らしをのぞき見。</p>
+<div class="grid">
+<div class="card"><div class="cb"><h3>🇹🇭 チェンマイ</h3><p>カフェと作業場所が多く、長期滞在の人が集まる街。</p><div class="spec"><span>🏠 宿 1,200円〜</span><span>📶 回線 ◎</span><span>🍜 食費 安い</span><span>👥 日本人 多め</span></div></div></div>
+<div class="card"><div class="cb"><h3>🇻🇳 ダナン</h3><p>海の近くで、物価が低め。静かに作業しやすい。</p><div class="spec"><span>🏠 宿 950円〜</span><span>📶 回線 ○</span><span>🥖 食費 とても安い</span><span>👥 日本人 ふつう</span></div></div></div>
+<div class="card"><div class="cb"><h3>🇬🇪 トビリシ</h3><p>回線が速く、コーカサス周遊の拠点にしやすい。</p><div class="spec"><span>🏠 宿 1,800円〜</span><span>📶 回線 ◎</span><span>🍳 食費 ふつう</span><span>👥 日本人 少なめ</span></div></div></div>
+<div class="card"><div class="cb"><h3>🇨🇴 メデジン</h3><p>気候が穏やかで、中南米のノマド拠点として人気。</p><div class="spec"><span>🏠 宿 1,900円〜</span><span>📶 回線 ○</span><span>🥘 食費 ふつう</span><span>👥 日本人 少ない</span></div></div></div>
+</div>
+<h2 style="margin-top:36px">月いくらで暮らせる？</h2>
+<p class="sub">街と日数を選ぶと、目安の費用がわかります（ダミーの数字）。</p>
+<div class="simbox"><div class="row"><select id="sc" aria-label="街"></select><select id="sn" aria-label="日数"><option value="7">7泊</option><option value="14">14泊</option><option value="30" selected>30泊</option></select></div><div id="so" role="status"></div></div>
+<div class="warn" style="margin-top:16px">ビザや滞在できる日数は変わります。渡航前に、各国の公式情報で必ず確認してください。</div>
+</section>
+<section id="prep1" data-t="prep">
+<h2>🎒 出発前チェックリスト</h2>
+<p class="sub" id="cn"></p>
+<div class="simbox" id="cl"></div>
+</section>
+<section id="tools" data-t="prep">
+<h2>🔧 貧乏ノマドの命綱ツール</h2>
+<p class="sub">固定費と為替手数料を抑えるための必須インフラ</p>
+<div class="tools">
+<a class="tool" href="#tools" onclick="return false"><small>海外送金・決済</small><h3>Wise</h3><p>現地通貨の引き出しとデビット決済に。</p></a>
+<a class="tool" href="#tools" onclick="return false"><small>eSIM</small><h3>Airalo / Maya</h3><p>到着してすぐ使える、旅行者向けの通信プラン。</p></a>
+<a class="tool" href="#tools" onclick="return false"><small>ノマド保険</small><h3>SafetyWing</h3><p>出国後でも入れる、月額制の海外保険。</p></a>
+</div>
+</section>
+<p class="note">掲載情報は下書き・概算を含みます。気づいた点はみんなで直していきましょう。</p>
+</main>
+
+<script>
+function $(i){return document.getElementById(i)}
+var TABS=[["home","ホーム"],["wiki","国別コスト"],["fx","両替"],["food","グルメ"],["stays","宿"],["safety","安全"],["adult","18禁"],["board","募集・仲間"],["ch","チャンネル"],["crew","参加"],["prep","準備"]];
+var DISCORD_URL="https://discord.gg/9uVK8Ykvp";
+/* メンバー編集を有効にするには、Supabaseの URL と anon key を入れます（手順は SETUP-supabase.md） */
+var SB_CONFIG={url:"",key:""};
+function jmsg(t){["jmsg","jmsg2"].forEach(function(i){if($(i))$(i).textContent=t})}
+document.addEventListener("click",function(e){var j=e.target.closest("[data-join]");if(j){if(DISCORD_URL)window.open(DISCORD_URL,"_blank","noopener");else{jmsg("参加リンクは準備中です。もう少しお待ちください。");tab("crew")}}var c=e.target.closest("[data-copy]");if(c){var t=c.getAttribute("data-copy").replace(/\\n/g,"\n");try{navigator.clipboard.writeText(t).then(function(){$("bmsg").textContent="コピーしました。Discordの該当チャンネルに貼り付けてください。"},function(){$("bmsg").textContent="コピーできませんでした。"})}catch(x){$("bmsg").textContent="コピーできませんでした。"}}});
+function tab(t){document.querySelectorAll("[data-t]").forEach(function(e){e.classList.toggle("on",e.getAttribute("data-t")===t)});Array.prototype.forEach.call($("tabs").children,function(b){b.setAttribute("aria-selected",b.getAttribute("data-k")===t)});window.scrollTo(0,0)}
+$("tabs").innerHTML=TABS.map(function(t){return '<button class="tab" role="tab" data-k="'+t[0]+'">'+t[1]+'</button>'}).join("");
+document.addEventListener("click",function(e){var b=e.target.closest("[data-k],[data-go]");if(b){tab(b.getAttribute("data-k")||b.getAttribute("data-go"))}});
+var CITIES={cm:["チェンマイ",1200,1200,150],dn:["ダナン",950,1000,150],tb:["トビリシ",1800,1500,100],md:["メデジン",1900,1400,200]};
+function yen(x){return x.toLocaleString("ja-JP")+"円"}
+$("sc").innerHTML=Object.keys(CITIES).map(function(k){return '<option value="'+k+'">'+CITIES[k][0]+'</option>'}).join("");
+function sim(){var c=CITIES[$("sc").value],n=+$("sn").value,r=[["宿",c[1]*n],["食費",c[2]*n],["交通",c[3]*n],["通信（eSIM）",1500]],t=0;r.forEach(function(x){t+=x[1]});$("so").innerHTML=r.map(function(x){return '<div class="ln"><span>'+x[0]+'</span><span>'+yen(x[1])+'</span></div>'}).join("")+'<div class="tot"><span>合計の目安</span><span>'+yen(t)+'</span></div>'}
+$("sc").onchange=sim;$("sn").onchange=sim;sim();
+var CL=["入国条件（ビザ・出国チケット）を確認","パスポートの残存期間を確認","海外送金・決済（Wise）を用意","eSIMを入れる","海外保険に加入","変換プラグと延長コード"];
+$("cl").innerHTML=CL.map(function(t){return '<label class="ck"><input type="checkbox" data-c> '+t+'</label>'}).join("");
+function cnt(){$("cn").textContent=document.querySelectorAll("[data-c]:checked").length+" / "+CL.length+" 完了"}
+$("cl").onchange=cnt;cnt();
+var FC=["すべて","チェンマイ","ダナン","ハノイ","トビリシ","メデジン"],fc="すべて";
+function food(){var q=$("fq").value.trim(),k=q||(fc==="すべて"?"":fc),n=0;Array.prototype.forEach.call(document.querySelectorAll("#food .card"),function(c){var ok=!k||c.textContent.indexOf(k)>-1;c.style.display=ok?"":"none";if(ok)n++});$("fe").hidden=n>0;$("fchips").innerHTML=FC.map(function(t){return '<button class="chip" data-f="'+t+'" aria-pressed="'+(!q&&fc===t)+'">'+t+'</button>'}).join("")}
+$("fq").oninput=function(){fc="すべて";food()};
+$("fchips").onclick=function(e){var b=e.target.closest("[data-f]");if(b){fc=b.getAttribute("data-f");$("fq").value="";food()}};
+food();
+var CODES="AF AL DZ AD AO AG AR AM AU AT AZ BS BH BD BB BY BE BZ BJ BT BO BA BW BR BN BG BF BI KH CM CA CV CF TD CL CN CO KM CG CD CR CI HR CU CY CZ DK DJ DM DO EC EG SV GQ ER EE SZ ET FJ FI FR GA GM GE DE GH GR GD GT GN GW GY HT HN HU IS IN ID IR IQ IE IL IT JM JP JO KZ KE KI KP KR KW KG LA LV LB LS LR LY LI LT LU MG MW MY MV ML MT MH MR MU MX FM MD MC MN ME MA MZ MM NA NR NP NL NZ NI NE NG MK NO OM PK PW PA PG PY PE PH PL PT QA RO RU RW KN LC VC WS SM ST SA SN RS SC SL SG SK SI SB SO ZA SS ES LK SD SR SE CH SY TW TJ TZ TH TL TG TO TT TN TR TM TV UG UA AE GB US UY UZ VU VA VE VN YE ZM ZW PS XK BM KY VI JE HK MO".split(" ");
+var ROWS={},DBH=null,openC=null,edC=null,WN=null;
+try{WN=new Intl.DisplayNames(["ja"],{type:"region"})}catch(e){}
+function cname(c){try{return WN?WN.of(c):c}catch(e){return c}}
+function flag(c){return String.fromCodePoint.apply(null,c.split("").map(function(x){return 127397+x.charCodeAt(0)}))}
+var CL2=CODES.map(function(c){return{c:c,n:cname(c)}}).sort(function(a,b){return a.n.localeCompare(b.n,"ja")});
+function rel(i){var j=ROWS.JP&&ROWS.JP.idx;return(typeof i==="number"&&j)?Math.round(i/j*100):null}
+function wdet(c){var r=ROWS[c]||{};
+if(edC===c){return '<div class="wd"><label class="wl">物価指数（NYC=100）<input id="wi" type="number" step="0.1" value="'+(r.idx==null?"":r.idx)+'"></label><label class="wl">月の目安（円・1人）<input id="wc" type="number" value="'+(r.cost==null?"":r.cost)+'"></label><label class="wl">ひとこと（ビザ・治安・回線など）<textarea id="wn" rows="3">'+(r.note||"")+'</textarea></label><label class="wl">出典<input id="ws" value="'+(r.src||"")+'"></label><label class="wl">街（1行に1件。名前｜説明）<textarea id="wt" rows="3">'+(r.town||[]).join("\n")+'</textarea></label><label class="wl">グルメ（1行に1品。名前｜説明）<textarea id="wf" rows="3">'+(r.food||[]).join("\n")+'</textarea></label><label class="wl">安全（1行に1件。手口｜説明｜対策）<textarea id="wy" rows="3">'+(r.safety||[]).join("\n")+'</textarea></label><label class="wl">編集者名<input id="we" value=""></label><div class="acts"><button class="go" data-s="'+c+'">保存する</button><button class="cl" data-x="1">キャンセル</button></div></div>'}
+var p=rel(r.idx);
+return '<div class="wd"><div class="ln"><span>物価指数（NYC=100）</span><span>'+(r.idx==null?"未入力":r.idx)+'</span></div><div class="ln"><span>日本を100とすると</span><span>'+(p==null?"—":p)+'</span></div><div class="ln"><span>月の目安（円）</span><span>'+(r.cost!=null?yen(r.cost):(r.idx!=null?"約"+yen(Math.round((15000+3000*r.idx)/1000)*1000)+"（指数から計算）":"未入力"))+'</span></div>'+(r.note?'<p style="margin:8px 0">'+r.note+'</p>':'')+(r.town&&r.town.length?'<h4 style="margin:12px 0 4px">🗺 主な街</h4>'+r.town.map(function(s){var p=sp(s);return '<div class="ln" style="display:block"><b>'+esc(p[0])+'</b>'+(p[1]?'<br><span class="small">'+esc(p[1])+'</span>':'')+'</div>'}).join("")+'<p class="small">街の内容は下書き（未検証）です。気づいた点は、編集で直してください。</p>':'<p class="small" style="margin:8px 0">この国の街の情報は、まだありません。編集で追加できます。</p>')+'<p class="small">出典：'+(r.src||(r.est?"Claudeの概算（未検証）":"未入力"))+(r.date?"（確認日 "+r.date+"）":"")+'<br>最終編集：'+(r.editor||(r.est?"Claude（初期入力）":"—"))+(r.updated?"（"+r.updated+"）":"")+'</p><button class="more" data-e="'+c+'">この国を編集する</button></div>'}
+function wiki(){var q=$("wq").value.trim().toLowerCase(),n=0,h="";
+var gv=$("gc").value;WL().forEach(function(x){if(gv&&x.c!==gv)return;if(q&&x.n.toLowerCase().indexOf(q)<0&&x.c.toLowerCase()!==q)return;var r=ROWS[x.c],p=r?rel(r.idx):null;n++;
+h+='<div class="wr"><button class="wb" data-w="'+x.c+'" aria-expanded="'+(openC===x.c||(gv===x.c&&openC===null))+'"><span>'+flag(x.c)+" "+x.n+'</span><span class="wv">'+(p!=null?"日本の"+p+"%"+(r&&r.est?"（概算）":""):(r&&r.idx!=null?"指数 "+r.idx:"未入力"))+'</span></button>'+((openC===x.c||(gv===x.c&&openC===null))?wdet(x.c):"")+'</div>'});
+$("wl").innerHTML=h||'<p class="empty">見つかりませんでした。</p>';
+var f=Object.keys(ROWS).filter(function(k){return ROWS[k].idx!=null}).length;$("wsum").textContent=CODES.length+"か国・地域のうち、物価を入力済み："+f}
+$("wq").oninput=wiki;
+$("wl").onclick=function(e){var b=e.target.closest("[data-w],[data-e],[data-s],[data-x]");if(!b)return;
+if(b.hasAttribute("data-w")){var c=b.getAttribute("data-w");openC=openC===c?null:c;edC=null}
+else if(b.hasAttribute("data-e")){if(window.SBX&&SBX.on&&!SBX.user){$("wmsg").textContent="編集するには、Discordでログインしてください。";return}edC=b.getAttribute("data-e")}
+else if(b.hasAttribute("data-x")){edC=null}
+else{wsave(b.getAttribute("data-s"));return}
+wiki()};
+async function wsave(c){var m=$("wmsg");if(window.SBX&&SBX.on&&!SBX.user){m.textContent="編集するには、Discordでログインしてください。";return}if(!DBH){m.textContent="データにつながっていないため、保存できません。";return}
+var g=function(i){return $(i).value.trim()},cur=ROWS[c]||{},ix=g("wi"),cs=g("wc");
+var d=Object.assign({},cur,{idx:ix===""||isNaN(+ix)?null:+ix,cost:cs===""||isNaN(+cs)?null:+cs,note:g("wn"),town:ln("wt"),food:ln("wf"),safety:ln("wy"),src:g("ws"),est:g("ws")?0:(cur.est||0),editor:(window.SBX&&SBX.user?SBX.user.name:(g("we")||"匿名")),updated:new Date().toISOString().slice(0,10),rev:(cur.rev||0)+1});
+try{await DBH.collection("countries").doc(c).set(d);edC=null;m.textContent=(window.SBX&&SBX.on)?"保存しました":"保存しました（共有版以外では、この端末だけに保存されます）";rall()}catch(e){m.textContent=(e&&e.userMsg)||"保存できませんでした。編集できるのは、共同編集に招待された人だけです。"}wiki()}
+(async function(){var m=$("wmsg"),LK="nomad_local_edits_v1",loc={};try{loc=JSON.parse(localStorage.getItem(LK)||"{}")}catch(e){}
+function apply(base){window.BASE=base;ROWS=Object.assign({},base,loc);if(!edC){wiki();rall()}kcalc()}
+var db=null;try{if(window.claude&&claude.use)db=await claude.use("db")}catch(e){}
+if(db){DBH=db;var bj={};try{bj=await (await fetch("data/countries.json")).json()}catch(e){}var t=setTimeout(function(){m.textContent="データにまだ接続できていません。"},10000);
+db.collection("countries").onSnapshot(function(s){clearTimeout(t);m.textContent="";var o={};Object.keys(bj).forEach(function(k){o[k]=bj[k]});s.docs.forEach(function(d){o[d.id]=Object.assign({},bj[d.id]||{},d.data())});ROWS=o;if(!edC){wiki();rall()}kcalc()},function(){clearTimeout(t);m.textContent="データを読み込めませんでした。"});return}
+if(SB_CONFIG.url&&SB_CONFIG.key){loc={};DBH={collection:function(){return{doc:function(c){return{set:function(d){return window.SBX.saveCountry(c,d)}}}}}}}else DBH={collection:function(){return{doc:function(c){return{set:async function(d){loc[c]=d;localStorage.setItem(LK,JSON.stringify(loc))}}}}}};
+try{var r=await fetch("data/countries.json");apply(await r.json());if(SB_CONFIG.url&&SB_CONFIG.key){m.textContent="";window.SBX.init()}else m.textContent="公開前の試用版です。編集はこの端末だけに保存されます。"}catch(e){m.textContent="データを読み込めませんでした。"}})();
+wiki();
+function WL(){var s=$("ws2").value;if(s==="n")return CL2;var a=CL2.slice();a.sort(function(x,y){var i=ROWS[x.c]&&ROWS[x.c].idx,j=ROWS[y.c]&&ROWS[y.c].idx;if(i==null&&j==null)return 0;if(i==null)return 1;if(j==null)return -1;return s==="a"?i-j:j-i});return a}
+$("ws2").onchange=wiki;
+var KC=CL2.map(function(x){return '<option value="'+x.c+'">'+flag(x.c)+" "+x.n+'</option>'}).join("");
+$("kc").innerHTML=KC;$("kc").value="TH";
+function kcalc(){var r=ROWS[$("kc").value]||{},n=+$("kn").value,t=+$("kt").value,b=r.cost!=null?r.cost:(r.idx!=null?Math.round((15000+3000*r.idx)/1000)*1000:null),o=$("ko");
+if(b==null){o.innerHTML='<p class="small">この国はまだ未入力です。国別ガイドで入力すると計算できます。</p>';return}
+var k=n/30,s=0,a=[["宿",.35*t],["食費",.4],["交通",.08],["通信・その他",.17]];
+var h=a.map(function(x){var v=Math.round(b*x[1]*k);s+=v;return '<div class="ln"><span>'+x[0]+'</span><span>'+yen(v)+'</span></div>'}).join("");
+o.innerHTML=h+'<div class="tot"><span>合計の目安</span><span>'+yen(s)+'</span></div><p class="small">'+(r.est?"概算です（Claudeの推定・未検証）。":"")+(r.cost!=null?"":"物価指数から計算した目安です。")+"1人・"+n+"泊の場合です。"+'</p>'}
+$("kc").onchange=kcalc;$("kn").onchange=kcalc;$("kt").onchange=kcalc;
+$("gc").innerHTML='<option value="">すべての国</option>'+KC;
+var CT="home",TS={spots:"#grid .card",towns:"#towns .card",food:"#food .card",board:"#bgrid .card",safety:"#safety .card",adult:"#adult .card"};
+function gfilter(){var c=$("gc").value,f=c?flag(c):"";Array.prototype.forEach.call(document.querySelectorAll("#grid .card,#towns .card,#food .card,#bgrid .card,#chgrid .card,#stgrid .card,#fposts .card,#safety .card,#adult .card"),function(e){var t=e.textContent;e.classList.toggle("gh",!!f&&t.indexOf(f)<0&&t.indexOf("🌏")<0)});
+var n=1;if(TS[CT]){n=document.querySelectorAll(TS[CT]).length-document.querySelectorAll(TS[CT].replace(".card",".card.gh")).length}$("gnote").hidden=!(f&&TS[CT]&&n===0)}
+$("gc").onchange=gfilter;
+var _t=tab;tab=function(t){CT=t;_t(t);if(t==="adult")ngate();gfilter()};
+function ln(i){return $(i).value.split("\n").map(function(s){return s.trim()}).filter(Boolean)}
+function sp(s){return String(s||"").split("｜")}
+function esc(s){return String(s==null?"":s).replace(/&/g,"&amp;").replace(/</g,"&lt;")}
+function rall(){food();towns2();safe2();night();gfilter()}
+function dcard(c,n,t,b,x,ek,ei,ss){return '<div class="card"><div class="cb"><h3>'+flag(c)+" "+esc(n)+'</h3><p>'+esc(t)+'</p>'+(b||"")+'<div class="spec"><span>📍 '+x+'</span>'+(b?(ss?'<span>✅ 出典：'+esc(ss)+'（その後の編集分は未確認）</span>':'<span>下書き（未検証）</span>'):'')+'</div>'+(ek?'<button class="more" data-ek="'+ek+'" data-ec="'+c+'" data-ei="'+ei+'">✏️ 直す</button>':'')+'</div></div>'}
+food=function(){var q=$("fq").value.trim(),h="";CL2.forEach(function(x){var r=ROWS[x.c];if(!r||!r.food)return;r.food.forEach(function(s,i){var p=sp(s);if(q&&(x.n+p.join("")).indexOf(q)<0)return;h+=dcard(x.c,p[0],p[1],"",x.n,"food",i)})});$("fgrid").innerHTML=h;$("fe").hidden=!!h};
+function towns2(){var h="";CL2.forEach(function(x){var r=ROWS[x.c];if(!r||!r.town)return;r.town.forEach(function(s){var p=sp(s);h+=dcard(x.c,p[0],p[1],"",x.n)})});$("tgrid").innerHTML=h||'<p class="empty">まだありません。</p>'}
+
+var LF={night:["街（国全体なら「全体」）","内容（ぼったくり・法律・危険な手口・ふつうのバーや夜市など）","ひとこと（レビュー・対策）"],safety:["手口・ケース","どんなことが起きる？","対策"],food:["料理名","ひとこと（どんな味・どこで食べる？）"],town:["街の名前","ひとこと"]};
+function lfields(k,v){v=v||[];return LF[k].map(function(l,j){return '<label class="wl">'+l+'<input data-lf="'+j+'" maxlength="200" value="'+chesc(v[j]||"")+'"></label>'}).join("")}
+function addForm(k){return '<details class="addf" data-ak="'+k+'"><summary>＋ '+(k==="safety"?"安全情報を追加する":k==="night"?"夜の街の情報を追加する":"料理を追加する")+'（誰でも）</summary><div class="wd"><label class="wl">国<select data-ac="1"><option value="">国を選ぶ</option>'+KC+'</select></label>'+lfields(k)+'<div class="acts"><button class="go" data-la="'+k+'">追加する</button></div><p class="small" data-lm="1"></p></div></details>'}
+function lmsg(t){var e=document.getElementById("lmsgb");if(!e){e=document.createElement("div");e.id="lmsgb";e.style.cssText="position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:#3b2a20;color:#fff;padding:10px 16px;border-radius:999px;font-size:14px;z-index:99;max-width:90vw;text-align:center";document.body.appendChild(e)}e.textContent=t;e.style.display="block";clearTimeout(lmsg.t);lmsg.t=setTimeout(function(){e.style.display="none"},3500)}
+async function lineSave(c,k,i,txt){
+if(window.SBX&&SBX.on&&!SBX.user){lmsg("編集するには、Discordでログインしてください。");return false}
+if(!DBH){lmsg("データにつながっていないため、保存できません。");return false}
+var cur=ROWS[c]||{},arr=(cur[k]||[]).slice();
+if(i<0)arr.push(txt);else if(txt==="")arr.splice(i,1);else arr[i]=txt;
+var d=Object.assign({},cur);d[k]=arr;d.editor=(window.SBX&&SBX.user?SBX.user.name:"匿名");d.updated=new Date().toISOString().slice(0,10);d.rev=(cur.rev||0)+1;
+try{await DBH.collection("countries").doc(c).set(d);if(!(window.SBX&&SBX.on))ROWS[c]=d;rall();wiki();lmsg("保存しました");return true}catch(e){lmsg((e&&e.userMsg)||"保存できませんでした。");return false}}
+function lval(root){var o=[];root.querySelectorAll("[data-lf]").forEach(function(x){o.push(x.value.trim().replace(/｜/g,"/"))});while(o.length&&!o[o.length-1])o.pop();return o}
+document.addEventListener("click",async function(e){
+var b=e.target.closest("[data-ek],[data-la],[data-lc],[data-ld],[data-ls]");if(!b)return;
+if(b.hasAttribute("data-ek")){var k=b.getAttribute("data-ek"),c=b.getAttribute("data-ec"),i=+b.getAttribute("data-ei"),v=sp(((ROWS[c]||{})[k]||[])[i]);var cb=b.closest(".cb");cb.setAttribute("data-k",k);cb.setAttribute("data-c",c);cb.setAttribute("data-i",i);cb.innerHTML='<h3>'+flag(c)+" "+esc(cname(c))+'</h3>'+lfields(k,v)+'<div class="acts"><button class="go" data-ls="1">保存</button><button class="cl" data-lc="1">やめる</button><button class="cl" data-ld="1">削除</button></div>';return}
+if(b.hasAttribute("data-lc")){rall();return}
+if(b.hasAttribute("data-ld")){if(!b.getAttribute("data-sure")){b.setAttribute("data-sure","1");b.textContent="本当に削除する";return}var cb2=b.closest(".cb");await lineSave(cb2.getAttribute("data-c"),cb2.getAttribute("data-k"),+cb2.getAttribute("data-i"),"");return}
+if(b.hasAttribute("data-ls")){var cb3=b.closest(".cb"),vv=lval(cb3);if(!vv[0]){lmsg("名前を入れてください。");return}await lineSave(cb3.getAttribute("data-c"),cb3.getAttribute("data-k"),+cb3.getAttribute("data-i"),vv.join("｜"));return}
+if(b.hasAttribute("data-la")){var f=b.closest(".addf"),k2=b.getAttribute("data-la"),cc=f.querySelector("[data-ac]").value,v2=lval(f);if(!cc){lmsg("国を選んでください。");return}if(!v2[0]){lmsg("名前を入れてください。");return}if((k2==="safety"||k2==="night")&&!v2[1]){lmsg("対策も入れてください。");return}var ok=await lineSave(cc,k2,-1,v2.join("｜"));if(ok){f.querySelectorAll("[data-lf]").forEach(function(x){x.value=""})}}});
+function night(){var h="";CL2.forEach(function(x){var r=ROWS[x.c];if(!r||!r.night)return;r.night.forEach(function(s,i){var p=sp(s);h+=dcard(x.c,p[0],p[1],p[2]?'<p><b>ひとこと</b>　'+esc(p[2])+'</p>':'<p class="small">（ひとことなし）</p>',x.n,"night",i,r.nsrc)})});var g=$("ngrid");if(g)g.innerHTML=h||'<p class="empty">まだありません。あなたが最初の1件を追加しませんか？</p>'}
+function ngate(){var ok=false;try{ok=sessionStorage.getItem("nomad_18")==="1"}catch(e){}$("agegate").hidden=ok;$("nbody").hidden=!ok}
+$("age18").onclick=function(){try{sessionStorage.setItem("nomad_18","1")}catch(e){}$("agegate").hidden=true;$("nbody").hidden=false};
+var GEN='<div class="card"><div class="cb"><h3>🌏 ぼったくりタクシー</h3><p>メーターを使わず、乗ってから高い料金を言われる手口です。</p><p><b>対策</b>　配車アプリを使うか、乗る前に料金を確認します。</p><div class="spec"><span>📍 世界共通</span></div></div></div>';
+function safe2(){var h=GEN;CL2.forEach(function(x){var r=ROWS[x.c];if(!r||!r.safety)return;r.safety.forEach(function(s,i){var p=sp(s);h+=dcard(x.c,p[0],p[1],'<p><b>対策</b>　'+esc(p[2])+'</p>',x.n,"safety",i,r.ssrc)})});$("sgrid").innerHTML=h}
+var fg=document.querySelector("#food details .grid:not(#fposts)");fg.id="fgrid";fg.innerHTML="";fg.insertAdjacentHTML("beforebegin",addForm("food"));$("fchips").style.display="none";$("fchips").innerHTML="";
+$("towns").innerHTML='<h2>🗺 街ガイド</h2><p class="sub">行く前に、街の暮らしをのぞき見。各国の主な街の特徴です。内容はClaudeの下書きで、みんなで直していけます。1か月の生活費は<button class="more" data-go="wiki">国別ガイド</button>で計算できます。</p><div class="grid" id="tgrid"></div>';
+$("safety").innerHTML='<h2>🛡 安全情報</h2><p class="sub">ここだけは、ふざけません。だまされない・盗まれないための、詐欺・強盗の手口と対策です。✅がついた国（タイ・ベトナム・カンボジア・台湾・インドネシア・フィリピン・マレーシア・メキシコ・コロンビア）は、大使館などの情報で確認済みです。それ以外はClaudeの下書きで未検証です。最新の情報は<a href="https://www.anzen.mofa.go.jp/" target="_blank" rel="noopener">外務省 海外安全ホームページ</a>で必ず確認してください。</p>'+addForm("safety")+'<div class="grid" id="sgrid"></div>';
+towns2();safe2();food();
+$("nadd").innerHTML=addForm("night");night();ngate();
+kcalc();gfilter();
+var CHS=[];
+function chesc(s){return String(s||"").replace(/[&<>"]/g,function(x){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[x]})}
+function chok(u){return /^https:\/\/(www\.|m\.)?(youtube\.com|youtu\.be)\//i.test(u)}
+function chrender(){var n=0;$("chgrid").innerHTML=CHS.map(function(c){var fl=(c.c||[]).map(flag).join(" ");var a=c.u&&chok(c.u)?'<a class="more" href="'+chesc(c.u)+'" target="_blank" rel="noopener nofollow">YouTubeで見る</a>':'<span class="small">リンク準備中</span>';var im=c.i&&/^img\/[\w.-]+$/.test(c.i)?'<img src="'+chesc(c.i)+'" alt="" width="56" height="56" style="border-radius:50%;float:right;margin:0 0 8px 10px;object-fit:cover">':'';return '<div class="card"><div class="cb">'+im+'<h3>'+chesc(c.n)+'</h3><p>'+(fl?fl+" ":"")+chesc(c.g||"")+'</p><p>'+chesc(c.d||"")+'</p>'+a+(c.id?'<button class="more" data-rpt="channel:'+c.id+'">🚩 通報</button>':'')+(c.by?'<span class="small">投稿：'+chesc(c.by)+'</span>':'')+'</div></div>'}).join("");gfilter();var any=Array.prototype.some.call($("chgrid").children,function(e){return !e.classList.contains("gh")});$("chempty").hidden=any}
+fetch("data/channels.json").then(function(r){return r.json()}).then(function(a){CHB=a;mergeAll()}).catch(function(){chrender()});
+$("cb1").onclick=function(){var n=$("cn1").value.trim(),u=$("cu1").value.trim(),m=$("cm1");if(!n||!u){m.textContent="チャンネル名とURLを入れてください。";return}if(!chok(u)){m.textContent="URLは、YouTubeのものを入れてください。";return}var t="📺 チャンネル紹介\n名前："+n+"\nURL："+u+"\n主な国："+$("cc1").value.trim()+"\nジャンル："+$("cg1").value.trim()+"\nひとこと："+$("cd1").value.trim();try{navigator.clipboard.writeText(t).then(function(){m.textContent="コピーしました。Discordの「チャンネル紹介」に貼り付けてください。"},function(){m.textContent="コピーできませんでした。"})}catch(e){m.textContent="コピーできませんでした。"}};
+var FPS=[];
+function frender(){var q=$("fq").value.trim();$("fposts").innerHTML=FPS.filter(function(p){return !q||(p.city+p.dish+(p.note||"")).indexOf(q)>-1}).map(function(p){return '<div class="card"><div class="cb"><h3>'+flag(p.c)+" "+chesc(p.dish)+'</h3><p>'+chesc(p.note)+'</p><div class="spec"><span>📍 '+chesc(p.city)+'</span><span>✏️ '+chesc(p.by)+(p.draft?"・未検証":"")+'</span></div></div></div>'}).join("");gfilter();var any=Array.prototype.some.call($("fposts").children,function(e){return !e.classList.contains("gh")});var f2=$("fgrid").children.length>0;$("fe").hidden=any||f2}
+var _fd=food;food=function(){_fd();frender()};
+$("fq").addEventListener("input",frender);
+fetch("data/food-posts.json").then(function(r){return r.json()}).then(function(a){FPS=a;frender()}).catch(function(){});
+$("gpb").onclick=function(){var m=$("gpm"),d=$("gp3").value.trim(),c=$("gp1").value.trim(),s=$("gp2").value.trim();if(!d||!c||!s){m.textContent="国・街・料理名（店名）を入れてください。";return}var t="🍜 グルメ投稿\n国："+c+"\n街："+s+"\n料理・店："+d+"\n値段："+$("gp4").value.trim()+"\nひとこと："+$("gp5").value.trim();try{navigator.clipboard.writeText(t).then(function(){m.textContent="コピーしました。Discordの「グルメ」に貼り付けてください。"},function(){m.textContent="コピーできませんでした。"})}catch(e){m.textContent="コピーできませんでした。"}};
+var RS=[],RV=[],rcity="";
+function stars(n){return "★★★★★".slice(0,n)+"☆☆☆☆☆".slice(0,5-n)}
+function rrender(){var c=$("gc").value,q=$("rq").value.trim().toLowerCase();
+var base=RS.filter(function(r){return !c||r.c===c});
+var cities=[];base.forEach(function(r){if(cities.indexOf(r.city)<0)cities.push(r.city)});if(cities.indexOf(rcity)<0)rcity="";
+$("rchips").innerHTML=cities.length>1?['<button class="chip" data-rc="" aria-pressed="'+(rcity==="")+'">すべて</button>'].concat(cities.map(function(x){return '<button class="chip" data-rc="'+chesc(x)+'" aria-pressed="'+(rcity===x)+'">'+chesc(x)+'</button>'})).join(""):"";
+var list=base.filter(function(r){return (!rcity||r.city===rcity)&&(!q||(r.name+r.dish+r.city+r.area+(r.addr||"")).toLowerCase().indexOf(q)>-1)});
+$("rgrid").innerHTML=list.map(function(r){var rv=RV.filter(function(v){return v.p===r.id}),avg=rv.length?(rv.reduce(function(a,v){return a+v.stars},0)/rv.length):0;
+var mp="https://www.google.com/maps/search/?api=1&query="+encodeURIComponent(r.name+" "+r.city);
+return '<div class="card"><div class="cb"><h3>'+flag(r.c)+" "+chesc(r.name)+'</h3>'+(r.award?'<p><b style="color:var(--brand)">🏅 '+chesc(r.award)+'</b></p>':'')+'<p>'+chesc(r.dish)+'</p>'+(r.note?'<p>'+chesc(r.note)+'</p>':'')+'<div class="spec"><span>📍 '+chesc(r.city)+'・'+chesc(r.area)+'</span>'+(r.addr?'<span>'+chesc(r.addr)+'</span>':'')+'</div>'+(rv.length?'<p>'+stars(Math.round(avg))+" "+avg.toFixed(1)+"（旅人レビュー"+rv.length+"件）</p>"+rv.slice(0,3).map(function(v){return '<p class="small">'+stars(v.stars||0)+' 「'+chesc(v.text)+'」— '+chesc(v.by||"旅人")+(v.id?' <button class="more" data-rpt="review:'+v.id+'" style="padding:0 6px">🚩</button>':'')+'</p>'}).join(""):'<p class="small">旅人のレビューは、まだありません。</p>')+'<div style="display:flex;gap:8px;flex-wrap:wrap"><a class="more" href="'+mp+'" target="_blank" rel="noopener">🗺 地図で探す</a><button class="more" data-rw="'+r.id+'">✏️ レビューを書く</button>'+(r.src?'<a class="more" href="'+chesc(r.src)+'" target="_blank" rel="noopener nofollow">出典：'+chesc(r.sn)+'</a>':'<span class="small">投稿：'+chesc(r.by||"旅人")+'</span>')+(r.db?'<button class="more" data-rpt="place:'+r.id+'">🚩 通報</button>':'')+'</div></div></div>'}).join("");
+$("rempty").hidden=list.length>0;$("rempty").textContent=list.length?"":(RS.length?"この条件のお店は、まだありません。あなたが最初の1軒を追加しませんか？（下のフォームから）":"読み込み中です…")}
+$("rq").addEventListener("input",rrender);
+$("rchips").onclick=function(e){var b=e.target.closest("[data-rc]");if(b){rcity=b.getAttribute("data-rc");rrender()}};
+$("rgrid").onclick=function(e){var b=e.target.closest("[data-rw]");if(!b)return;var r=RS.filter(function(x){return x.id===b.getAttribute("data-rw")})[0];if(!r)return;$("rv1").value=r.c;window.RVP=r.id;$("rv2").value=r.city;$("rv3").value=r.area;$("rv4").value=r.name;$("rv5").value=r.dish;$("rform").scrollIntoView({behavior:"smooth"});$("rv9").focus()};
+$("gc").addEventListener("change",rrender);$("gc").addEventListener("change",function(){var v=$("gc").value;openC=null;if(v&&$("kc").querySelector('option[value="'+v+'"]')){$("kc").value=v;kcalc()}wiki()});
+fetch("data/restaurants.json").then(function(r){return r.json()}).then(function(a){RSB=a;mergeAll()}).catch(function(){});
+fetch("data/reviews.json").then(function(r){return r.json()}).then(function(a){RVB=a;mergeAll()}).catch(function(){});
+$("rvb").onclick=function(){var m=$("rvm");if(!$("rv4").value.trim()||!$("rv1").value||!$("rv2").value.trim()){m.textContent="国・街・店名を入れてください。";return}var t="🍜 お店のレビュー\n国："+$("rv1").options[$("rv1").selectedIndex].text+"\n街："+$("rv2").value.trim()+"\nエリア："+$("rv3").value.trim()+"\n店名："+$("rv4").value.trim()+"\n食べたもの："+$("rv5").value.trim()+"\n値段："+$("rv6").value.trim()+"\n評価："+$("rv7").value+"/5\n行った時期："+$("rv8").value.trim()+"\nレビュー："+$("rv9").value.trim();try{navigator.clipboard.writeText(t).then(function(){m.textContent="コピーしました。Discordの「グルメ」に貼り付けてください。"},function(){m.textContent="コピーできませんでした。"})}catch(e){m.textContent="コピーできませんでした。"}};
+var _t3=tab;tab=function(t){_t3(t);var g=document.querySelector(".gcbar");if(g)g.style.display=(t==="home"||t==="fx"||t==="crew"||t==="prep"||t==="ch"||t==="board")?"none":"";var n=$("gnote");if(n&&(t==="home"||t==="fx"||t==="crew"||t==="prep"))n.hidden=true};
+var FX={rates:null,time:"",live:false},FXP=["JPY","USD","EUR","GBP","KRW","CNY","TWD","HKD","SGD","THB","VND","IDR","MYR","PHP","KHR","LAK","MMK","INR","LKR","NPR","BDT","PKR","GEL","TRY","AED","EGP","MAD","KES","TZS","ZAR","MXN","COP","PEN","ARS","BRL","CLP","AUD","NZD","CAD","CHF"],FXK="nomad_fx_v1";
+var FXN=null;try{FXN=new Intl.DisplayNames(["ja"],{type:"currency"})}catch(e){}
+function fxn(c){try{return FXN?FXN.of(c):c}catch(e){return c}}
+function fxfmt(n){if(!isFinite(n))return "—";var a=Math.abs(n);return n.toLocaleString("ja-JP",a>=100?{maximumFractionDigits:2}:{maximumSignificantDigits:5})}
+function fxcodes(){var all=Object.keys(FX.rates),p=FXP.filter(function(c){return FX.rates[c]}),r=all.filter(function(c){return p.indexOf(c)<0}).sort();return p.concat(r)}
+function fxopts(){var cs=fxcodes(),o=cs.map(function(c){return '<option value="'+c+'">'+c+'　'+chesc(fxn(c))+'</option>'}).join("");var f=$("fxf").value||"JPY",t=$("fxt").value||"THB";$("fxf").innerHTML=o;$("fxt").innerHTML=o;try{var s=JSON.parse(localStorage.getItem("nomad_fx_sel")||"{}");f=s.f||f;t=s.t||t}catch(e){}$("fxf").value=FX.rates[f]?f:"JPY";$("fxt").value=FX.rates[t]?t:"USD"}
+function fxcv(a,f,t){return a/FX.rates[f]*FX.rates[t]}
+function fxrender(){if(!FX.rates)return;var a=parseFloat($("fxa").value),f=$("fxf").value,t=$("fxt").value;try{localStorage.setItem("nomad_fx_sel",JSON.stringify({f:f,t:t}))}catch(e){}
+if(!(a>=0)){$("fxr").textContent="金額を入れてください";$("fxl").textContent=""}else{$("fxr").textContent=fxfmt(a)+" "+f+" ＝ "+fxfmt(fxcv(a,f,t))+" "+t;$("fxl").textContent="1 "+f+" ＝ "+fxfmt(fxcv(1,f,t))+" "+t+"　／　1 "+t+" ＝ "+fxfmt(fxcv(1,t,f))+" "+f}
+var q=$("fxq").value.trim().toLowerCase(),b=isFinite(a)&&a>=0?a:0;
+$("fxtb").innerHTML=fxcodes().filter(function(c){return c!==f&&(!q||c.toLowerCase().indexOf(q)>-1||fxn(c).toLowerCase().indexOf(q)>-1)}).map(function(c){return '<div class="fxr"><button data-fxc="'+c+'"><span>'+c+'　'+chesc(fxn(c))+'</span><b>'+fxfmt(fxcv(b,f,c))+'</b></button></div>'}).join("")||'<div class="fxr"><span>見つかりませんでした。</span></div>'}
+function fxset(r,time,live){FX.rates=r;FX.time=time;FX.live=live;fxopts();fxrender();$("fxm").textContent=(live?"最新レートを取得しました。":"通信できないため、最後に取得したレートを表示しています。")+"レートの更新日時："+time}
+(function(){
+function tmo(u,ms){return new Promise(function(res,rej){var t=setTimeout(function(){rej(new Error("timeout"))},ms);fetch(u).then(function(r){clearTimeout(t);if(!r.ok)throw new Error("http");return r.json()}).then(res,function(e){clearTimeout(t);rej(e)})})}
+function liveA(){return tmo("https://open.er-api.com/v6/latest/USD",7000).then(function(d){if(d&&d.result==="success"&&d.rates)return{r:d.rates,t:new Date(d.time_last_update_unix*1000).toLocaleString("ja-JP")};throw 0})}
+function liveB(){return tmo("https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/currencies/usd.json",7000).then(function(d){var o={},u=d&&d.usd;if(!u)throw 0;Object.keys(u).forEach(function(k){if(/^[a-z]{3}$/.test(k)&&typeof u[k]==="number"&&u[k]>0)o[k.toUpperCase()]=u[k]});if(!o.JPY)throw 0;return{r:o,t:String(d.date||"")}})}
+function fallback(){var c=null;try{c=JSON.parse(localStorage.getItem(FXK)||"null")}catch(e){}
+if(c&&c.r){fxset(c.r,c.t,false);return}
+tmo("data/fx.json",5000).then(function(d){FX.rates=d.rates;FX.time=d.date;FX.live=false;fxopts();fxrender();$("fxm").textContent="⚠ 最新レートに接続できないため、"+d.date.replace(/-/g,"/")+"ごろのレート（目安）で計算しています。実際のレートとは、数％以上ずれていることがあります。送金や両替の前に、必ず最新のレートを確認してください。"}).catch(function(){$("fxm").textContent="レートを取得できませんでした。通信できる場所で、もう一度開いてください。"})}
+liveA().catch(liveB).then(function(x){try{localStorage.setItem(FXK,JSON.stringify({r:x.r,t:x.t}))}catch(e){}fxset(x.r,x.t,true)}).catch(fallback)})();
+$("fxa").addEventListener("input",fxrender);$("fxf").addEventListener("change",fxrender);$("fxt").addEventListener("change",fxrender);$("fxq").addEventListener("input",fxrender);
+$("fxs").onclick=function(){var f=$("fxf").value;$("fxf").value=$("fxt").value;$("fxt").value=f;fxrender()};
+$("fxtb").onclick=function(e){var b=e.target.closest("[data-fxc]");if(b){$("fxt").value=b.getAttribute("data-fxc");fxrender();window.scrollTo({top:0,behavior:"smooth"})}};
+
+/* ===== メンバー編集（Supabase） ===== */
+var RSB=[],RVB=[],CHB=[],DBP=[],DBR=[],DBC=[];
+function mergeAll(){RS=RSB.concat(DBP);RV=RVB.concat(DBR);CHS=CHB.concat(DBC);rrender();chrender();STS=STB.concat(DBS);strender()}
+var STB=[],DBS=[],STS=[];
+function stok(u){return !u||/^https:\/\//i.test(u)}
+function strender(){var q=($("stq").value||"").trim().toLowerCase();$("stgrid").innerHTML=STS.filter(function(x){return !q||(x.city+" "+x.n+" "+(x.k||"")+" "+(x.d||"")).toLowerCase().indexOf(q)>-1}).map(function(x){var l=x.l&&/^https:\/\//i.test(x.l)?'<a class="more" href="'+chesc(x.l)+'" target="_blank" rel="noopener nofollow">リンクを開く</a>':'';return '<div class="card"><div class="cb"><h3>'+chesc(x.n)+'</h3><p>'+flag(x.c)+" "+chesc(cname(x.c))+" ／ "+chesc(x.city)+(x.k?" ／ "+chesc(x.k):"")+'</p>'+(x.p?'<p>💰 '+chesc(x.p)+'</p>':'')+(x.w?'<p>💻 仕事のしやすさ：'+chesc(x.w)+'</p>':'')+'<p>'+chesc(x.d)+'</p>'+l+(x.id?'<button class="more" data-rpt="stay:'+x.id+'">🚩 通報</button>':'')+(x.by?'<span class="small">投稿：'+chesc(x.by)+'</span>':'')+'</div></div>'}).join("");gfilter();var any=Array.prototype.some.call($("stgrid").children,function(e){return !e.classList.contains("gh")});$("stempty").hidden=any}
+$("st1").innerHTML='<option value="">国を選ぶ</option>'+CL2.map(function(x){return '<option value="'+x.c+'">'+chesc(x.n)+'</option>'}).join("");
+$("stq").oninput=strender;
+fetch("data/stays.json").then(function(r){return r.json()}).then(function(a){STB=a;mergeAll()}).catch(function(){strender()});
+function stform(){return{c:$("st1").value,city:$("st2").value.trim(),n:$("st3").value.trim(),k:$("st4").value,p:$("st5").value.trim(),w:$("st6").value,d:$("st7").value.trim(),l:$("st8").value.trim()}}
+function stcheck(f,m){if(!f.c||!f.city||!f.n||!f.d){m.textContent="国・街・宿の名前・感想を入れてください。";return false}if(!stok(f.l)){m.textContent="リンクは https:// から始まるものだけです。";return false}return true}
+$("stb").onclick=function(){var f=stform(),m=$("stm");if(!stcheck(f,m))return;var t="🏠 穴場の宿\n国："+cname(f.c)+"\n街："+f.city+"\n名前："+f.n+"\nタイプ："+f.k+"\n1泊の目安："+f.p+"\n仕事のしやすさ："+f.w+"\n感想："+f.d+(f.l?"\nリンク："+f.l:"")+"\n（泊まった宿です／PRではありません）";try{navigator.clipboard.writeText(t).then(function(){m.textContent="コピーしました。Discordの「穴場の宿」に貼り付けてください。"},function(){m.textContent="コピーできませんでした。"})}catch(e){m.textContent="コピーできませんでした。"}};
+
+$("rv1").innerHTML='<option value="">国を選ぶ</option>'+CL2.map(function(x){return '<option value="'+x.c+'">'+chesc(x.n)+'</option>'}).join("");
+function toast(t){var d=document.createElement("div");d.className="toast";d.setAttribute("role","status");d.textContent=t;document.body.appendChild(d);setTimeout(function(){d.remove()},4200)}
+function sbErr(e){var m=(e&&e.message)||"";if(m.indexOf("rate_limit")>-1)return"短時間に投稿・編集しすぎです。1時間ほど空けてください。";if(m.indexOf("row-level security")>-1||m.indexOf("JWT")>-1)return"権限がありません。ログインし直してください。";if(m.indexOf("duplicate key")>-1)return"すでに登録済みです（同じお店のレビューは1人1件です）。";if(m.indexOf("violates check")>-1)return"入力内容を確認してください（文字数・URLの形式など）。";return"保存できませんでした。時間をおいて、もう一度お試しください。"}
+function cnames2codes(s){var out=[];String(s||"").split(/[、,，\s]+/).forEach(function(n){n=n.trim();if(!n)return;var hit=CL2.filter(function(x){return x.n===n})[0];if(hit&&out.indexOf(hit.c)<0)out.push(hit.c)});return out.slice(0,10)}
+window.SBX={on:false,user:null,sb:null,
+need:function(){if(!SBX.user){toast("先に、Discordでログインしてください。");return false}return true},
+authbar:function(){var a=$("authbar");a.hidden=false;if(SBX.user){a.innerHTML='<span>👤 '+chesc(SBX.user.name)+' でログイン中</span><button id="logout">ログアウト</button>'}else{a.innerHTML='<span>✏️ 直接編集・投稿するには、Discordでログイン</span><button id="login">Discordでログイン</button>'}
+$("rvd").hidden=false;$("cbd").hidden=false;$("std").hidden=false},
+setUser:async function(u){if(!u){SBX.user=null;SBX.authbar();return}var nm=(u.user_metadata&&(u.user_metadata.full_name||u.user_metadata.name))||"旅人";try{var r=await SBX.sb.from("profiles").select("display_name").eq("id",u.id).maybeSingle();if(r.data&&r.data.display_name)nm=r.data.display_name}catch(e){}SBX.user={id:u.id,name:nm};SBX.authbar()},
+init:async function(){SBX.on=true;SBX.authbar();
+try{await new Promise(function(ok,ng){var s=document.createElement("script");s.src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js";s.onload=ok;s.onerror=ng;document.head.appendChild(s)})}catch(e){$("wmsg").textContent="共有データの読み込みに失敗しました（通信を確認してください）。";return}
+SBX.sb=window.supabase.createClient(SB_CONFIG.url,SB_CONFIG.key,{auth:{persistSession:true,detectSessionInUrl:true,flowType:"pkce"}});
+var s=await SBX.sb.auth.getSession();await SBX.setUser(s.data&&s.data.session&&s.data.session.user);
+SBX.sb.auth.onAuthStateChange(function(ev,ses){setTimeout(function(){SBX.setUser(ses&&ses.user)},0)});
+await SBX.loadAll()},
+loadAll:async function(){await Promise.all([SBX.loadCountries(),SBX.loadPlaces(),SBX.loadReviews(),SBX.loadChannels(),SBX.loadStays()]);mergeAll()},
+loadCountries:async function(){var r=await SBX.sb.from("countries").select("code,data,rev,updated_at,profiles(display_name)");if(r.error)return;var o=Object.assign({},window.BASE||{});r.data.forEach(function(x){o[x.code]=Object.assign({},x.data,{rev:x.rev,updated:String(x.updated_at||"").slice(0,10),editor:(x.profiles&&x.profiles.display_name)||(x.data&&x.data.est?"Claude（初期入力）":""),_db:1})});ROWS=o;if(!edC){wiki();rall()}kcalc()},
+loadPlaces:async function(){var r=await SBX.sb.from("places").select("id,country,city,area,name,dish,addr,note,profiles(display_name)").order("created_at");if(r.error)return;DBP=r.data.map(function(p){return{id:p.id,c:p.country,city:p.city,area:p.area||"",name:p.name,dish:p.dish||"",addr:p.addr||"",note:p.note||"",src:"",sn:"",award:"",by:(p.profiles&&p.profiles.display_name)||"旅人",db:1}})},
+loadReviews:async function(){var r=await SBX.sb.from("reviews").select("id,place_key,stars,body,profiles(display_name)").order("created_at",{ascending:false});if(r.error)return;DBR=r.data.map(function(v){return{id:v.id,p:v.place_key,stars:v.stars,text:v.body,by:(v.profiles&&v.profiles.display_name)||"旅人"}})},
+loadChannels:async function(){var r=await SBX.sb.from("channels").select("id,name,url,countries,genre,descr,profiles(display_name)").order("created_at");if(r.error)return;DBC=r.data.map(function(c){return{id:c.id,n:c.name,u:c.url,c:c.countries||[],g:c.genre||"",d:c.descr||"",by:(c.profiles&&c.profiles.display_name)||"旅人"}})},
+loadStays:async function(){var r=await SBX.sb.from("stays").select("id,country,city,name,kind,price,work,body,link,profiles(display_name)").order("created_at",{ascending:false});if(r.error)return;DBS=r.data.map(function(x){return{id:x.id,c:x.country,city:x.city,n:x.name,k:x.kind||"",p:x.price||"",w:x.work||"",d:x.body,l:x.link||"",by:(x.profiles&&x.profiles.display_name)||"旅人"}})},
+saveCountry:async function(code,d){var cur=ROWS[code]||{},data=Object.assign({},d);["rev","updated","editor","_db"].forEach(function(k){delete data[k]});var r;
+if(cur._db){r=await SBX.sb.from("countries").update({data:data}).eq("code",code).eq("rev",cur.rev).select("code");if(r.error){var e1=new Error(r.error.message);e1.userMsg=sbErr(r.error);throw e1}if(!r.data||!r.data.length){await SBX.loadCountries();var e2=new Error("conflict");e2.userMsg="他の人が先に編集していました。最新の内容を読み込みました。もう一度、直してください。";throw e2}}
+else{r=await SBX.sb.from("countries").insert({code:code,data:data});if(r.error){var e3=new Error(r.error.message);e3.userMsg=sbErr(r.error);throw e3}}
+await SBX.loadCountries()}};
+document.addEventListener("click",async function(e){
+if(e.target.closest("#login")){SBX.sb.auth.signInWithOAuth({provider:"discord",options:{redirectTo:location.origin+location.pathname}});return}
+if(e.target.closest("#logout")){await SBX.sb.auth.signOut();return}
+var rp=e.target.closest("[data-rpt]");if(rp&&SBX.on){if(!SBX.need())return;var p=rp.getAttribute("data-rpt").split(":");var r=await SBX.sb.from("reports").insert({kind:p[0],target:p[1]});toast(r.error?sbErr(r.error):"通報しました。ありがとうございます。");if(!r.error)rp.disabled=true;return}
+if(e.target.closest("#cbd")){if(!SBX.need())return;var n=$("cn1").value.trim(),u=$("cu1").value.trim(),m=$("cm1");if(!n||!u){m.textContent="チャンネル名とURLを入れてください。";return}if(!chok(u)){m.textContent="URLは、YouTubeのものを入れてください。";return}
+var r2=await SBX.sb.from("channels").insert({name:n,url:u,countries:cnames2codes($("cc1").value),genre:$("cg1").value.trim()||null,descr:$("cd1").value.trim()||null});if(r2.error){m.textContent=sbErr(r2.error);return}m.textContent="投稿しました。";$("cn1").value=$("cu1").value=$("cc1").value=$("cg1").value=$("cd1").value="";await SBX.loadChannels();mergeAll();return}
+if(e.target.closest("#std")){if(!SBX.need())return;var f=stform(),m3=$("stm");if(!stcheck(f,m3))return;var r3=await SBX.sb.from("stays").insert({country:f.c,city:f.city,name:f.n,kind:f.k||null,price:f.p||null,work:f.w||null,body:f.d,link:f.l||null});if(r3.error){m3.textContent=sbErr(r3.error);return}m3.textContent="投稿しました。";["st2","st3","st5","st7","st8"].forEach(function(i){$(i).value=""});await SBX.loadStays();mergeAll();return}
+if(e.target.closest("#rvd")){if(!SBX.need())return;var m2=$("rvm"),nm=$("rv4").value.trim(),c=$("rv1").value,city=$("rv2").value.trim(),body=$("rv9").value.trim();if(!nm||!c||!city){m2.textContent="国・街・店名を入れてください。";return}
+var hit=RS.filter(function(x){return x.name===nm&&x.c===c})[0],key=hit?hit.id:null;
+if(!key){var pr=await SBX.sb.from("places").insert({country:c,city:city,area:$("rv3").value.trim()||null,name:nm,dish:$("rv5").value.trim()||null}).select("id").single();if(pr.error){m2.textContent=sbErr(pr.error);return}key=pr.data.id}
+else if(!body){m2.textContent="このお店はすでに載っています。レビューを書いてください。";return}
+if(body){var rr=await SBX.sb.from("reviews").insert({place_key:key,stars:+$("rv7").value,body:body,visited:$("rv8").value.trim()||null,price:$("rv6").value.trim()||null});if(rr.error){m2.textContent=sbErr(rr.error);await SBX.loadPlaces();mergeAll();return}}
+m2.textContent=body?"投稿しました。ありがとうございます。":"お店を追加しました。";["rv3","rv4","rv5","rv6","rv8","rv9"].forEach(function(i){$(i).value=""});await Promise.all([SBX.loadPlaces(),SBX.loadReviews()]);mergeAll();return}
+});
+tab("home");
+</script>
+<footer style="max-width:1100px;margin:32px auto;padding:16px;font-size:12px;color:#888;text-align:center"><a href="privacy.html">プライバシーポリシー</a>｜<a href="terms.html">利用規約・免責</a><p>掲載情報は下書き・概算を含み、正確性を保証しません。渡航前に必ず公的機関の最新情報をご確認ください。</p></footer>
+</body>
+</html>
