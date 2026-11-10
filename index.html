@@ -477,6 +477,7 @@ select{border-color:#ff8a8a}
 <h2>🧾 国別コスト</h2>
 <p class="sub">どこの国なら、だらけて暮らせるか。生活費と、主な街をまとめて見られます。世界中の国を検索できます（国を開くと、街の情報が出ます）。数字は、確認できた国は出典付き、それ以外はClaudeの概算です。違ってたら、気づいた人が直してください。</p>
 <div class="simbox" style="max-width:none;margin-bottom:20px"><b>1か月いくらで暮らせる？</b><div class="row" style="margin-top:10px"><select id="kc" aria-label="国"></select><select id="kn" aria-label="日数"><option value="7">7泊</option><option value="14">14泊</option><option value="30" selected>30泊</option><option value="90">90泊</option></select></div><div class="row"><select id="kt" aria-label="宿のタイプ"><option value="0.8">ドミトリー</option><option value="1" selected>個室ホステル</option><option value="1.5">コリビング</option></select></div><div id="ko" role="status"></div></div>
+<div class="simbox" style="max-width:none;margin:0 0 14px"><b>✏️ 国の情報を編集する</b><p class="small" style="margin:6px 0 10px">国を選んで押すと、物価・ひとこと・街・グルメ・安全の情報を、直せます。<b>Discordでログインすると、みんなに共有されます。</b></p><div class="row"><select id="wes" aria-label="編集する国"></select><button class="go" id="web" style="flex:0 0 auto;max-width:160px">編集する</button></div><p class="mm" id="wem" role="status"></p></div>
 <input id="wq" type="search" placeholder="国名で探す（例：ベトナム）" aria-label="国名で探す" style="width:100%;max-width:420px;font:inherit;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 14px;margin-bottom:8px">
 <details id="wd" style="margin-top:6px"><summary style="cursor:pointer;font-weight:800;padding:12px 14px;background:var(--soft);border:1px solid var(--line);border-radius:12px;list-style:none">📂 国の一覧を開く（203か国・地域）</summary><div style="margin-top:12px">
 <select id="ws2" aria-label="並び替え" style="margin-bottom:6px;max-width:260px"><option value="n">名前順</option><option value="a">物価が安い順</option><option value="d">物価が高い順</option></select>
@@ -753,6 +754,7 @@ h+='<div class="wr"><button class="wb" data-w="'+x.c+'" aria-expanded="'+(openC=
 $("wl").innerHTML=h||'<p class="empty">見つかりませんでした。</p>';
 var f=Object.keys(ROWS).filter(function(k){return ROWS[k].idx!=null}).length;$("wsum").textContent=CODES.length+"か国・地域のうち、物価を入力済み："+f}
 $("wq").oninput=wiki;
+
 $("wl").onclick=function(e){var b=e.target.closest("[data-w],[data-e],[data-s],[data-x]");if(!b)return;
 if(b.hasAttribute("data-w")){var c=b.getAttribute("data-w");openC=openC===c?null:c;edC=null}
 else if(b.hasAttribute("data-e")){if(window.SBX&&SBX.on&&!SBX.user){$("wmsg").textContent="編集するには、Discordでログインしてください。";return}edC=b.getAttribute("data-e")}
@@ -762,7 +764,7 @@ wiki()};
 async function wsave(c){var m=$("wmsg");if(window.SBX&&SBX.on&&!SBX.user){m.textContent="編集するには、Discordでログインしてください。";return}if(!DBH){m.textContent="データにつながっていないため、保存できません。";return}
 var g=function(i){return $(i).value.trim()},cur=ROWS[c]||{},ix=g("wi"),cs=g("wc");
 var d=Object.assign({},cur,{idx:ix===""||isNaN(+ix)?null:+ix,cost:cs===""||isNaN(+cs)?null:+cs,note:g("wn"),town:ln("wt"),food:ln("wf"),safety:ln("wy"),src:g("ws"),est:g("ws")?0:(cur.est||0),editor:(window.SBX&&SBX.user?SBX.user.name:(g("we")||"匿名")),updated:new Date().toISOString().slice(0,10),rev:(cur.rev||0)+1});
-try{await DBH.collection("countries").doc(c).set(d);edC=null;m.textContent=(window.SBX&&SBX.on)?"保存しました":"保存しました（共有版以外では、この端末だけに保存されます）";rall()}catch(e){m.textContent=(e&&e.userMsg)||"保存できませんでした。編集できるのは、共同編集に招待された人だけです。"}wiki()}
+try{await DBH.collection("countries").doc(c).set(d);edC=null;m.textContent=(window.SBX&&SBX.on)?"保存しました":"保存しました（共有版以外では、この端末だけに保存されます）";rall()}catch(e){m.textContent=(e&&e.userMsg)||((window.SBX&&SBX.on)?"保存できませんでした。ログインし直すか、時間をおいて、もう一度お試しください。":"保存できませんでした。")}wiki()}
 (async function(){var m=$("wmsg"),LK="nomad_local_edits_v1",loc={};try{loc=JSON.parse(localStorage.getItem(LK)||"{}")}catch(e){}
 function apply(base){window.BASE=base;ROWS=Object.assign({},base,loc);if(!edC){wiki();rall()}kcalc()}
 var db=null;try{if(window.claude&&claude.use)db=await claude.use("db")}catch(e){}
@@ -775,6 +777,9 @@ function WL(){var s=$("ws2").value;if(s==="n")return CL2;var a=CL2.slice();a.sor
 $("ws2").onchange=wiki;$("rq").addEventListener("input",function(){$("rd").open=true});$("wq").addEventListener("input",function(){$("wd").open=true});
 var KC=CL2.map(function(x){return '<option value="'+x.c+'">'+flag(x.c)+" "+x.n+'</option>'}).join("");
 $("kc").innerHTML=KC;$("kc").value="TH";
+$("wes").innerHTML='<option value="">国を選ぶ</option>'+KC;
+$("web").onclick=function(){var c=$("wes").value,m=$("wem");if(!c){m.textContent="国を選んでください。";return}if(window.SBX&&SBX.on&&!SBX.user){m.textContent="編集するには、先にDiscordでログインしてください。";return}m.textContent="";$("wd").open=true;openC=c;edC=c;wiki();var el=document.querySelector('#wl [data-w="'+c+'"]');if(el&&el.scrollIntoView)el.scrollIntoView({block:"start"})};
+
 function kcalc(){var r=ROWS[$("kc").value]||{},n=+$("kn").value,t=+$("kt").value,b=r.cost!=null?r.cost:(r.idx!=null?Math.round((15000+3000*r.idx)/1000)*1000:null),o=$("ko");
 if(b==null){o.innerHTML='<p class="small">この国はまだ未入力です。国別ガイドで入力すると計算できます。</p>';return}
 var k=n/30,s=0,a=[["宿",.35*t],["食費",.4],["交通",.08],["通信・その他",.17]];
