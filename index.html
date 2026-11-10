@@ -465,7 +465,7 @@ section .card,section .step,section .box,section .simbox{box-shadow:none!importa
 
 <main>
 <div id="authbar" class="authbar" hidden></div>
-<div class="gcbar"><label>🌏 国で絞り込む<select id="gc" aria-label="国で絞り込む"></select></label><span class="small" style="margin:0">国別コスト・グルメ・安全に反映されます</span></div>
+<div class="gcbar"><label>🌏 国で絞り込む<select id="gc" aria-label="国で絞り込む"></select></label><span class="small" style="margin:0">国別コスト・グルメ・宿・安全・18禁に反映されます</span></div>
 <p class="empty" id="gnote" hidden>この国の情報は、まだありません。国別コストで追加していきましょう。</p>
 <section id="home-more" data-t="home">
 <div class="feat">
@@ -949,7 +949,7 @@ $("rgrid").onclick=function(e){var b=e.target.closest("[data-rw]");if(!b)return;
 $("gc").addEventListener("change",rrender);$("gc").addEventListener("change",function(){var v=$("gc").value;openC=null;if(v&&$("kc").querySelector('option[value="'+v+'"]')){$("kc").value=v;kcalc()}wiki()});
 fetch("data/restaurants.json").then(function(r){return r.json()}).then(function(a){RSB=a;mergeAll()}).catch(function(){});
 fetch("data/reviews.json").then(function(r){return r.json()}).then(function(a){RVB=a;mergeAll()}).catch(function(){});
-var _t3=tab;tab=function(t){_t3(t);var g=document.querySelector(".gcbar");if(g)g.style.display=(t==="home"||t==="fx"||t==="crew"||t==="prep"||t==="ch"||t==="board")?"none":"";var n=$("gnote");if(n&&(t==="home"||t==="fx"||t==="crew"||t==="prep"))n.hidden=true};
+var _t3=tab;tab=function(t){_t3(t);var g=document.querySelector(".gcbar");if(g)g.style.display=["wiki","food","stays","safety","adult"].indexOf(t)<0?"none":"";var n=$("gnote");if(n&&["wiki","food","stays","safety","adult"].indexOf(t)<0)n.hidden=true};
 var FX={rates:null,time:"",live:false},FXP=["JPY","USD","EUR","GBP","KRW","CNY","TWD","HKD","SGD","THB","VND","IDR","MYR","PHP","KHR","LAK","MMK","INR","LKR","NPR","BDT","PKR","GEL","TRY","AED","EGP","MAD","KES","TZS","ZAR","MXN","COP","PEN","ARS","BRL","CLP","AUD","NZD","CAD","CHF"],FXK="nomad_fx_v1";
 var FXN=null;try{FXN=new Intl.DisplayNames(["ja"],{type:"currency"})}catch(e){}
 function fxn(c){try{return FXN?FXN.of(c):c}catch(e){return c}}
