@@ -472,7 +472,7 @@ section .card,section .step,section .box,section .simbox{box-shadow:none!importa
 
 <main>
 <div id="authbar" class="authbar" hidden></div>
-<div class="gcbar"><label>🌏 国で絞り込む<select id="gc" aria-label="国で絞り込む"></select></label><span class="small" style="margin:0">国別コスト・グルメ・宿・安全・18禁に反映されます</span></div>
+<div class="gcbar"><label>🌏 国で絞り込む<select id="gc" aria-label="国で絞り込む"></select></label><span class="small" style="margin:0">グルメ・宿・安全・18禁に反映されます</span></div>
 <p class="empty" id="gnote" hidden>この国の情報は、まだありません。国別コストで追加していきましょう。</p>
 <section id="home-more" data-t="home">
 <div class="feat">
@@ -847,7 +847,7 @@ if(edC===c){return '<div class="wd"><label class="wl">物価指数（NYC=100）<
 var p=rel(r.idx);
 return '<div class="wd"><div class="ln"><span>物価指数（NYC=100）</span><span>'+(r.idx==null?"未入力":r.idx)+'</span></div><div class="ln"><span>日本を100とすると</span><span>'+(p==null?"—":p)+'</span></div><div class="ln"><span>月の目安（円）</span><span>'+(r.cost!=null?yen(r.cost):(r.idx!=null?"約"+yen(Math.round((15000+3000*r.idx)/1000)*1000)+"（指数から計算）":"未入力"))+'</span></div>'+(r.note?'<p style="margin:8px 0">'+r.note+'</p>':'')+(r.town&&r.town.length?'<h4 style="margin:12px 0 4px">🗺 主な街</h4>'+r.town.map(function(s){var p=sp(s);return '<div class="ln" style="display:block"><b>'+esc(p[0])+'</b>'+(p[1]?'<br><span class="small">'+esc(p[1])+'</span>':'')+'</div>'}).join("")+'<p class="small">街の内容は下書き（未検証）です。気づいた点は、編集で直してください。</p>':'<p class="small" style="margin:8px 0">この国の街の情報は、まだありません。編集で追加できます。</p>')+'<p class="small">出典：'+(r.src||(r.est?"Claudeの概算（未検証）":"未入力"))+(r.date?"（確認日 "+r.date+"）":"")+'<br>最終編集：'+(r.editor||(r.est?"Claude（初期入力）":"—"))+(r.updated?"（"+r.updated+"）":"")+'</p><button class="more" data-e="'+c+'">この国を編集する</button></div>'}
 function wiki(){var q=$("wq").value.trim().toLowerCase(),n=0,h="";
-var gv=$("gc").value;WL().forEach(function(x){if(gv&&x.c!==gv)return;if(q&&x.n.toLowerCase().indexOf(q)<0&&x.c.toLowerCase()!==q)return;var r=ROWS[x.c],p=r?rel(r.idx):null;n++;
+var gv="";WL().forEach(function(x){if(gv&&x.c!==gv)return;if(q&&x.n.toLowerCase().indexOf(q)<0&&x.c.toLowerCase()!==q)return;var r=ROWS[x.c],p=r?rel(r.idx):null;n++;
 h+='<div class="wr"><button class="wb" data-w="'+x.c+'" aria-expanded="'+(openC===x.c||(gv===x.c&&openC===null))+'"><span>'+flag(x.c)+" "+x.n+'</span><span class="wv">'+(p!=null?"日本の"+p+"%"+(r&&r.est?"（概算）":""):(r&&r.idx!=null?"指数 "+r.idx:"未入力"))+'</span></button>'+((openC===x.c||(gv===x.c&&openC===null))?wdet(x.c):"")+'</div>'});
 $("wl").innerHTML=h||'<p class="empty">見つかりませんでした。</p>';
 var f=Object.keys(ROWS).filter(function(k){return ROWS[k].idx!=null}).length;$("wsum").textContent=CODES.length+"か国・地域のうち、物価を入力済み："+f}
@@ -963,7 +963,7 @@ $("rgrid").onclick=function(e){var b=e.target.closest("[data-rw]");if(!b)return;
 $("gc").addEventListener("change",rrender);$("gc").addEventListener("change",function(){var v=$("gc").value;openC=null;if(v&&$("kc").querySelector('option[value="'+v+'"]')){$("kc").value=v;kcalc()}wiki()});
 fetch("data/restaurants.json").then(function(r){return r.json()}).then(function(a){RSB=a;mergeAll()}).catch(function(){});
 fetch("data/reviews.json").then(function(r){return r.json()}).then(function(a){RVB=a;mergeAll()}).catch(function(){});
-var _t3=tab;tab=function(t){_t3(t);var g=document.querySelector(".gcbar");if(g)g.style.display=["wiki","food","stays","safety","adult"].indexOf(t)<0?"none":"";var n=$("gnote");if(n&&["wiki","food","stays","safety","adult"].indexOf(t)<0)n.hidden=true};
+var _t3=tab;tab=function(t){_t3(t);var g=document.querySelector(".gcbar");if(g)g.style.display=["food","stays","safety","adult"].indexOf(t)<0?"none":"";var n=$("gnote");if(n&&["food","stays","safety","adult"].indexOf(t)<0)n.hidden=true};
 var FX={rates:null,time:"",live:false},FXP=["JPY","USD","EUR","GBP","KRW","CNY","TWD","HKD","SGD","THB","VND","IDR","MYR","PHP","KHR","LAK","MMK","INR","LKR","NPR","BDT","PKR","GEL","TRY","AED","EGP","MAD","KES","TZS","ZAR","MXN","COP","PEN","ARS","BRL","CLP","AUD","NZD","CAD","CHF"],FXK="nomad_fx_v1";
 var FXN=null;try{FXN=new Intl.DisplayNames(["ja"],{type:"currency"})}catch(e){}
 function fxn(c){try{return FXN?FXN.of(c):c}catch(e){return c}}
