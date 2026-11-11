@@ -445,12 +445,12 @@ section .card,section .step,section .box,section .simbox{box-shadow:none!importa
 .feat .f2{border-color:#f08a47;box-shadow:0 5px 0 #f08a47}
 .feat .f3{background:#5865f2;border-color:#3c45a5;box-shadow:0 5px 0 #3c45a5;color:#fff}
 .feat .f3 .ft span{color:#e8eaff}
-#home-more .big{grid-template-columns:repeat(3,1fr)!important;gap:8px!important;margin:8px 0!important}
-#home-more .big button{padding:10px 6px!important;border-radius:14px!important;border-width:2px!important;box-shadow:0 3px 0 var(--line)!important;align-items:center!important;text-align:center!important;gap:2px!important}
-#home-more .big button i{font-size:24px!important}
-#home-more .big button b{font-size:12px!important;line-height:1.3}
-#home-more .big button span{display:none!important}
-#home-more .big button{min-height:0!important;height:auto!important;justify-content:center!important}
+#home-more .big,#allmenu .big{grid-template-columns:repeat(3,1fr)!important;gap:8px!important;margin:8px 0!important}
+#home-more .big button,#allmenu .big button{padding:10px 6px!important;border-radius:14px!important;border-width:2px!important;box-shadow:0 3px 0 var(--line)!important;align-items:center!important;text-align:center!important;gap:2px!important}
+#home-more .big button i,#allmenu .big button i{font-size:24px!important}
+#home-more .big button b,#allmenu .big button b{font-size:12px!important;line-height:1.3}
+#home-more .big button span,#allmenu .big button span{display:none!important}
+#home-more .big button,#allmenu .big button{min-height:0!important;height:auto!important;justify-content:center!important}
 
 .hero h1 em{background:none!important;box-shadow:none!important;border-radius:0!important;padding:0!important;color:inherit!important;-webkit-text-stroke:0!important;text-shadow:inherit!important;text-decoration:none!important;display:inline-block;transform:none;margin-top:4px}
 
@@ -805,6 +805,7 @@ section .card,section .step,section .box,section .simbox{box-shadow:none!importa
 <p class="small" style="margin-top:12px">【PR】「PR」と書いてあるリンクは、アフィリエイト（紹介）リンクです。このリンクから登録・購入すると、運営者（底辺くん）に報酬が入ることがあります。利用は、ご自身で条件を確認して判断してください。</p>
 </section>
 <p class="note">掲載情報は下書き・概算を含みます。気づいた点はみんなで直していきましょう。</p>
+<section id="allmenu" hidden style="max-width:1100px;margin:8px auto 0;padding:0 16px"><h2 style="font-size:18px;margin:18px 0 6px">📋 ほかのメニュー</h2><div class="big"></div></section>
 </main>
 
 <script>
@@ -1109,6 +1110,7 @@ var h='<h2 style="margin:0 0 8px;font-size:18px">💴 物価が安い人気の�
 h+='<h2 style="margin:0 0 8px;font-size:18px">🗺 人気の街</h2><div class="hct">'+D.cities.map(function(c){return '<button data-wc="'+c.c+'">'+flag(c.c)+" "+e2(c.name)+'</button>'}).join("")+'</div>';
 var el=document.getElementById("hrank");if(el)el.innerHTML=h}).catch(function(){})})();
 document.addEventListener("click",function(e){var b=e.target.closest&&e.target.closest("[data-ext]");if(b){window.open(b.getAttribute("data-ext"),"_blank","noopener")}});
+(function(){var src=document.querySelector("#home-more .big"),dst=document.querySelector("#allmenu .big");if(!src||!dst)return;dst.innerHTML=src.innerHTML;function um(){var m=document.getElementById("allmenu");if(m)m.hidden=(typeof CT!=="undefined"&&CT==="home")}var _t9=tab;tab=function(t){_t9(t);um()};setTimeout(um,0)})();
 </script>
 <footer style="max-width:1100px;margin:32px auto;padding:16px;font-size:12px;color:#888;text-align:center"><a href="privacy.html">プライバシーポリシー</a>｜<a href="terms.html">利用規約・免責</a><p>掲載情報は下書き・概算を含み、正確性を保証しません。渡航前に必ず公的機関の最新情報をご確認ください。</p></footer>
 </body>
