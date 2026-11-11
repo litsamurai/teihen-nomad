@@ -11,7 +11,7 @@ const SRC = [
 const dec = (s) => s.replace(/<!\[CDATA\[([\s\S]*?)\]\]>/g, "$1").replace(/&amp;/g, "&").replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/&quot;/g, '"').replace(/&#0?39;/g, "'").replace(/&apos;/g, "'").trim();
 const tag = (b, t) => { const m = b.match(new RegExp("<" + t + "[^>]*>([\\s\\S]*?)</" + t + ">", "i")); return m ? dec(m[1]) : ""; };
 function parse(xml) {
-  return [...xml.matchAll(/<item[\s>][\s\S]*?<\/item>/gi)].slice(0, 20).map((m) => ({ t: tag(m[0], "title"), l: tag(m[0], "link"), d: tag(m[0], "pubDate") || tag(m[0], "dc:date") })).filter((i) => i.t && /^https:\/\//.test(i.l));
+  return [...xml.matchAll(/<item[\s>][\s\S]*?<\/item>/gi)].slice(0, 20).map((m) => ({ t: tag(m[0], "title"), l: tag(m[0], "link").replace(/^http:\/\//, "https://"), d: tag(m[0], "pubDate") || tag(m[0], "dc:date") })).filter((i) => i.t && /^https:\/\//.test(i.l));
 }
 async function get(url, tries = 3) {
   for (let i = 0; i < tries; i++) {
