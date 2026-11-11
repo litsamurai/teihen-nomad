@@ -11,14 +11,15 @@ const SRC = [
 const dec = (s) => s.replace(/<!\[CDATA\[([\s\S]*?)\]\]>/g, "$1").replace(/&amp;/g, "&").replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/&quot;/g, '"').replace(/&#0?39;/g, "'").replace(/&apos;/g, "'").trim();
 const tag = (b, t) => { const m = b.match(new RegExp("<" + t + "[^>]*>([\\s\\S]*?)</" + t + ">", "i")); return m ? dec(m[1]) : ""; };
 function parse(xml) {
-  return [...xml.matchAll(/<item[\s>][\s\S]*?<\/item>/gi)].slice(0, 20).map((m) => ({ t: tag(m[0], "title"), l: tag(m[0], "link"), d: tag(m[0], "pubDate") })).filter((i) => i.t && /^https:\/\//.test(i.l));
+  return [...xml.matchAll(/<item[\s>][\s\S]*?<\/item>/gi)].slice(0, 20).map((m) => ({ t: tag(m[0], "title"), l: tag(m[0], "link"), d: tag(m[0], "pubDate") || tag(m[0], "dc:date") })).filter((i) => i.t && /^https:\/\//.test(i.l));
 }
 async function get(url, tries = 3) {
   for (let i = 0; i < tries; i++) {
     try {
       const r = await fetch(url, { headers: { "User-Agent": "teihen-nomad-news/1.0 (+https://litsamurai.github.io/teihen-nomad/)" }, signal: AbortSignal.timeout(20000) });
       if (r.ok) return await r.text();
-    } catch (e) {}
+      console.log(url, "HTTP", r.status);
+    } catch (e) { console.log(url, "エラー", String(e).slice(0, 100)); }
     await new Promise((r) => setTimeout(r, 2000 * (i + 1)));
   }
   return null;
@@ -39,6 +40,7 @@ async function tr(t) {
   for (const s of SRC) {
     const xml = await get(s.u);
     let items = xml ? parse(xml) : [];
+    if (xml && !items.length) console.log(s.k, "解析できず：", xml.length, "文字：", xml.slice(0, 300).replace(/\s+/g, " "));
     if (!items.length) { // 取得できなかったときは、前回の内容を残す
       out.sources[s.k] = (old.sources && old.sources[s.k]) || { items: [], updated: null };
       console.log(s.k, "取得失敗：前回の内容を維持");
