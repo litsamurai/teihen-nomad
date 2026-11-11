@@ -4,7 +4,7 @@ const fs = require("fs");
 const path = require("path");
 const OUT = path.join(__dirname, "..", "data", "news.json");
 const SRC = [
-  { k: "nhk", n: "NHK 国際", u: "https://www3.nhk.or.jp/rss/news/cat6.xml", en: false },
+  { k: "yahoo", n: "Yahoo!ニュース 国際", u: "https://news.yahoo.co.jp/rss/topics/world.xml", en: false },
   { k: "bbc", n: "BBC World", u: "https://feeds.bbci.co.uk/news/world/rss.xml", en: true },
   { k: "aje", n: "Al Jazeera", u: "https://www.aljazeera.com/xml/rss/all.xml", en: true },
 ];
