@@ -528,7 +528,7 @@ section .card,section .step,section .box,section .simbox{box-shadow:none!importa
 <h2>🧾 国別コスト</h2>
 <p class="sub">どこの国なら、だらけて暮らせるか。生活費と、主な街をまとめて見られます。世界中の国を検索できます（国を開くと、街の情報が出ます）。数字は、確認できた国は出典付き、それ以外はClaudeの概算です。違ってたら、気づいた人が直してください。</p>
 <div class="simbox" style="max-width:none;margin-bottom:20px"><b>1か月いくらで暮らせる？</b><div class="row" style="margin-top:10px"><select id="kc" aria-label="国"></select><select id="kn" aria-label="日数"><option value="7">7泊</option><option value="14">14泊</option><option value="30" selected>30泊</option><option value="90">90泊</option></select></div><div class="row"><select id="kt" aria-label="宿のタイプ"><option value="0.8">ドミトリー</option><option value="1" selected>個室ホステル</option><option value="1.5">コリビング</option></select></div><div id="ko" role="status"></div></div>
-<div class="simbox" style="max-width:none;margin:0 0 14px"><b>✏️ 国の情報を編集する</b><p class="small" style="margin:6px 0 10px">国を選んで押すと、物価・ひとこと・街・グルメ・安全の情報を、直せます。<b>Discordでログインして編集しよう。</b></p><div class="row"><select id="wes" aria-label="編集する国"></select><button class="go" id="web" style="flex:0 0 auto;max-width:160px">編集する</button></div><p class="mm" id="wem" role="status"></p><button class="go" data-login id="wlg" hidden style="margin-top:10px;max-width:260px">Discordでログイン</button></div>
+<div class="simbox" style="max-width:none;margin:0 0 14px"><b>✏️ 国の情報を編集する</b><p class="small" style="margin:6px 0 10px">国を選んで押すと、物価・ひとこと・街・グルメ・安全の情報を、直せます。<b>ログインなしで、誰でも編集できます。</b></p><div class="row"><select id="wes" aria-label="編集する国"></select><button class="go" id="web" style="flex:0 0 auto;max-width:160px">編集する</button></div><p class="mm" id="wem" role="status"></p></div>
 <div id="wcities" style="margin:0 0 14px"></div>
 <input id="wq" type="search" placeholder="国名で探す（例：ベトナム）" aria-label="国名で探す" style="width:100%;max-width:420px;font:inherit;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 14px;margin-bottom:8px">
 <details id="wd" style="margin-top:6px"><summary style="cursor:pointer;font-weight:800;padding:12px 14px;background:var(--soft);border:1px solid var(--line);border-radius:12px;list-style:none">📂 国の一覧を開く（203か国・地域）</summary><div style="margin-top:12px">
@@ -553,7 +553,7 @@ section .card,section .step,section .box,section .simbox{box-shadow:none!importa
 </div></details>
 <p class="small" id="rnote" style="margin-top:10px">掲載は、出典記事をもとにした下書きです。営業状況・価格・賞は変わっている可能性があるので、行く前に地図などで確認してください。</p>
 <h3 id="rform" style="margin:32px 0 8px">お店を追加する・レビューを書く</h3>
-<p class="small" style="margin:0 0 10px">行ったお店の感想を、フォームに入れてください。<b>Discordでログインすると、このサイトから直接投稿できます。</b>新しいお店の追加も同じフォームです。</p>
+<p class="small" style="margin:0 0 10px">行ったお店の感想を、フォームに入れてください。<b>ログインなしで、このサイトから直接投稿できます。</b>新しいお店の追加も同じフォームです。</p>
 <div class="box" style="max-width:560px">
 <label class="wl">国<select id="rv1" style="width:100%"></select></label>
 <label class="wl">街<input id="rv2" maxlength="30" placeholder="例：チェンマイ" style="width:100%"></label>
@@ -607,7 +607,7 @@ section .card,section .step,section .box,section .simbox{box-shadow:none!importa
 <div class="grid" id="chgrid"></div>
 <p class="empty" id="chempty" hidden>この国のチャンネルは、まだありません。あなたのチャンネルを、最初に載せませんか？</p>
 <h3 style="margin-top:28px">自分のチャンネルを載せる</h3>
-<p class="sub">フォームに入れてください。<b>Discordでログインすると、このサイトから直接投稿できます。</b></p>
+<p class="sub">フォームに入れてください。<b>ログインなしで、このサイトから直接投稿できます。</b></p>
 <div class="box" style="max-width:560px">
 <label class="wl">チャンネル名<input id="cn1" maxlength="60" style="width:100%"></label>
 <label class="wl">チャンネルのURL（YouTube）<input id="cu1" placeholder="https://www.youtube.com/@..." style="width:100%"></label>
@@ -627,7 +627,7 @@ section .card,section .step,section .box,section .simbox{box-shadow:none!importa
 <div class="grid" id="stgrid" style="margin-top:12px"></div>
 <p class="empty" id="stempty" hidden>まだ宿が載っていません。あなたが泊まったいい宿を、最初に載せませんか？</p>
 <h3 style="margin-top:28px">泊まった宿を載せる</h3>
-<p class="sub">フォームに入れてください。<b>Discordでログインすると、このサイトから直接投稿できます。</b></p>
+<p class="sub">フォームに入れてください。<b>ログインなしで、このサイトから直接投稿できます。</b></p>
 <div class="box" style="max-width:560px">
 <label class="wl">国<select id="st1" style="width:100%"></select></label>
 <label class="wl">街<input id="st2" maxlength="40" placeholder="例：チェンマイ" style="width:100%"></label>
@@ -652,7 +652,7 @@ section .card,section .step,section .box,section .simbox{box-shadow:none!importa
 <div class="grid" id="mkgrid"></div>
 <p class="empty" id="mkempty" hidden>この地域には、まだ投稿がありません。あなたの「譲ります」「探してます」を、最初に載せませんか？</p>
 <h3 style="margin-top:28px">譲る・探す</h3>
-<p class="sub"><b>Discordでログインすると、このサイトから直接投稿できます。</b></p>
+<p class="sub"><b>ログインなしで、このサイトから直接投稿できます。</b></p>
 <div class="box" style="max-width:560px">
 <label class="wl">国<select id="mk1" style="width:100%"></select></label>
 <label class="wl">街<input id="mk2" maxlength="40" placeholder="例：チェンマイ" style="width:100%"></label>
@@ -673,7 +673,7 @@ section .card,section .step,section .box,section .simbox{box-shadow:none!importa
 <div class="grid" id="prgrid" style="margin-top:12px"></div>
 <p class="empty" id="prempty" hidden>まだ投稿がありません。あなたのPRを、最初に載せませんか？</p>
 <h3 style="margin-top:28px">PRを載せる</h3>
-<p class="sub"><b>Discordでログインすると、このサイトから直接投稿できます。</b></p>
+<p class="sub"><b>ログインなしで、このサイトから直接投稿できます。</b></p>
 <div class="box" style="max-width:560px">
 <label class="wl">タイトル（60字まで）<input id="pr1" maxlength="60" placeholder="例：底辺くんの旅Vlog" style="width:100%"></label>
 <label class="wl">国（任意）<select id="pr0" style="width:100%"></select></label>
@@ -848,11 +848,11 @@ $("wq").oninput=wiki;
 
 $("wl").onclick=function(e){var b=e.target.closest("[data-w],[data-e],[data-s],[data-x]");if(!b)return;
 if(b.hasAttribute("data-w")){var c=b.getAttribute("data-w");openC=openC===c?null:c;edC=null}
-else if(b.hasAttribute("data-e")){if(window.SBX&&SBX.on&&!SBX.user){$("wmsg").textContent="編集するには、Discordでログインしてください。";return}edC=b.getAttribute("data-e")}
+else if(b.hasAttribute("data-e")){edC=b.getAttribute("data-e")}
 else if(b.hasAttribute("data-x")){edC=null}
 else{wsave(b.getAttribute("data-s"));return}
 wiki()};
-async function wsave(c){var m=$("wmsg");if(window.SBX&&SBX.on&&!SBX.user){m.textContent="編集するには、Discordでログインしてください。";return}if(!DBH){m.textContent="データにつながっていないため、保存できません。";return}
+async function wsave(c){var m=$("wmsg");if(window.SBX&&SBX.on&&!(await SBX.need())){m.textContent="保存の準備ができませんでした。時間をおいて、もう一度お試しください。";return}if(!DBH){m.textContent="データにつながっていないため、保存できません。";return}
 var g=function(i){return $(i).value.trim()},cur=ROWS[c]||{},ix=g("wi"),cs=g("wc");
 var d=Object.assign({},cur,{idx:ix===""||isNaN(+ix)?null:+ix,cost:cs===""||isNaN(+cs)?null:+cs,note:g("wn"),town:ln("wt"),food:ln("wf"),safety:ln("wy"),src:g("ws"),est:g("ws")?0:(cur.est||0),editor:(window.SBX&&SBX.user?SBX.user.name:(g("we")||"匿名")),updated:new Date().toISOString().slice(0,10),rev:(cur.rev||0)+1});
 try{await DBH.collection("countries").doc(c).set(d);edC=null;m.textContent=(window.SBX&&SBX.on)?"保存しました":"保存しました（共有版以外では、この端末だけに保存されます）";rall()}catch(e){m.textContent=(e&&e.userMsg)||((window.SBX&&SBX.on)?"保存できませんでした。ログインし直すか、時間をおいて、もう一度お試しください。":"保存できませんでした。")}wiki()}
@@ -869,7 +869,7 @@ $("ws2").onchange=wiki;$("rq").addEventListener("input",function(){$("rd").open=
 var KC=CL2.map(function(x){return '<option value="'+x.c+'">'+flag(x.c)+" "+x.n+'</option>'}).join("");
 $("kc").innerHTML=KC;$("kc").value="TH";
 $("wes").innerHTML='<option value="">国を選ぶ</option>'+KC;
-$("web").onclick=function(){var c=$("wes").value,m=$("wem");if(!c){m.textContent="国を選んでください。";return}if(window.SBX&&SBX.on&&!SBX.user){m.textContent="編集するには、先にDiscordでログインしてください。";return}m.textContent="";$("wd").open=true;openC=c;edC=c;wiki();var el=document.querySelector('#wl [data-w="'+c+'"]');if(el&&el.scrollIntoView)el.scrollIntoView({block:"start"})};
+$("web").onclick=function(){var c=$("wes").value,m=$("wem");if(!c){m.textContent="国を選んでください。";return}m.textContent="";$("wd").open=true;openC=c;edC=c;wiki();var el=document.querySelector('#wl [data-w="'+c+'"]');if(el&&el.scrollIntoView)el.scrollIntoView({block:"start"})};
 
 function kcalc(){var r=ROWS[$("kc").value]||{},n=+$("kn").value,t=+$("kt").value,b=r.cost!=null?r.cost:(r.idx!=null?Math.round((15000+3000*r.idx)/1000)*1000:null),o=$("ko");
 if(b==null){o.innerHTML='<p class="small">この国はまだ未入力です。国別ガイドで入力すると計算できます。</p>';return}
@@ -902,7 +902,7 @@ function lfields(k,v){v=v||[];return LF[k].map(function(l,j){return '<label clas
 function addForm(k){return '<details class="addf" data-ak="'+k+'"><summary>＋ '+(k==="safety"?"安全情報を追加する":k==="night"?"夜の街の情報を追加する":"料理を追加する")+'（誰でも）</summary><div class="wd"><label class="wl">国<select data-ac="1"><option value="">国を選ぶ</option>'+KC+'</select></label>'+lfields(k)+'<div class="acts"><button class="go" data-la="'+k+'">追加する</button></div><p class="small" data-lm="1"></p></div></details>'}
 function lmsg(t){var e=document.getElementById("lmsgb");if(!e){e=document.createElement("div");e.id="lmsgb";e.style.cssText="position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:#3b2a20;color:#fff;padding:10px 16px;border-radius:999px;font-size:14px;z-index:99;max-width:90vw;text-align:center";document.body.appendChild(e)}e.textContent=t;e.style.display="block";clearTimeout(lmsg.t);lmsg.t=setTimeout(function(){e.style.display="none"},3500)}
 async function lineSave(c,k,i,txt){
-if(window.SBX&&SBX.on&&!SBX.user){lmsg("編集するには、Discordでログインしてください。");return false}
+if(window.SBX&&SBX.on&&!(await SBX.need())){lmsg("保存の準備ができませんでした。時間をおいて、もう一度お試しください。");return false}
 if(!DBH){lmsg("データにつながっていないため、保存できません。");return false}
 var cur=ROWS[c]||{},arr=(cur[k]||[]).slice();
 if(i<0)arr.push(txt);else if(txt==="")arr.splice(i,1);else arr[i]=txt;
@@ -1015,10 +1015,10 @@ function toast(t){var d=document.createElement("div");d.className="toast";d.setA
 function sbErr(e){var m=(e&&e.message)||"";if(/schema cache|does not exist|PGRST20/.test(m)||(e&&e.code==="42P01"))return"この機能は、まだサーバー側の準備ができていません（運営者が設定を済ませると使えます）。";if(m.indexOf("rate_limit")>-1)return"短時間に投稿・編集しすぎです。1時間ほど空けてください。";if(m.indexOf("row-level security")>-1||m.indexOf("JWT")>-1)return"権限がありません。ログインし直してください。";if(m.indexOf("duplicate key")>-1)return"すでに登録済みです（同じお店のレビューは1人1件です）。";if(m.indexOf("violates check")>-1)return"入力内容を確認してください（文字数・URLの形式など）。";return"保存できませんでした。時間をおいて、もう一度お試しください。"}
 function cnames2codes(s){var out=[];String(s||"").split(/[、,，\s]+/).forEach(function(n){n=n.trim();if(!n)return;var hit=CL2.filter(function(x){return x.n===n})[0];if(hit&&out.indexOf(hit.c)<0)out.push(hit.c)});return out.slice(0,10)}
 window.SBX={on:false,user:null,sb:null,
-need:function(){if(!SBX.user){toast("先に、Discordでログインしてください。");return false}return true},
-authbar:function(){var a=$("authbar");a.hidden=false;var wl=$("wlg");if(wl)wl.hidden=!!SBX.user;if(SBX.user){var P=pts(SBX.user.id),T=ttl(P),nx=TT.filter(function(x){return x[0]>P})[0];a.innerHTML='<span>👤 '+chesc(SBX.user.name)+' でログイン中<br><small>'+T[1]+' '+T[2]+'　'+P+'pt'+(nx?'（次の称号まであと'+(nx[0]-P)+'pt）':'（最高の称号です）')+'　<a href="#crew" data-go="crew" style="font-weight:700">称号とは？</a></small></span><button id="logout">ログアウト</button>'}else{a.innerHTML='<span>✏️ 直接編集・投稿するには、Discordでログイン</span><button id="login">Discordでログイン</button>'}
+need:async function(){if(SBX.user)return true;if(!SBX.sb)return false;try{var r=await SBX.sb.auth.signInAnonymously();if(r.error||!r.data||!r.data.user)throw r.error||new Error("anon");await SBX.setUser(r.data.user);return !!SBX.user}catch(e){toast("ログインなしの投稿は、いま使えません。Discordでログインしてください。");return false}},
+authbar:function(){var a=$("authbar");a.hidden=false;var wl=$("wlg");if(wl)wl.hidden=!!SBX.user;if(SBX.user){var P=pts(SBX.user.id),T=ttl(P),nx=TT.filter(function(x){return x[0]>P})[0];a.innerHTML=(SBX.user.anon?'<span>👤 ログインなしで参加中（名前は「旅人」）<br><small>'+T[1]+' '+T[2]+'　'+P+'pt　名前を残すならDiscordでログイン</small></span><button id="login">Discordでログイン</button>':'<span>👤 '+chesc(SBX.user.name)+' でログイン中<br><small>'+T[1]+' '+T[2]+'　'+P+'pt'+(nx?'（次の称号まであと'+(nx[0]-P)+'pt）':'（最高の称号です）')+'　<a href="#crew" data-go="crew" style="font-weight:700">称号とは？</a></small></span><button id="logout">ログアウト</button>')}else{a.innerHTML='<span>✏️ ログインなしで、そのまま編集・投稿できます。<br><small>名前を残したい人は、Discordでログイン</small></span><button id="login">Discordでログイン</button>'}
 $("rvd").hidden=false;$("cbd").hidden=false;$("std").hidden=false;$("prd").hidden=false;$("mkd").hidden=false},
-setUser:async function(u){if(!u){SBX.user=null;SBX.authbar();return}var nm=(u.user_metadata&&(u.user_metadata.full_name||u.user_metadata.name))||"旅人";try{var r=await SBX.sb.from("profiles").select("display_name,role").eq("id",u.id).maybeSingle();if(r.data&&r.data.display_name)nm=r.data.display_name;var md=!!(r.data&&r.data.role==="moderator")}catch(e){var md=false}SBX.user={id:u.id,name:nm,mod:md};SBX.authbar();try{mergeAll()}catch(e){}},
+setUser:async function(u){if(!u){SBX.user=null;SBX.authbar();return}var nm=(u.user_metadata&&(u.user_metadata.full_name||u.user_metadata.name))||"旅人";try{var r=await SBX.sb.from("profiles").select("display_name,role").eq("id",u.id).maybeSingle();if(r.data&&r.data.display_name)nm=r.data.display_name;var md=!!(r.data&&r.data.role==="moderator")}catch(e){var md=false}SBX.user={id:u.id,name:nm,mod:md,anon:!!u.is_anonymous};SBX.authbar();try{mergeAll()}catch(e){}},
 init:async function(){SBX.on=true;SBX.authbar();
 try{await new Promise(function(ok,ng){var s=document.createElement("script");s.src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.58.0/dist/umd/supabase.js";s.onload=ok;s.onerror=ng;document.head.appendChild(s)})}catch(e){$("wmsg").textContent="共有データの読み込みに失敗しました（通信を確認してください）。";return}
 SBX.sb=window.supabase.createClient(SB_CONFIG.url,SB_CONFIG.key,{auth:{persistSession:true,detectSessionInUrl:true,flowType:"pkce"}});
@@ -1040,14 +1040,14 @@ await SBX.loadCountries()}};
 document.addEventListener("click",async function(e){
 if(e.target.closest("#login,[data-login]")){SBX.sb.auth.signInWithOAuth({provider:"discord",options:{redirectTo:location.origin+location.pathname}});return}
 if(e.target.closest("#logout")){await SBX.sb.auth.signOut();return}
-var dl=e.target.closest("[data-del]");if(dl&&SBX.on){if(!SBX.need())return;if(dl.getAttribute("data-armed")!=="1"){dl.setAttribute("data-armed","1");dl.textContent="本当に消す？（もう一度）";setTimeout(function(){dl.removeAttribute("data-armed");dl.textContent="🗑 削除"},4000);return}var q=dl.getAttribute("data-del").split(":");var rd=await SBX.sb.from(q[0]).delete().eq("id",q[1]).select("id");if(rd.error||!rd.data||!rd.data.length){toast(rd.error?sbErr(rd.error):"消せませんでした（自分の投稿だけ消せます）。");return}toast("削除しました。");if(q[0]==="stays")await SBX.loadStays();else if(q[0]==="market")await SBX.loadMarket();else if(q[0]==="promos")await SBX.loadPromos();else if(q[0]==="channels")await SBX.loadChannels();else if(q[0]==="reviews")await SBX.loadReviews();mergeAll();return}
-var rp=e.target.closest("[data-rpt]");if(rp&&SBX.on){if(!SBX.need())return;var p=rp.getAttribute("data-rpt").split(":");var r=await SBX.sb.from("reports").insert({kind:p[0],target:p[1]});toast(r.error?sbErr(r.error):"通報しました。ありがとうございます。");if(!r.error)rp.disabled=true;return}
-if(e.target.closest("#cbd")){if(!SBX.need())return;var n=$("cn1").value.trim(),u=$("cu1").value.trim(),m=$("cm1");if(!n||!u){m.textContent="チャンネル名とURLを入れてください。";return}if(!chok(u)){m.textContent="URLは、YouTubeのものを入れてください。";return}
+var dl=e.target.closest("[data-del]");if(dl&&SBX.on){if(!(await SBX.need()))return;if(dl.getAttribute("data-armed")!=="1"){dl.setAttribute("data-armed","1");dl.textContent="本当に消す？（もう一度）";setTimeout(function(){dl.removeAttribute("data-armed");dl.textContent="🗑 削除"},4000);return}var q=dl.getAttribute("data-del").split(":");var rd=await SBX.sb.from(q[0]).delete().eq("id",q[1]).select("id");if(rd.error||!rd.data||!rd.data.length){toast(rd.error?sbErr(rd.error):"消せませんでした（自分の投稿だけ消せます）。");return}toast("削除しました。");if(q[0]==="stays")await SBX.loadStays();else if(q[0]==="market")await SBX.loadMarket();else if(q[0]==="promos")await SBX.loadPromos();else if(q[0]==="channels")await SBX.loadChannels();else if(q[0]==="reviews")await SBX.loadReviews();mergeAll();return}
+var rp=e.target.closest("[data-rpt]");if(rp&&SBX.on){if(!(await SBX.need()))return;var p=rp.getAttribute("data-rpt").split(":");var r=await SBX.sb.from("reports").insert({kind:p[0],target:p[1]});toast(r.error?sbErr(r.error):"通報しました。ありがとうございます。");if(!r.error)rp.disabled=true;return}
+if(e.target.closest("#cbd")){if(!(await SBX.need()))return;var n=$("cn1").value.trim(),u=$("cu1").value.trim(),m=$("cm1");if(!n||!u){m.textContent="チャンネル名とURLを入れてください。";return}if(!chok(u)){m.textContent="URLは、YouTubeのものを入れてください。";return}
 var r2=await SBX.sb.from("channels").insert({name:n,url:u,countries:cnames2codes($("cc1").value),genre:$("cg1").value.trim()||null,descr:$("cd1").value.trim()||null});if(r2.error){m.textContent=sbErr(r2.error);return}m.textContent="投稿しました。";$("cn1").value=$("cu1").value=$("cc1").value=$("cg1").value=$("cd1").value="";await SBX.loadChannels();mergeAll();return}
-if(e.target.closest("#mkd")){if(!SBX.need())return;var mf=mkform(),mm=$("mkm");if(!mkcheck(mf,mm))return;var mr=await SBX.sb.from("market").insert({country:mf.c,city:mf.city,kind:mf.k,title:mf.t,price:mf.p||null,body:mf.d,contact:mf.ct||null});if(mr.error){mm.textContent=sbErr(mr.error);return}mm.textContent="投稿しました。";["mk2","mk4","mk5","mk6","mk7"].forEach(function(i){$(i).value=""});await SBX.loadMarket();mergeAll();return}
-if(e.target.closest("#prd")){if(!SBX.need())return;var pf=prform(),pm=$("prm");if(!prcheck(pf,pm))return;var pr2=await SBX.sb.from("promos").insert({country:pf.c||null,title:pf.t,kind:pf.k||null,body:pf.d,link:pf.l||null});if(pr2.error){pm.textContent=sbErr(pr2.error);return}pm.textContent="投稿しました。";["pr1","pr3","pr4"].forEach(function(i){$(i).value=""});await SBX.loadPromos();mergeAll();return}
-if(e.target.closest("#std")){if(!SBX.need())return;var f=stform(),m3=$("stm");if(!stcheck(f,m3))return;var r3=await SBX.sb.from("stays").insert({country:f.c,city:f.city,name:f.n,kind:f.k||null,price:f.p||null,work:f.w||null,body:f.d,link:f.l||null});if(r3.error){m3.textContent=sbErr(r3.error);return}m3.textContent="投稿しました。";["st2","st3","st5","st7","st8"].forEach(function(i){$(i).value=""});await SBX.loadStays();mergeAll();return}
-if(e.target.closest("#rvd")){if(!SBX.need())return;var m2=$("rvm"),nm=$("rv4").value.trim(),c=$("rv1").value,city=$("rv2").value.trim(),body=$("rv9").value.trim();if(!nm||!c||!city){m2.textContent="国・街・店名を入れてください。";return}
+if(e.target.closest("#mkd")){if(!(await SBX.need()))return;var mf=mkform(),mm=$("mkm");if(!mkcheck(mf,mm))return;var mr=await SBX.sb.from("market").insert({country:mf.c,city:mf.city,kind:mf.k,title:mf.t,price:mf.p||null,body:mf.d,contact:mf.ct||null});if(mr.error){mm.textContent=sbErr(mr.error);return}mm.textContent="投稿しました。";["mk2","mk4","mk5","mk6","mk7"].forEach(function(i){$(i).value=""});await SBX.loadMarket();mergeAll();return}
+if(e.target.closest("#prd")){if(!(await SBX.need()))return;var pf=prform(),pm=$("prm");if(!prcheck(pf,pm))return;var pr2=await SBX.sb.from("promos").insert({country:pf.c||null,title:pf.t,kind:pf.k||null,body:pf.d,link:pf.l||null});if(pr2.error){pm.textContent=sbErr(pr2.error);return}pm.textContent="投稿しました。";["pr1","pr3","pr4"].forEach(function(i){$(i).value=""});await SBX.loadPromos();mergeAll();return}
+if(e.target.closest("#std")){if(!(await SBX.need()))return;var f=stform(),m3=$("stm");if(!stcheck(f,m3))return;var r3=await SBX.sb.from("stays").insert({country:f.c,city:f.city,name:f.n,kind:f.k||null,price:f.p||null,work:f.w||null,body:f.d,link:f.l||null});if(r3.error){m3.textContent=sbErr(r3.error);return}m3.textContent="投稿しました。";["st2","st3","st5","st7","st8"].forEach(function(i){$(i).value=""});await SBX.loadStays();mergeAll();return}
+if(e.target.closest("#rvd")){if(!(await SBX.need()))return;var m2=$("rvm"),nm=$("rv4").value.trim(),c=$("rv1").value,city=$("rv2").value.trim(),body=$("rv9").value.trim();if(!nm||!c||!city){m2.textContent="国・街・店名を入れてください。";return}
 var hit=RS.filter(function(x){return x.name===nm&&x.c===c})[0],key=hit?hit.id:null;
 if(!key){var pr=await SBX.sb.from("places").insert({country:c,city:city,area:$("rv3").value.trim()||null,name:nm,dish:$("rv5").value.trim()||null}).select("id").single();if(pr.error){m2.textContent=sbErr(pr.error);return}key=pr.data.id}
 else if(!body){m2.textContent="このお店はすでに載っています。レビューを書いてください。";return}
