@@ -40,6 +40,12 @@ async function tr(t) {
   for (const s of SRC) {
     const xml = await get(s.u);
     let items = xml ? parse(xml) : [];
+    // 14日より古い見出しは載せない（提供元の更新が止まっているときに、古いニュースを出さないため）
+    const fresh = items.filter((i) => { const t = Date.parse(i.d); return isNaN(t) || Date.now() - t < 14 * 86400000; });
+    if (items.length && !fresh.length) console.log(s.k, "見出しがすべて14日より古い：提供元の更新が止まっている可能性");
+    const stale = items.length > 0 && !fresh.length;
+    items = fresh;
+    if (stale) { out.sources[s.k] = { items: [], updated: out.updated, stale: true }; continue; }
     if (xml && !items.length) console.log(s.k, "解析できず：", xml.length, "文字：", xml.slice(0, 300).replace(/\s+/g, " "));
     if (!items.length) { // 取得できなかったときは、前回の内容を残す
       out.sources[s.k] = (old.sources && old.sources[s.k]) || { items: [], updated: null };
