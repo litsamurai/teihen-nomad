@@ -473,7 +473,7 @@ section .card,section .step,section .box,section .simbox{box-shadow:none!importa
 .hct button{border:2px solid #f08a47;background:#fff;color:var(--ink);border-radius:99px;padding:6px 12px;font:inherit;font-size:13px;font-weight:700;cursor:pointer}
 
 .hero h1{text-align:center}.hero h1 .pn{margin-right:-.5em}.hero h1{font-size:clamp(30px,10.4vw,72px);white-space:nowrap;transform:none}
-.big button[data-go="prep"]{grid-column:span 2}
+.big button[data-go="consent"]{grid-column-start:1}
 </style>
 </head>
 <body>
@@ -510,7 +510,7 @@ section .card,section .step,section .box,section .simbox{box-shadow:none!importa
 <button data-go="promo"><i>📣</i><b>なんでもPR</b><span>自分のことを宣伝しよう</span></button>
 <button data-go="safety"><i>🛡</i><b>安全</b><span>だまされない・奪われない</span></button>
 <button data-go="ch"><i>📺</i><b>チャンネル</b><span>旅YouTuberの紹介</span></button>
-<button data-go="prep"><i>🎒</i><b>準備</b><span>チェックリストとツール</span></button>
+<button data-ext="https://www.anzen.mofa.go.jp/"><i>🛂</i><b>渡航情報</b><span>外務省</span></button>
 <button data-go="consent"><i>💗</i><b>大人の同意書</b><span>お互いの気持ちを確かめる</span></button>
 <button data-go="adult"><i>🔞</i><b>18禁</b><span>夜の街の注意（18歳以上）</span></button>
 <button data-go="crew"><i>🤝</i><b>仲間・参加</b><span>Discordで繋がる</span></button>
@@ -1106,6 +1106,7 @@ var rows=P.filter(function(c){return C[c]&&C[c].idx!=null}).sort(function(x,y){r
 var h='<h2 style="margin:0 0 8px;font-size:18px">💴 物価が安い人気の国</h2><div class="hrk">'+rows.map(function(c,i){var r=C[c],p=Math.round(r.idx/jp*100);return '<a href="country/'+c.toLowerCase()+'.html"><span class="n">'+(i+1)+'</span><span class="nm">'+flag(c)+" "+e2(cname(c))+'</span><span class="v">日本の'+p+'%'+(r.est?"（概算）":"")+'</span></a>'}).join("")+'</div><p class="small" style="margin:6px 0 14px"><a href="country/" style="font-weight:700">すべての国のランキングを見る →</a>　「概算」と書いていない数値は、出典で確認したものです。</p>';
 h+='<h2 style="margin:0 0 8px;font-size:18px">🗺 人気の街</h2><div class="hct">'+D.cities.map(function(c){return '<button data-wc="'+c.c+'">'+flag(c.c)+" "+e2(c.name)+'</button>'}).join("")+'</div>';
 var el=document.getElementById("hrank");if(el)el.innerHTML=h}).catch(function(){})})();
+document.addEventListener("click",function(e){var b=e.target.closest&&e.target.closest("[data-ext]");if(b){window.open(b.getAttribute("data-ext"),"_blank","noopener")}});
 </script>
 <footer style="max-width:1100px;margin:32px auto;padding:16px;font-size:12px;color:#888;text-align:center"><a href="privacy.html">プライバシーポリシー</a>｜<a href="terms.html">利用規約・免責</a><p>掲載情報は下書き・概算を含み、正確性を保証しません。渡航前に必ず公的機関の最新情報をご確認ください。</p></footer>
 </body>
