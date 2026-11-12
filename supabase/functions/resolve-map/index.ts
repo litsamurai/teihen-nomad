@@ -37,7 +37,15 @@ Deno.serve(async (req) => {
       break;
     }
     const o = fromUrl(decodeURIComponent(u.toString()));
-    if (typeof o.lat !== "number" || !o.name) {
+    // ?q=宿名, 住所 の形（座標なし）のとき：名前と住所に分けて返す
+    let addr: string | null = null;
+    const qp = u.searchParams.get("q");
+    if (qp && !/^-?\d+\.\d+,/.test(qp)) {
+      const parts = qp.split(/,\s*/);
+      if (!o.name && parts[0]) o.name = parts[0].replace(/^\d+\s*樓\s*/, "").trim() || parts[0];
+      if (parts.length > 1) addr = parts.slice(1).join(", ");
+    }
+    if ((typeof o.lat !== "number" && !addr) || !o.name) {
       // 最終ページのHTMLから、名前と位置を探す
       try {
         const r = await fetch(u.toString(), {
@@ -56,7 +64,7 @@ Deno.serve(async (req) => {
         }
       } catch (_) { /* 読めなくても、わかった分だけ返す */ }
     }
-    return json({ url: u.toString(), name: o.name || null, lat: o.lat ?? null, lng: o.lng ?? null });
+    return json({ url: u.toString(), name: o.name || null, addr, lat: o.lat ?? null, lng: o.lng ?? null });
   } catch (e) {
     return json({ error: String(e) }, 400);
   }
