@@ -10,7 +10,10 @@
   "src": "https://guide.michelin.com/vn/en/article/dining-out/13-bib-gourmand-hanoi",
   "sn": "MICHELIN Guide",
   "award": "ミシュラン ビブグルマン",
-  "note": ""
+  "note": "",
+  "lat": 21.01438,
+  "lng": 105.81322,
+  "geo": "osm"
  },
  {
   "id": "hn-chacathanglong",
@@ -23,7 +26,10 @@
   "src": "https://guide.michelin.com/vn/en/article/dining-out/13-bib-gourmand-hanoi",
   "sn": "MICHELIN Guide",
   "award": "ミシュラン ビブグルマン",
-  "note": ""
+  "note": "",
+  "lat": 21.03297,
+  "lng": 105.84612,
+  "geo": "osm"
  },
  {
   "id": "hn-phoauttrieu",
@@ -36,7 +42,10 @@
   "src": "https://guide.michelin.com/vn/en/article/dining-out/13-bib-gourmand-hanoi",
   "sn": "MICHELIN Guide",
   "award": "ミシュラン ビブグルマン",
-  "note": ""
+  "note": "",
+  "lat": 21.02591,
+  "lng": 105.85169,
+  "geo": "osm"
  },
  {
   "id": "hn-habakuk",
@@ -49,7 +58,10 @@
   "src": "https://guide.michelin.com/vn/en/article/dining-out/13-bib-gourmand-hanoi",
   "sn": "MICHELIN Guide",
   "award": "ミシュラン ビブグルマン",
-  "note": ""
+  "note": "",
+  "lat": 21.02015,
+  "lng": 105.85763,
+  "geo": "osm"
  },
  {
   "id": "hn-donduck",
@@ -62,7 +74,10 @@
   "src": "https://guide.michelin.com/vn/en/article/dining-out/13-bib-gourmand-hanoi",
   "sn": "MICHELIN Guide",
   "award": "ミシュラン ビブグルマン",
-  "note": ""
+  "note": "",
+  "lat": 21.03367,
+  "lng": 105.84646,
+  "geo": "osm"
  },
  {
   "id": "hn-theeast",
@@ -75,7 +90,10 @@
   "src": "https://guide.michelin.com/vn/en/article/dining-out/13-bib-gourmand-hanoi",
   "sn": "MICHELIN Guide",
   "award": "ミシュラン ビブグルマン",
-  "note": ""
+  "note": "",
+  "lat": 21.02939,
+  "lng": 105.8437,
+  "geo": "osm"
  },
  {
   "id": "hn-buncha-ta",
@@ -88,7 +106,10 @@
   "src": "https://guide.michelin.com/vn/en/article/dining-out/13-bib-gourmand-hanoi",
   "sn": "MICHELIN Guide",
   "award": "ミシュラン ビブグルマン",
-  "note": ""
+  "note": "",
+  "lat": 21.03436,
+  "lng": 105.85449,
+  "geo": "osm"
  },
  {
   "id": "hn-chaoban",
@@ -101,7 +122,10 @@
   "src": "https://guide.michelin.com/vn/en/article/dining-out/13-bib-gourmand-hanoi",
   "sn": "MICHELIN Guide",
   "award": "ミシュラン ビブグルマン",
-  "note": ""
+  "note": "",
+  "lat": 21.06818,
+  "lng": 105.82508,
+  "geo": "osm"
  },
  {
   "id": "hn-phogiatruyen",
@@ -114,7 +138,10 @@
   "src": "https://guide.michelin.com/vn/en/article/dining-out/13-bib-gourmand-hanoi",
   "sn": "MICHELIN Guide",
   "award": "ミシュラン ビブグルマン",
-  "note": ""
+  "note": "",
+  "lat": 21.03364,
+  "lng": 105.84638,
+  "geo": "osm"
  },
  {
   "id": "hn-phoganguyet",
@@ -127,7 +154,10 @@
   "src": "https://guide.michelin.com/vn/en/article/dining-out/13-bib-gourmand-hanoi",
   "sn": "MICHELIN Guide",
   "award": "ミシュラン ビブグルマン",
-  "note": ""
+  "note": "",
+  "lat": 21.02864,
+  "lng": 105.84779,
+  "geo": "osm"
  },
  {
   "id": "hn-tuyetbuncha",
@@ -140,7 +170,10 @@
   "src": "https://guide.michelin.com/vn/en/article/dining-out/13-bib-gourmand-hanoi",
   "sn": "MICHELIN Guide",
   "award": "ミシュラン ビブグルマン",
-  "note": ""
+  "note": "",
+  "lat": 21.04065,
+  "lng": 105.84753,
+  "geo": "osm"
  },
  {
   "id": "hn-1946cuabac",
@@ -153,7 +186,10 @@
   "src": "https://guide.michelin.com/vn/en/article/dining-out/13-bib-gourmand-hanoi",
   "sn": "MICHELIN Guide",
   "award": "ミシュラン ビブグルマン",
-  "note": ""
+  "note": "",
+  "lat": 21.0407,
+  "lng": 105.84208,
+  "geo": "osm"
  },
  {
   "id": "hn-pho10",
@@ -166,7 +202,10 @@
   "src": "https://guide.michelin.com/vn/en/article/dining-out/13-bib-gourmand-hanoi",
   "sn": "MICHELIN Guide",
   "award": "ミシュラン ビブグルマン",
-  "note": ""
+  "note": "",
+  "lat": 21.03047,
+  "lng": 105.84885,
+  "geo": "osm"
  },
  {
   "id": "bk-jayfai",
@@ -179,7 +218,10 @@
   "src": "https://guide.michelin.com/th/en/article/dining-out/michelin-guide-s-top-picks-for-bangkok-s-best-street-food-stalls",
   "sn": "MICHELIN Guide（2019年の記事）",
   "award": "ミシュラン 1つ星（記事時点）",
-  "note": "価格は高め・要予約の可能性があります。最新情報は公式で確認してください。"
+  "note": "価格は高め・要予約の可能性があります。最新情報は公式で確認してください。",
+  "lat": 13.75302,
+  "lng": 100.50473,
+  "geo": "osm"
  },
  {
   "id": "bk-muruengrueang",
@@ -205,7 +247,10 @@
   "src": "https://guide.michelin.com/th/en/article/dining-out/michelin-guide-s-top-picks-for-bangkok-s-best-street-food-stalls",
   "sn": "MICHELIN Guide（2019年の記事）",
   "award": "ミシュラン ビブグルマン（記事時点）",
-  "note": ""
+  "note": "",
+  "lat": 13.75363,
+  "lng": 100.49982,
+  "geo": "osm"
  },
  {
   "id": "bk-guayjubjoe",
@@ -231,7 +276,10 @@
   "src": "https://guide.michelin.com/th/en/article/dining-out/michelin-guide-s-top-picks-for-bangkok-s-best-street-food-stalls",
   "sn": "MICHELIN Guide（2019年の記事）",
   "award": "ミシュラン ビブグルマン（記事時点）",
-  "note": ""
+  "note": "",
+  "lat": 13.72326,
+  "lng": 100.51722,
+  "geo": "osm"
  },
  {
   "id": "bk-chakki",
@@ -244,7 +292,10 @@
   "src": "https://guide.michelin.com/th/en/article/dining-out/michelin-guide-s-top-picks-for-bangkok-s-best-street-food-stalls",
   "sn": "MICHELIN Guide（2019年の記事）",
   "award": "ミシュラン ビブグルマン（記事時点）",
-  "note": ""
+  "note": "",
+  "lat": 13.76831,
+  "lng": 100.5306,
+  "geo": "osm"
  },
  {
   "id": "bk-elvissuki",
@@ -257,7 +308,10 @@
   "src": "https://guide.michelin.com/th/en/article/dining-out/michelin-guide-s-top-picks-for-bangkok-s-best-street-food-stalls",
   "sn": "MICHELIN Guide（2019年の記事）",
   "award": "ミシュラン ビブグルマン（記事時点）",
-  "note": ""
+  "note": "",
+  "lat": 13.74892,
+  "lng": 100.51449,
+  "geo": "osm"
  },
  {
   "id": "cm-huenmuanjai",
@@ -270,7 +324,10 @@
   "src": "https://thatch.co/guide/lndcikz7ynpy/view",
   "sn": "thatch.co ローカルガイド",
   "award": "",
-  "note": "筆者のイチ押しとして紹介。住所は記事になく、地図で確認してください。"
+  "note": "筆者のイチ押しとして紹介。住所は記事になく、地図で確認してください。",
+  "lat": 18.79982,
+  "lng": 98.97547,
+  "geo": "osm"
  },
  {
   "id": "cm-lamduan",
@@ -283,7 +340,10 @@
   "src": "https://thatch.co/guide/lndcikz7ynpy/view",
   "sn": "thatch.co ローカルガイド",
   "award": "",
-  "note": "チェンマイ・スクエアから徒歩約5分と紹介。"
+  "note": "チェンマイ・スクエアから徒歩約5分と紹介。",
+  "lat": 18.80162,
+  "lng": 99.00554,
+  "geo": "osm"
  },
  {
   "id": "cm-maesai",
@@ -309,7 +369,10 @@
   "src": "https://thatch.co/guide/lndcikz7ynpy/view",
   "sn": "thatch.co ローカルガイド",
   "award": "",
-  "note": "地元の人にも旅行者にも人気と紹介。"
+  "note": "地元の人にも旅行者にも人気と紹介。",
+  "lat": 18.78584,
+  "lng": 98.98516,
+  "geo": "osm"
  },
  {
   "id": "cm-kaosoynimman",
@@ -322,7 +385,10 @@
   "src": "https://thatch.co/guide/lndcikz7ynpy/view",
   "sn": "thatch.co ローカルガイド",
   "award": "",
-  "note": "記事に詳細はありません。"
+  "note": "記事に詳細はありません。",
+  "lat": 18.79797,
+  "lng": 98.96928,
+  "geo": "osm"
  },
  {
   "id": "hc-phominh",
@@ -335,7 +401,10 @@
   "src": "https://guide.michelin.com/en/article/travel/2-days-in-ho-chi-minh-city-for-street-food-lovers",
   "sn": "MICHELIN Guide",
   "award": "ミシュラン ビブグルマン（2024年）",
-  "note": ""
+  "note": "",
+  "lat": 10.79847,
+  "lng": 106.72329,
+  "geo": "osm"
  },
  {
   "id": "hc-xoiga1",
@@ -348,7 +417,10 @@
   "src": "https://guide.michelin.com/en/article/travel/2-days-in-ho-chi-minh-city-for-street-food-lovers",
   "sn": "MICHELIN Guide",
   "award": "",
-  "note": ""
+  "note": "",
+  "lat": 10.77378,
+  "lng": 106.69922,
+  "geo": "osm"
  },
  {
   "id": "hc-bepmein",
@@ -400,7 +472,10 @@
   "src": "https://guide.michelin.com/en/article/travel/2-days-in-ho-chi-minh-city-for-street-food-lovers",
   "sn": "MICHELIN Guide",
   "award": "",
-  "note": "1995年創業の食堂と紹介。"
+  "note": "1995年創業の食堂と紹介。",
+  "lat": 10.77162,
+  "lng": 106.68581,
+  "geo": "osm"
  },
  {
   "id": "hc-hongphat",
@@ -413,7 +488,10 @@
   "src": "https://guide.michelin.com/en/article/travel/2-days-in-ho-chi-minh-city-for-street-food-lovers",
   "sn": "MICHELIN Guide",
   "award": "",
-  "note": ""
+  "note": "",
+  "lat": 10.75287,
+  "lng": 106.65765,
+  "geo": "osm"
  },
  {
   "id": "dn-suahongvan",
@@ -439,7 +517,10 @@
   "src": "https://theculturetrip.com/asia/georgia/articles/the-best-restaurants-for-georgian-food-in-tbilisi",
   "sn": "Culture Trip",
   "award": "",
-  "note": "市内に2店舗。マイダン広場の店は24時間営業と紹介。"
+  "note": "市内に2店舗。マイダン広場の店は24時間営業と紹介。",
+  "lat": 41.69247,
+  "lng": 44.79888,
+  "geo": "osm"
  },
  {
   "id": "tb-shavilomi",
@@ -452,7 +533,10 @@
   "src": "https://theculturetrip.com/asia/georgia/articles/the-best-restaurants-for-georgian-food-in-tbilisi",
   "sn": "Culture Trip",
   "award": "",
-  "note": ""
+  "note": "",
+  "lat": 41.70861,
+  "lng": 44.80605,
+  "geo": "osm"
  },
  {
   "id": "tb-amra",
@@ -465,7 +549,10 @@
   "src": "https://theculturetrip.com/asia/georgia/articles/the-best-restaurants-for-georgian-food-in-tbilisi",
   "sn": "Culture Trip",
   "award": "",
-  "note": ""
+  "note": "",
+  "lat": 41.7179,
+  "lng": 44.71752,
+  "geo": "osm"
  },
  {
   "id": "tb-mapshalia",
@@ -478,7 +565,10 @@
   "src": "https://theculturetrip.com/asia/georgia/articles/the-best-restaurants-for-georgian-food-in-tbilisi",
   "sn": "Culture Trip",
   "award": "",
-  "note": "居酒屋風でよく混むと紹介。"
+  "note": "居酒屋風でよく混むと紹介。",
+  "lat": 41.71553,
+  "lng": 44.79311,
+  "geo": "osm"
  },
  {
   "id": "tb-zakhar",
@@ -517,7 +607,10 @@
   "src": "https://theculturetrip.com/asia/georgia/articles/the-best-restaurants-for-georgian-food-in-tbilisi",
   "sn": "Culture Trip",
   "award": "",
-  "note": ""
+  "note": "",
+  "lat": 41.6996,
+  "lng": 44.79743,
+  "geo": "osm"
  },
  {
   "id": "tb-barbarestan",
@@ -530,7 +623,10 @@
   "src": "https://theculturetrip.com/asia/georgia/articles/the-best-restaurants-for-georgian-food-in-tbilisi",
   "sn": "Culture Trip",
   "award": "",
-  "note": "とても人気で、満席のことが多いと紹介。"
+  "note": "とても人気で、満席のことが多いと紹介。",
+  "lat": 41.71319,
+  "lng": 44.79446,
+  "geo": "osm"
  },
  {
   "id": "kl-gulainya",
@@ -556,7 +652,10 @@
   "src": "https://guide.michelin.com/my/en/article/michelin-guide-ceremony/malaysia-bib-gourmand-2026",
   "sn": "MICHELIN Guide（2026年版）",
   "award": "ミシュラン ビブグルマン",
-  "note": ""
+  "note": "",
+  "lat": 3.08944,
+  "lng": 101.68468,
+  "geo": "osm"
  },
  {
   "id": "pg-awesomeckt",
@@ -569,7 +668,10 @@
   "src": "https://guide.michelin.com/my/en/article/michelin-guide-ceremony/malaysia-bib-gourmand-2026",
   "sn": "MICHELIN Guide（2026年版）",
   "award": "ミシュラン ビブグルマン",
-  "note": ""
+  "note": "",
+  "lat": 5.45861,
+  "lng": 100.28253,
+  "geo": "osm"
  },
  {
   "id": "pg-beehwa",
@@ -582,7 +684,10 @@
   "src": "https://guide.michelin.com/my/en/article/michelin-guide-ceremony/malaysia-bib-gourmand-2026",
   "sn": "MICHELIN Guide（2026年版）",
   "award": "ミシュラン ビブグルマン",
-  "note": ""
+  "note": "",
+  "lat": 5.41889,
+  "lng": 100.33095,
+  "geo": "osm"
  },
  {
   "id": "pg-sifu",
@@ -608,7 +713,10 @@
   "src": "https://www.thepeakmagazine.com.sg/lifestyle/michelin-guide-singapore-bib-gourmand-2024",
   "sn": "The Peak（2024年版の新規掲載）",
   "award": "ミシュラン ビブグルマン",
-  "note": ""
+  "note": "",
+  "lat": 1.32694,
+  "lng": 103.93301,
+  "geo": "osm"
  },
  {
   "id": "sg-songfish",
@@ -634,7 +742,10 @@
   "src": "https://www.thepeakmagazine.com.sg/lifestyle/michelin-guide-singapore-bib-gourmand-2024",
   "sn": "The Peak（2024年版の新規掲載）",
   "award": "ミシュラン ビブグルマン",
-  "note": ""
+  "note": "",
+  "lat": 1.33197,
+  "lng": 103.88245,
+  "geo": "osm"
  },
  {
   "id": "sg-jalansultan",
@@ -647,7 +758,10 @@
   "src": "https://www.thepeakmagazine.com.sg/lifestyle/michelin-guide-singapore-bib-gourmand-2024",
   "sn": "The Peak（2024年版の新規掲載）",
   "award": "ミシュラン ビブグルマン",
-  "note": ""
+  "note": "",
+  "lat": 1.31118,
+  "lng": 103.87255,
+  "geo": "osm"
  },
  {
   "id": "sg-mpthai",
@@ -673,7 +787,10 @@
   "src": "https://www.thepeakmagazine.com.sg/lifestyle/michelin-guide-singapore-bib-gourmand-2024",
   "sn": "The Peak（2024年版の新規掲載）",
   "award": "ミシュラン ビブグルマン",
-  "note": ""
+  "note": "",
+  "lat": 1.31054,
+  "lng": 103.94624,
+  "geo": "osm"
  },
  {
   "id": "sg-delhilahori",
@@ -725,7 +842,10 @@
   "src": "https://guide.michelin.com/tw/en/taipei-region/taipei/restaurant/noodle-house",
   "sn": "MICHELIN Guide（2024年版の新規掲載）",
   "award": "ミシュラン ビブグルマン",
-  "note": ""
+  "note": "",
+  "lat": 25.16887,
+  "lng": 121.44585,
+  "geo": "osm"
  },
  {
   "id": "tc-lixiaolou",
@@ -738,7 +858,10 @@
   "src": "https://guide.michelin.com/tw/en/taichung-region/taichung/restaurant/li-xiao-lou",
   "sn": "MICHELIN Guide（2024年版の新規掲載）",
   "award": "ミシュラン ビブグルマン",
-  "note": ""
+  "note": "",
+  "lat": 24.15718,
+  "lng": 120.6807,
+  "geo": "osm"
  },
  {
   "id": "tn-bue",
@@ -751,7 +874,10 @@
   "src": "https://guide.michelin.com/tw/en/tainan-region/tainan/restaurant/bue-mi-lab",
   "sn": "MICHELIN Guide（2024年版の新規掲載）",
   "award": "ミシュラン ビブグルマン",
-  "note": ""
+  "note": "",
+  "lat": 22.99123,
+  "lng": 120.18498,
+  "geo": "osm"
  },
  {
   "id": "tn-eattofat",
