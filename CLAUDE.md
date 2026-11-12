@@ -24,6 +24,9 @@
 - 実行済みのSQL：schema.sql, add-promo-market.sql, 管理人の設定, add-anon-flag.sql, add-map-collab.sql, add-stay-ratings.sql。
 - Supabase Edge Function：`resolve-map`（supabase/functions/resolve-map/index.ts。Googleマップの短縮リンクを展開）。2026-11-12に運営者がSupabaseの画面でデプロイ済み。変更したら、運営者に再デプロイを頼む（秘密鍵は不要）。
 - GitHub Actions：`news.yml`（日本時間7・12・19時にニュース。Yahoo!ニュース国際・BBC・Al Jazeera）、`monthly.yml`（毎月1日に為替とページ再生成）、`geocode.yml`（手動。お店の位置を調べる）。
+- 公開サイトの確認（Claudeが自分でできる）：`gh workflow run live-check.yml --ref main -R litsamurai/teihen-nomad`（タブは `-f tabs=stays,food,home`）。公開中のサイトをスマホ幅(390px)で開き、スクショとエラーを `live-shots` ブランチに保存する。見るには `git fetch origin live-shots:refs/remotes/origin/live-shots` → `git worktree add --detach /tmp/ls origin/live-shots` → log.txt とPNGをReadする。この環境からは、サイトやSupabaseへ直接つながらないので、確認はこの方法を使う。運営者に確認作業を頼まない。
+- 短縮リンク（宿の投稿）：`resolve-map` は非ブラウザ風のUA（`Mozilla/5.0 (compatible; nomad-note)`）でないとGoogleが展開しない。展開後は `?q=宿名, 住所`（座標なし）の形で、サイト側が住所から（St→Street、District/Cityを外して）OSMで場所を探す。
+- 宿タブ：レビュー一覧は検索したときだけ表示。地図のピンのポップアップに平均★と「評価・メモを見る」ボタンがある。
 - 毎月2日に、ClaudeがコストデータをWebで確認して更新する予定タスクがある。
 - 外部：OpenStreetMap/Leaflet（地図）、Nominatim（場所検索）、rss2json・MyMemory（ニュースの予備）、ExchangeRate-API（為替）。
 
