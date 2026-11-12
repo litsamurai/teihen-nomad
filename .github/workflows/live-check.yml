@@ -5,6 +5,9 @@ on:
       tabs:
         description: "確認するタブ（カンマ区切り）"
         default: "stays,food,home"
+      browser:
+        description: "chromium か webkit（iPhone Safari相当）"
+        default: "chromium"
 permissions:
   contents: write
 jobs:
@@ -15,10 +18,11 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-      - run: npm i --no-save playwright && npx playwright install --with-deps chromium
+      - run: npm i --no-save playwright && npx playwright install --with-deps chromium webkit
       - run: node tools/live-check.js
         env:
           TABS: ${{ inputs.tabs }}
+          BROWSER: ${{ inputs.browser }}
       - name: スクショを live-shots ブランチに保存
         if: always()
         run: |
