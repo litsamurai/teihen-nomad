@@ -5,6 +5,8 @@ on:
       tabs:
         description: "確認するタブ（カンマ区切り）"
         default: "stays,food,home"
+permissions:
+  contents: write
 jobs:
   check:
     runs-on: ubuntu-latest
@@ -17,9 +19,15 @@ jobs:
       - run: node tools/live-check.js
         env:
           TABS: ${{ inputs.tabs }}
-      - uses: actions/upload-artifact@v4
+      - name: スクショを live-shots ブランチに保存
         if: always()
-        with:
-          name: shots
-          path: shots
-          retention-days: 3
+        run: |
+          cp -r shots /tmp/shots
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout --orphan live-shots
+          git rm -rf . -q || true
+          cp -r /tmp/shots/. .
+          git add -A
+          git commit -q -m "live-check $(date -u +%FT%TZ)"
+          git push -f origin live-shots
