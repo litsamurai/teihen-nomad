@@ -22,6 +22,7 @@
 - `data/*.json`：国・街・お店・ニュースなどのデータ。`country/` `city/` は自動生成。
 - Supabase：profiles, countries, country_revisions, places, reviews, channels, stays, reports, promos, market。RLSで、自分の投稿だけ編集・削除可、管理人は全て。1時間10件の制限、通報3件で自動非表示。
 - 実行済みのSQL：schema.sql, add-promo-market.sql, 管理人の設定, add-anon-flag.sql, add-map-collab.sql, add-stay-ratings.sql。
+- Supabase Edge Function：`resolve-map`（supabase/functions/resolve-map/index.ts。Googleマップの短縮リンクを展開）。2026-11-12に運営者がSupabaseの画面でデプロイ済み。変更したら、運営者に再デプロイを頼む（秘密鍵は不要）。
 - GitHub Actions：`news.yml`（日本時間7・12・19時にニュース。Yahoo!ニュース国際・BBC・Al Jazeera）、`monthly.yml`（毎月1日に為替とページ再生成）、`geocode.yml`（手動。お店の位置を調べる）。
 - 毎月2日に、ClaudeがコストデータをWebで確認して更新する予定タスクがある。
 - 外部：OpenStreetMap/Leaflet（地図）、Nominatim（場所検索）、rss2json・MyMemory（ニュースの予備）、ExchangeRate-API（為替）。
