@@ -19,7 +19,7 @@ const FORMS = { stays: "#std", food: "#rvd", channels: "#cbd", market: "#mkd", p
       if (FORMS[t]) {
         const h = await p.evaluateHandle((sel) => { const b = document.querySelector(sel); return b ? b.closest(".box") : null; }, FORMS[t]);
         const el = h.asElement();
-        if (el) { await el.scrollIntoViewIfNeeded(); await el.screenshot({ path: `shots/form-${t}-${w}.png` }); }
+        if (el) { try { await el.screenshot({ path: `shots/form-${t}-${w}.png`, timeout: 8000 }); } catch (e) { log.push(`[${t}] form screenshot failed: ` + e.message.split("\n")[0]); } }
       }
       log.push(`[${t}] overflow-x: ` + (await p.evaluate(() => document.documentElement.scrollWidth - innerWidth)));
       if (t === "stays") {
