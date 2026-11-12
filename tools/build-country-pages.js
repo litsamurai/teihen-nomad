@@ -82,6 +82,7 @@ CI.cities.forEach(c=>{
   h+=`<section><p><a href="../country/${c.c.toLowerCase()}.html">${flag(c.c)} ${esc(cn)}の物価・治安を見る</a></p></section>`;
   h+=`<section class="cta"><h2>${esc(c.name)}の最新情報は、旅人に聞こう</h2><p>行った人の声や、いまの様子は、Discordコミュニティで。無料で、見るだけでもOKです。</p><a class="btn" href="../#crew">💬 Discordで仲間と繋がる</a></section>`;
   h+=`<p class="small">数字は、公開されている二次情報から集めた参考値です。渡航前に、最新の情報を必ず確認してください。</p>`;
+  h+=`<script type="application/ld+json">${JSON.stringify({"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"ホーム","item":BASE},{"@type":"ListItem","position":2,"name":"街ガイド","item":BASE+'city/'},{"@type":"ListItem","position":3,"name":c.name,"item":url}]})}</script>`;
   fs.writeFileSync(path.join(ROOT,'city',c.id+'.html'),h+foot);
 });
 {let h=chead('ノマド向け街ガイド｜底辺くんのノマドノート','ノマドに人気の街の、生活費の目安と出典をまとめています。',BASE+'city/',false);
