@@ -4,14 +4,19 @@ jobs:
   check:
     runs-on: ubuntu-latest
     steps:
-      - name: call function
+      - name: short link headers (2 UAs)
         run: |
-          set -x
-          curl -sS -m 40 -X POST "https://puciqvaespjdjbhavznt.supabase.co/functions/v1/resolve-map" \
-            -H "apikey: sb_publishable_JB5RaPplzCEtrYs60uFdWw_z9DKM2ob" -H "Authorization: Bearer sb_publishable_JB5RaPplzCEtrYs60uFdWw_z9DKM2ob" -H "Content-Type: application/json" \
-            -d '{"url":"https://maps.app.goo.gl/wbh18zrmZpx8DNPL8?g_st=ic"}' | head -c 1500; echo
-      - name: nominatim
-        run: |
-          for q in "No. 42號, Hanzhong St, Wanshou Village, Wanhua District, Taipei City, 台湾 108002" "Hanzhong St, Wanshou Village, Wanhua District, Taipei City, 台湾 108002" "喵喵有約青年旅舍 Wanhua District Taipei City 台湾 108002"; do
-            curl -sS -m 30 -A "teihen-nomad-check" "https://nominatim.openstreetmap.org/search?format=jsonv2&limit=1&accept-language=ja&q=$(python3 -c 'import sys,urllib.parse;print(urllib.parse.quote(sys.argv[1]))' "$q")" | head -c 400; echo; sleep 2
+          U="https://maps.app.goo.gl/wbh18zrmZpx8DNPL8?g_st=ic"
+          for ua in "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36" "Mozilla/5.0 (compatible; nomad-note)" "curl/8.5.0"; do
+            echo "=== UA: $ua"
+            curl -sS -m 20 -o /tmp/b.html -D - -A "$ua" "$U" | grep -i -E "^HTTP|^location" | cut -c1-400
+            echo "body bytes: $(wc -c </tmp/b.html)"; grep -o -i -E "<title>[^<]*</title>|center=[-0-9.]+%2C[-0-9.]+|@[-0-9.]+,[-0-9.]+|http-equiv=\"refresh\"[^>]*" /tmp/b.html | head -5
           done
+      - name: nominatim variants
+        run: |
+          q() { curl -sS -m 30 -A "teihen-nomad-check" -G "https://nominatim.openstreetmap.org/search" --data-urlencode "q=$1" -d "format=jsonv2&limit=2&accept-language=ja" | head -c 300; echo " <= $1"; sleep 2; }
+          q "漢中街42號 萬華區 台北市"
+          q "Hanzhong Street 42 Wanhua Taipei"
+          q "喵喵有約青年旅舍"
+          q "Hanzhong St Wanhua District Taipei"
+          q "漢中街 萬華區 台北"
