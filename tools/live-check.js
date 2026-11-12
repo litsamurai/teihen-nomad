@@ -3,6 +3,7 @@ const { chromium } = require("playwright");
 const fs = require("fs");
 const BASE = "https://litsamurai.github.io/teihen-nomad/";
 const TABS = (process.env.TABS || "stays,food,home").split(",");
+const FORMS = { stays: "#std", food: "#rvd", channels: "#cbd", market: "#mkd", promo: "#prd" };
 (async () => {
   fs.mkdirSync("shots", { recursive: true });
   const b = await chromium.launch();
@@ -15,6 +16,11 @@ const TABS = (process.env.TABS || "stays,food,home").split(",");
       await p.goto(BASE + "?v=" + Date.now() + "#" + t, { waitUntil: "networkidle" }).catch(() => {});
       await p.waitForTimeout(3500);
       await p.screenshot({ path: `shots/${t}-${w}.png`, fullPage: false });
+      if (FORMS[t]) {
+        const h = await p.evaluateHandle((sel) => { const b = document.querySelector(sel); return b ? b.closest(".box") : null; }, FORMS[t]);
+        const el = h.asElement();
+        if (el) { await el.scrollIntoViewIfNeeded(); await el.screenshot({ path: `shots/form-${t}-${w}.png` }); }
+      }
       log.push(`[${t}] overflow-x: ` + (await p.evaluate(() => document.documentElement.scrollWidth - innerWidth)));
       if (t === "stays") {
         const info = await p.evaluate(() => (document.getElementById("stmapn") || {}).textContent);
