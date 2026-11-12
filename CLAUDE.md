@@ -31,6 +31,8 @@
 - 毎月2日に、ClaudeがコストデータをWebで確認して更新する予定タスクがある。
 - 外部：OpenStreetMap/Leaflet（地図）、Nominatim（場所検索）、rss2json・MyMemory（ニュースの予備）、ExchangeRate-API（為替）。
 
+- 旅YouTuber一覧タブ（`ch`）：「チャンネル一覧」と「コラボ依頼掲示板」の2画面（`data-chv`）。自分の投稿は✏️編集できる（`data-edit`、`window._chEdit`/`_cbEdit`）。掲示板は `collab_posts` テーブル（`supabase/add-collab-board.sql`）。**このSQLは運営者がまだ実行していない可能性あり**（未実行だと投稿時に「サーバー側の準備ができていません」）。
+
 ## いまの状態・やること
 - 提携待ち：Wise（Partnerize）、A8のVPN案件。承認されたらリンクを「準備」タブ等に【PR】つきで入れる。入れ済み：楽天、Agoda、VOYE（eSIM）、スイカVPN。
 - 検索（SEO）の状態（2026-11-12）：Search Console登録済み（URLプレフィックス、確認ファイル google0774770f902fff56.html）。トップページはGoogleに登録済み。国別ページ（例 country/th.html）は未認識。サイトマップ（sitemap.xml、254URL）は送信済みだが「取得できませんでした」表示（新サイトでよくある。サイトのsitemap.xml自体は正常に公開されている。入力欄は固定の前置きがあるので `sitemap.xml` だけ入れる）。数日後に再確認し、変わらなければ配信形式を調べる。検索に出るには数日〜数週間かかる。

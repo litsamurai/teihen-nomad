@@ -26,7 +26,7 @@ ${noindex?'<meta name="robots" content="noindex,follow">':''}
 <meta property="og:url" content="${url}"><meta property="og:image" content="${BASE}img/og.png"><meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="../favicon.svg"><link rel="stylesheet" href="style.css"></head><body>
 <header><a class="logo" href="../">底辺くんのノマドノート</a><a class="join" href="../#crew">💬 Discordで仲間と繋がる</a></header><main>`;
-const MENU=[["fx","💱","両替"],["news","🌏","世界のニュース"],["stays","🏠","穴場の宿"],["market","🛒","マーケット"],["promo","📣","なんでもPR"],["safety","🛡","安全"],["ch","📺","旅YouTuber"],["prep","🎒","準備"],["crew","🤝","仲間・参加"]];
+const MENU=[["fx","💱","両替"],["news","🌏","世界のニュース"],["stays","🏠","穴場の宿"],["market","🛒","マーケット"],["promo","📣","なんでもPR"],["safety","🛡","安全"],["ch","📺","旅YouTuber一覧"],["prep","🎒","準備"],["crew","🤝","仲間・参加"]];
 const menuHtml=`<nav class="menu"><h2>📋 ほかのメニュー</h2><div>`+MENU.map(m=>`<a href="../#${m[0]}"><i>${m[1]}</i>${m[2]}</a>`).join("")+`<a href="https://www.anzen.mofa.go.jp/" target="_blank" rel="noopener"><i>🛂</i>渡航情報</a></div></nav>`;
 const foot=`</main>${menuHtml}<footer><p><a href="../">ホーム</a>・<a href="../country/">国別の生活費ランキング</a>・<a href="../privacy.html">プライバシーポリシー</a>・<a href="../terms.html">利用規約</a></p><p>掲載情報には、概算・下書き（未検証）が含まれます。渡航前に、必ず公式情報を確認してください。</p></footer></body></html>`;
 const sp=s=>String(s).split('｜');
