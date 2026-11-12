@@ -486,6 +486,10 @@ section .card,section .step,section .box,section .simbox{box-shadow:none!importa
 .srow{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:6px 0;border-bottom:1px dashed var(--line)}.srow .sl{font-weight:700;font-size:14px;line-height:1.3}.srow .sl small{display:block;font-weight:400;color:var(--sub);font-size:12px}.stars{white-space:nowrap}.stars button{font-size:28px;line-height:1;background:none;border:0;color:#d6d6d6;padding:2px 1px;cursor:pointer}.stars button.on{color:#f5a300}.stov{font-size:28px;font-weight:900;color:#c77700}.stavg{display:grid;grid-template-columns:1fr auto;gap:2px 8px;font-size:13px;margin:6px 0}.stavg .g{color:#f5a300;letter-spacing:1px;white-space:nowrap}.strv{border-top:1px solid var(--line);margin-top:10px;padding-top:8px;font-size:14px}.strv .m5{font-size:12px;color:var(--sub)}
 .stars button{font-size:32px;padding:5px 3px;-webkit-tap-highlight-color:transparent;touch-action:manipulation}
 @media(max-width:360px){.srow{flex-wrap:wrap}.srow .stars{width:100%;text-align:right}}
+/* iPhone Safariで、ポップアップが地図の色の下に隠れるのを防ぐ */
+.leaflet-container{isolation:isolate;-webkit-transform:translateZ(0);transform:translateZ(0)}
+.leaflet-popup-pane{z-index:1000!important}
+.leaflet-popup{-webkit-transform-style:flat}
 </style>
 </head>
 <body>
