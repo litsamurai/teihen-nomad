@@ -1,0 +1,6 @@
+console: Failed to load resource: the server responded with a status of 404 ()
+[food] overflow-x: 2
+console: Failed to load resource: the server responded with a status of 404 ()
+[stays] overflow-x: 2
+[stays] map: 地図に出ている宿：1件（ピンをタップすると評価が見られます）
+[stays] popup: 喵喵有約青年旅舍 / 台北市 / ★3.4 （1件の評価） / 📝 評価・メモを見る / Googleマップで開く
