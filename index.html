@@ -181,8 +181,8 @@ select{max-width:100%;box-sizing:border-box}
 .big button:first-child,.big button:nth-child(2){border-color:var(--brand)}
 @media(min-width:700px){.big{grid-template-columns:repeat(4,1fr)}}
 .tab{font-size:16px!important;padding:12px 16px!important}
-.authbar{display:flex;gap:10px;align-items:center;justify-content:space-between;flex-wrap:wrap;background:var(--soft);border:1px solid var(--line);border-radius:14px;padding:8px 12px;margin:0 0 14px;font-size:13px}
-.authbar button{font:inherit;font-weight:800;background:var(--brand);color:var(--brand-ink);border:0;border-radius:10px;padding:6px 12px;cursor:pointer}
+.authbar{display:flex;gap:6px;align-items:center;justify-content:center;flex-wrap:wrap;background:var(--soft);border:1px solid var(--line);border-radius:10px;padding:3px 8px;margin:0 auto 10px;max-width:560px;font-size:11px;color:var(--ink)}
+.authbar button{font:inherit;font-size:11px;font-weight:800;background:var(--brand);color:var(--brand-ink);border:0;border-radius:7px;padding:2px 8px;cursor:pointer;white-space:nowrap}
 .toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:#3b2a1a;color:#fff;padding:10px 16px;border-radius:12px;z-index:60;max-width:88vw;font-size:14px;box-shadow:0 6px 20px #0004}
 .addf{margin:10px 0;background:#fff7ec;border:1px solid #f0d9b8;border-radius:14px;padding:8px 12px}.addf summary{cursor:pointer;font-weight:700;color:#b5441c;padding:6px 0}.addf .wd{margin-top:8px}.card .more[data-ek]{margin:8px 0 2px;font-size:13px}[hidden]{display:none!important}
 /* ウユニ塩湖パレット：空の青・塩の白・テロップの紺と黄色 */
@@ -494,7 +494,6 @@ section .card,section .step,section .box,section .simbox{box-shadow:none!importa
 </div>
 
 <main>
-<div id="authbar" class="authbar" hidden></div>
 <div class="gcbar"><label>🌏 国で絞り込む<select id="gc" aria-label="国で絞り込む"></select></label></div>
 <p class="empty" id="gnote" hidden></p>
 <section id="home-more" data-t="home">
@@ -536,7 +535,7 @@ section .card,section .step,section .box,section .simbox{box-shadow:none!importa
 <div class="simbox" style="max-width:none;margin-bottom:20px"><b>1か月いくらで暮らせる？</b><div class="row" style="margin-top:10px"><select id="kc" aria-label="国"></select><select id="kn" aria-label="日数"><option value="7">7泊</option><option value="14">14泊</option><option value="30" selected>30泊</option><option value="90">90泊</option></select></div><div class="row"><select id="kt" aria-label="宿のタイプ"><option value="0.8">ドミトリー</option><option value="1" selected>個室ホステル</option><option value="1.5">コリビング</option></select></div><div id="ko" role="status"></div></div>
 <div class="simbox" style="max-width:none;margin:0 0 14px"><b>✏️ 国の情報を編集する</b><p class="small" style="margin:6px 0 10px">国を選んで押すと、物価・ひとこと・街・グルメ・安全の情報を、直せます。<b>ログインなしで、誰でも編集できます。</b></p><div class="row"><select id="wes" aria-label="編集する国"></select><button class="go" id="web" style="flex:0 0 auto;max-width:160px">編集する</button></div><p class="mm" id="wem" role="status"></p></div>
 <div id="wcities" style="margin:0 0 14px"></div>
-<p class="small" style="margin:0 0 10px">為替レート（円への換算）は、毎月1日に自動で更新されます。物価の数字は、出典のある国は確認日の時点のもの、それ以外は概算です。気づいた人が直せます。</p>
+<p class="small" style="margin:0 0 10px">気づいた人が直せます。</p>
 <input id="wq" type="search" placeholder="国名で探す（例：ベトナム）" aria-label="国名で探す" style="width:100%;max-width:420px;font:inherit;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 14px;margin-bottom:8px">
 <details id="wd" style="margin-top:6px"><summary style="cursor:pointer;font-weight:800;padding:12px 14px;background:var(--soft);border:1px solid var(--line);border-radius:12px;list-style:none">📂 国の一覧を開く（203か国・地域）</summary><div style="margin-top:12px">
 <select id="ws2" aria-label="並び替え" style="margin-bottom:6px;max-width:260px"><option value="n">名前順</option><option value="a">物価が安い順</option><option value="d">物価が高い順</option></select>
@@ -1039,7 +1038,7 @@ function sbErr(e){var m=(e&&e.message)||"";if(/schema cache|does not exist|PGRST
 function cnames2codes(s){var out=[];String(s||"").split(/[、,，\s]+/).forEach(function(n){n=n.trim();if(!n)return;var hit=CL2.filter(function(x){return x.n===n})[0];if(hit&&out.indexOf(hit.c)<0)out.push(hit.c)});return out.slice(0,10)}
 window.SBX={on:false,user:null,sb:null,
 need:async function(){if(SBX.user)return true;if(!SBX.sb)return false;try{var r=await SBX.sb.auth.signInAnonymously();if(r.error||!r.data||!r.data.user)throw r.error||new Error("anon");await SBX.setUser(r.data.user);return !!SBX.user}catch(e){toast("ログインなしの投稿は、いま使えません。Discordでログインしてください。");return false}},
-authbar:function(){var a=$("authbar");a.hidden=false;var wl=$("wlg");if(wl)wl.hidden=!!SBX.user;if(SBX.user){var P=pts(SBX.user.id),T=ttl(P),nx=TT.filter(function(x){return x[0]>P})[0];a.innerHTML=(SBX.user.anon?'<span>👤 ログインなしで参加中（名前は「旅人」）<br><small>Discordでログインすると、称号とポイントがもらえます</small></span><button id="login">Discordでログイン</button>':'<span>👤 '+chesc(SBX.user.name)+' でログイン中<br><small>'+T[1]+' '+T[2]+'　'+P+'pt'+(nx?'（次の称号まであと'+(nx[0]-P)+'pt）':'（最高の称号です）')+'　<a href="#crew" data-go="crew" style="font-weight:700">称号とは？</a></small></span><button id="logout">ログアウト</button>')}else{a.innerHTML='<span>✏️ ログインなしで、そのまま編集・投稿できます。<br><small>名前を残したい人は、Discordでログイン</small></span><button id="login">Discordでログイン</button>'}
+authbar:function(){var a=$("authbar");a.hidden=false;var wl=$("wlg");if(wl)wl.hidden=!!SBX.user;if(SBX.user){var P=pts(SBX.user.id),T=ttl(P),nx=TT.filter(function(x){return x[0]>P})[0];a.innerHTML=(SBX.user.anon?'<span>👤 ログインなしで参加中</span><button id="login">Discordでログイン</button>':'<span>👤 '+chesc(SBX.user.name)+'　'+T[1]+' '+T[2]+' '+P+'pt'+(nx?'（あと'+(nx[0]-P)+'pt）':'（最高）')+'　<a href="#crew" data-go="crew" style="font-weight:700">称号とは？</a></span><button id="logout">ログアウト</button>')}else{a.innerHTML='<span>✏️ ログインなしで編集・投稿OK</span><button id="login">Discordでログイン</button>'}
 $("rvd").hidden=false;$("cbd").hidden=false;$("std").hidden=false;$("prd").hidden=false;$("mkd").hidden=false},
 setUser:async function(u){if(!u){SBX.user=null;SBX.authbar();return}var nm=(u.user_metadata&&(u.user_metadata.full_name||u.user_metadata.name))||"旅人";try{var r=await SBX.sb.from("profiles").select("display_name,role").eq("id",u.id).maybeSingle();if(r.data&&r.data.display_name)nm=r.data.display_name;var md=!!(r.data&&r.data.role==="moderator")}catch(e){var md=false}SBX.user={id:u.id,name:nm,mod:md,anon:!!u.is_anonymous};SBX.authbar();try{mergeAll()}catch(e){}},
 init:async function(){SBX.on=true;SBX.authbar();
@@ -1163,6 +1162,6 @@ function stKey(x){return (x.c+"|"+x.city+"|"+x.n).toLowerCase().replace(/\s+/g,"
 function stGroups(q){var m={},o=[];STS.forEach(function(x){if(q&&(x.city+" "+x.n+" "+(x.k||"")+" "+(x.d||"")).toLowerCase().indexOf(q)<0)return;var k=stKey(x);if(!m[k]){m[k]={k:k,items:[],c:x.c,city:x.city,n:x.n};o.push(m[k])}m[k].items.push(x)});o.forEach(function(g){g.items.forEach(function(x){var r=x.r;if(r){SRT.forEach(function(c,i){x[c[0]]=r[i]})}});g.avg={};var ov=[];SRT.forEach(function(c){var a=srAvg(g.items,c[0]);g.avg[c[0]]=a;if(a!=null)ov.push(a)});g.ov=ov.length?ov.reduce(function(a,b){return a+b},0)/ov.length:null;g.rn=g.items.filter(function(x){return x.r}).length;g.t=g.items.reduce(function(m,x){return Math.max(m,Date.parse(x.t)||0)},0)});return o}
 document.addEventListener("change",function(e){if(e.target&&e.target.id==="stsort")strender()});
 </script>
-<footer style="max-width:1100px;margin:32px auto;padding:16px;font-size:12px;color:#888;text-align:center"><a href="privacy.html">プライバシーポリシー</a>｜<a href="terms.html">利用規約・免責</a><p>掲載情報は下書き・概算を含み、正確性を保証しません。渡航前に必ず公的機関の最新情報をご確認ください。</p></footer>
+<footer style="max-width:1100px;margin:32px auto;padding:16px;font-size:12px;color:#888;text-align:center"><div id="authbar" class="authbar" hidden></div><a href="privacy.html">プライバシーポリシー</a>｜<a href="terms.html">利用規約・免責</a><p>掲載情報は下書き・概算を含み、正確性を保証しません。渡航前に必ず公的機関の最新情報をご確認ください。</p></footer>
 </body>
 </html>
