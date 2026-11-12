@@ -1,0 +1,17 @@
+name: check-resolve-map
+on: workflow_dispatch
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: call function
+        run: |
+          set -x
+          curl -sS -m 40 -X POST "https://puciqvaespjdjbhavznt.supabase.co/functions/v1/resolve-map" \
+            -H "apikey: sb_publishable_JB5RaPplzCEtrYs60uFdWw_z9DKM2ob" -H "Authorization: Bearer sb_publishable_JB5RaPplzCEtrYs60uFdWw_z9DKM2ob" -H "Content-Type: application/json" \
+            -d '{"url":"https://maps.app.goo.gl/wbh18zrmZpx8DNPL8?g_st=ic"}' | head -c 1500; echo
+      - name: nominatim
+        run: |
+          for q in "No. 42號, Hanzhong St, Wanshou Village, Wanhua District, Taipei City, 台湾 108002" "Hanzhong St, Wanshou Village, Wanhua District, Taipei City, 台湾 108002" "喵喵有約青年旅舍 Wanhua District Taipei City 台湾 108002"; do
+            curl -sS -m 30 -A "teihen-nomad-check" "https://nominatim.openstreetmap.org/search?format=jsonv2&limit=1&accept-language=ja&q=$(python3 -c 'import sys,urllib.parse;print(urllib.parse.quote(sys.argv[1]))' "$q")" | head -c 400; echo; sleep 2
+          done
