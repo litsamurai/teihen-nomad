@@ -525,8 +525,8 @@ section .card,section .step,section .box,section .simbox{box-shadow:none!importa
 <button data-go="market"><i>🛒</i><b>マーケット</b><span>地域ごとに譲る・探す</span></button>
 <button data-go="promo"><i>📣</i><b>なんでもPR</b><span>自分のことを宣伝しよう</span></button>
 <button data-go="safety"><i>🛡</i><b>安全</b><span>だまされない・奪われない</span></button>
-<button data-go="ch"><i>📺</i><b>旅YouTuber一覧</b><span>コラボ依頼掲示板も</span></button>
-<button data-go="prep"><i>🎒</i><b>準備</b><span>チェックリストとツール</span></button>
+<button data-go="ch"><i>📺</i><b>旅系YouTuber<br>一覧</b><span>コラボ依頼掲示板も</span></button>
+<button data-go="prep"><i>🎒</i><b>渡航準備リスト</b><span>チェックリストとツール</span></button>
 <button data-ext="https://www.anzen.mofa.go.jp/"><i>🛂</i><b>渡航情報</b><span>外務省</span></button>
 <button data-go="consent"><i>💗</i><b>大人の同意書</b><span>お互いの気持ちを確かめる</span></button>
 <button data-go="adult"><i>🔞</i><b>18禁</b><span>夜の街の注意（18歳以上）</span></button>
@@ -624,8 +624,8 @@ section .card,section .step,section .box,section .simbox{box-shadow:none!importa
 </details>
 </section>
 <section id="ch" data-t="ch">
-<h2>📺 旅YouTuber一覧</h2>
-<p class="sub">旅YouTuberのチャンネル一覧と、コラボ相手を探す「コラボ依頼掲示板」です。自分のも載せて、他の人のも見にいこう。再生数は、みんなで分け合うもの。</p>
+<h2>📺 旅系YouTuber一覧</h2>
+<p class="sub">旅系YouTuberのチャンネル一覧と、コラボ相手を探す「コラボ依頼掲示板」です。自分のも載せて、他の人のも見にいこう。再生数は、みんなで分け合うもの。</p>
 <div class="warn" style="margin-bottom:16px">紹介できるのは、自分のチャンネルか、自分が実際に見ておすすめできるチャンネルです。相互登録だけが目的の依頼、再生数・登録者の売買、過度な勧誘は禁止です。お金や物をもらって紹介する場合は、「PR」と書いてください。</div>
 <div class="seg" id="chseg" style="display:flex;gap:8px;margin:0 0 12px;flex-wrap:wrap"><button class="go on" data-chv="list" style="max-width:200px;padding:10px 12px">📺 チャンネル一覧</button><button class="go" data-chv="board" style="max-width:240px;padding:10px 12px;background:#fff;color:#146c2e;border:2px solid #146c2e;box-shadow:none">🤝 コラボ依頼掲示板</button></div>
 <div id="chlist">
@@ -861,7 +861,7 @@ section .card,section .step,section .box,section .simbox{box-shadow:none!importa
 
 <script>
 function $(i){return document.getElementById(i)}
-var TABS=[["home","ホーム"],["wiki","国別コスト"],["fx","両替"],["news","ニュース"],["food","グルメ"],["stays","宿"],["market","マーケット"],["consent","大人の同意書"],["adult","18禁"],["promo","なんでもPR"],["safety","安全"],["ch","旅YouTuber一覧"],["crew","仲間"],["prep","準備"]];
+var TABS=[["home","ホーム"],["wiki","国別コスト"],["fx","両替"],["news","ニュース"],["food","グルメ"],["stays","宿"],["market","マーケット"],["consent","大人の同意書"],["adult","18禁"],["promo","なんでもPR"],["safety","安全"],["ch","旅系YouTuber一覧"],["crew","仲間"],["prep","渡航準備リスト"]];
 var DISCORD_URL="https://discord.gg/4UHubvZErJ";
 /* メンバー編集を有効にするには、Supabaseの URL と anon key を入れます（手順は SETUP-supabase.md） */
 var SB_CONFIG={url:"https://puciqvaespjdjbhavznt.supabase.co",key:"sb_publishable_JB5RaPplzCEtrYs60uFdWw_z9DKM2ob"};
@@ -1207,7 +1207,7 @@ function stKey(x){return (x.c+"|"+x.city+"|"+x.n).toLowerCase().replace(/\s+/g,"
 function stGroups(q){var m={},o=[];STS.forEach(function(x){if(q&&(cname(x.c)+" "+x.city+" "+x.n+" "+(x.k||"")+" "+(x.d||"")).toLowerCase().indexOf(q)<0)return;var k=stKey(x);if(!m[k]){m[k]={k:k,items:[],c:x.c,city:x.city,n:x.n};o.push(m[k])}m[k].items.push(x)});o.forEach(function(g){g.items.forEach(function(x){var r=x.r;if(r){SRT.forEach(function(c,i){x[c[0]]=r[i]})}});g.avg={};var ov=[];SRT.forEach(function(c){var a=srAvg(g.items,c[0]);g.avg[c[0]]=a;if(a!=null)ov.push(a)});g.ov=ov.length?ov.reduce(function(a,b){return a+b},0)/ov.length:null;g.rn=g.items.filter(function(x){return x.r}).length;g.t=g.items.reduce(function(m,x){return Math.max(m,Date.parse(x.t)||0)},0)});return o}
 document.addEventListener("change",function(e){if(e.target&&e.target.id==="stsort")strender()});
 
-/* ===== 旅YouTuber一覧：コラボ依頼掲示板／自分の投稿の編集 ===== */
+/* ===== 旅系YouTuber一覧：コラボ依頼掲示板／自分の投稿の編集 ===== */
 var DBCB=[];window._chEdit=null;window._cbEdit=null;
 function chReset(){window._chEdit=null;["cn1","cu1","cc1","cg1","cd1"].forEach(function(i){$(i).value=""});$("cs1").value="";$("cbd").textContent="この内容で投稿する";$("cbx").hidden=true}
 function cbReset(){window._cbEdit=null;["cb1","cb2","cb3","cb4","cb5","cb6"].forEach(function(i){$(i).value=""});$("cbp").textContent="この内容で投稿する";$("cbx2").hidden=true}
